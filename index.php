@@ -112,7 +112,7 @@ include('view/header/header.php');
 					<h2 class="title-color">Evenement</h2>
 					<p class="mt-4 mb-5">L'établissement organise plusieurs évenement que vous pouvez découvrir en cliquant sur le lien ci-dessous.</p>
 
-					<a href="view/event/evenement.php" class="btn btn-main-2 btn-round-full btn-icon">Evenement<i class="icofont-simple-right ml-3"></i></a>
+					<a href="view/event/event.php" class="btn btn-main-2 btn-round-full btn-icon">Evenement<i class="icofont-simple-right ml-3"></i></a>
 				</div>
 			</div>
 		</div>
