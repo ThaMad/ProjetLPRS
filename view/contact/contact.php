@@ -61,32 +61,32 @@
 			  <li class="nav-item active">
 				<a class="nav-link" href="../../index.php">Home</a>
 			  </li>
-			   <li class="nav-item"><a class="nav-link" href="../presentation/about.php">About</a></li>
-			    <li class="nav-item"><a class="nav-link" href="../../service.php">Services</a></li>
+			   <li class="nav-item"><a class="nav-link" href="../../about.php">About</a></li>
+			    <li class="nav-item"><a class="nav-link" href="../../service.html">Services</a></li>
 
 			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="../event/evenement.php" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="../../department.php" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="../event/evenement.php">Departments</a></li>
+						<li><a class="dropdown-item" href="../../department.php">Departments</a></li>
 						<li><a class="dropdown-item" href="../../department-single.php">Department Single</a></li>
 					</ul>
 			  	</li>
 
 			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="../profil/profil.php" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="../../doctor.php" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="../profil/profil.php">Doctors</a></li>
+						<li><a class="dropdown-item" href="../../doctor.php">Doctors</a></li>
 						<li><a class="dropdown-item" href="../../doctor-single.php">Doctor Single</a></li>
-						<li><a class="dropdown-item" href="../connexion/inscription.php">Appoinment</a></li>
+						<li><a class="dropdown-item" href="../../appoinment.php">Appoinment</a></li>
 					</ul>
 			  	</li>
 
 			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="../../blog-sidebar.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="../formation/lycee.php">Blog with Sidebar</a></li>
+						<li><a class="dropdown-item" href="../../blog-sidebar.php">Blog with Sidebar</a></li>
 
-						<li><a class="dropdown-item" href="../formation/bts.php">Blog Single</a></li>
+						<li><a class="dropdown-item" href="../../blog-single.php">Blog Single</a></li>
 					</ul>
 			  	</li>
 			   <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
@@ -160,7 +160,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <form id="contact-form" class="contact__form " method="post" action="../mail/mail.php">
+                <form id="contact-form" class="contact__form " method="post" action="../../mail.php">
                  <!-- form message -->
                     <div class="row">
                         <div class="col-12">
