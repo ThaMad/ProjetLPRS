@@ -48,7 +48,7 @@
 	</div>
 	<nav class="navbar navbar-expand-lg navigation" id="navbar">
 		<div class="container">
-		 	 <a class="navbar-brand" href="index.html">
+		 	 <a class="navbar-brand" href="index.php">
 			  	<img src="images/logo.png" alt="" class="img-fluid">
 			  </a>
 
@@ -59,37 +59,37 @@
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link" href="index.php">Home</a>
 			  </li>
-			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+			   <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
 			    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
 
 			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="department.php" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="department.html">Departments</a></li>
-						<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
+						<li><a class="dropdown-item" href="department.php">Departments</a></li>
+						<li><a class="dropdown-item" href="department-single.php">Department Single</a></li>
 					</ul>
 			  	</li>
 
 			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="doctor.php" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
-						<li><a class="dropdown-item" href="doctor-single.html">Doctor Single</a></li>
-						<li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li>
+						<li><a class="dropdown-item" href="doctor.php">Doctors</a></li>
+						<li><a class="dropdown-item" href="doctor-single.php">Doctor Single</a></li>
+						<li><a class="dropdown-item" href="appoinment.php">Appoinment</a></li>
 					</ul>
 			  	</li>
 
 			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="blog-sidebar.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
+						<li><a class="dropdown-item" href="blog-sidebar.php">Blog with Sidebar</a></li>
 
-						<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
+						<li><a class="dropdown-item" href="blog-single.php">Blog Single</a></li>
 					</ul>
 			  	</li>
-			   <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+			   <li class="nav-item"><a class="nav-link" href="view/contact/contact.php">Contact</a></li>
 			</ul>
 		  </div>
 		</div>
@@ -104,13 +104,13 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <span class="text-white">Book your Seat</span>
-          <h1 class="text-capitalize mb-5 text-lg">Appoinment</h1>
+          <span class="text-white">Department Details</span>
+          <h1 class="text-capitalize mb-5 text-lg">Single Department</h1>
 
           <!-- <ul class="list-inline breadcumb-nav">
             <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
             <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">Book your Seat</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white-50">Department Details</a></li>
           </ul> -->
         </div>
       </div>
@@ -118,90 +118,69 @@
   </div>
 </section>
 
-<section class="appoinment section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
-          <div class="mt-3">
-            <div class="feature-icon mb-3">
-              <i class="icofont-support text-lg"></i>
-            </div>
-             <span class="h3">Call for an Emergency Service!</span>
-              <h2 class="text-color mt-3">+84 789 1256 </h2>
-          </div>
-      </div>
 
-      <div class="col-lg-8">
-           <div class="appoinment-wrap mt-5 mt-lg-0 pl-lg-5">
-            <h2 class="mb-2 title-color">Book an appoinment</h2>
-            <p class="mb-4">Mollitia dicta commodi est recusandae iste, natus eum asperiores corrupti qui velit . Iste dolorum atque similique praesentium soluta.</p>
-               <form id="#" class="appoinment-form" method="post" action="#">
-                    <div class="row">
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>Choose Department</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect2">
-                                  <option>Select Doctors</option>
-                                  <option>Software Design</option>
-                                  <option>Development cycle</option>
-                                  <option>Software Development</option>
-                                  <option>Maintenance</option>
-                                  <option>Process Query</option>
-                                  <option>Cost and Duration</option>
-                                  <option>Modal Delivery</option>
-                                </select>
-                            </div>
-                        </div>
+<section class="section department-single">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="department-img">
+					<img src="images/service/bg-1.jpg" alt="" class="img-fluid">
+				</div>
+			</div>
+		</div>
 
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
-                            </div>
-                        </div>
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="department-content mt-5">
+					<h3 class="text-md">Medecine and Health</h3>
+					<div class="divider my-4"></div>
+					<p class="lead">Age forming covered you entered the examine. Blessing scarcely confined her contempt wondered shy. Dashwoods contented sportsmen at up no convinced cordially affection.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum recusandae dolor autem laudantium, quaerat vel dignissimos. Magnam sint suscipit omnis eaque unde eos aliquam distinctio, quisquam iste, itaque possimus . Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet alias modi eaque, ratione recusandae cupiditate dolorum repellendus iure eius rerum hic minus ipsa at, corporis nesciunt tempore vero voluptas. Tempore.</p>
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="time" id="time" type="text" class="form-control" placeholder="Time">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Full Name">
-                            </div>
-                        </div>
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="phone" id="phone" type="Number" class="form-control" placeholder="Phone Number">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" id="message" class="form-control" rows="6" placeholder="Your Message"></textarea>
-                    </div>
+					<h3 class="mt-5 mb-4">Services features</h3>
+					<div class="divider my-4"></div>
+					<ul class="list-unstyled department-service">
+						<li><i class="icofont-check mr-2"></i>International Drug Database</li>
+						<li><i class="icofont-check mr-2"></i>Stretchers and Stretcher Accessories</li>
+						<li><i class="icofont-check mr-2"></i>Cushions and Mattresses</li>
+						<li><i class="icofont-check mr-2"></i>Cholesterol and lipid tests</li>
+						<li><i class="icofont-check mr-2"></i>Critical Care Medicine Specialists</li>
+						<li><i class="icofont-check mr-2"></i>Emergency Assistance</li>
+					</ul>
 
-                    <a class="btn btn-main btn-round-full" href="confirmation.html">Make Appoinment<i class="icofont-simple-right ml-2"></i></a>
-                </form>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+					<a href="appoinment.php" class="btn btn-main-2 btn-round-full">Make an Appoinment<i class="icofont-simple-right ml-2  "></i></a>
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+				<div class="sidebar-widget schedule-widget mt-5">
+					<h5 class="mb-4">Time Schedule</h5>
+
+					<ul class="list-unstyled">
+					  <li class="d-flex justify-content-between align-items-center">
+					    <a href="#">Monday - Friday</a>
+					    <span>9:00 - 17:00</span>
+					  </li>
+					  <li class="d-flex justify-content-between align-items-center">
+					    <a href="#">Saturday</a>
+					    <span>9:00 - 16:00</span>
+					  </li>
+					  <li class="d-flex justify-content-between align-items-center">
+					    <a href="#">Sunday</a>
+					    <span>Closed</span>
+					  </li>
+					</ul>
+
+					<div class="sidebar-contatct-info mt-4">
+						<p class="mb-0">Need Urgent Help?</p>
+						<h3>+23-4565-65768</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
-
 
 <!-- footer Start -->
 <footer class="footer section gray-bg">
