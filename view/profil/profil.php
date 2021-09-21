@@ -11,15 +11,15 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 
   <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
   <!-- Icon Font Css -->
-  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+  <link rel="stylesheet" href="../../plugins/icofont/icofont.min.css">
   <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+  <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../../css/style.css">
 
 </head>
 
@@ -48,8 +48,8 @@
 	</div>
 	<nav class="navbar navbar-expand-lg navigation" id="navbar">
 		<div class="container">
-		 	 <a class="navbar-brand" href="index.html">
-			  	<img src="images/logo.png" alt="" class="img-fluid">
+		 	 <a class="navbar-brand" href="../../index.php">
+			  	<img src="../../images/logo.png" alt="" class="img-fluid">
 			  </a>
 
 		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,37 +59,37 @@
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="index.html">Home</a>
+				<a class="nav-link" href="../../index.php">Home</a>
 			  </li>
-			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-			    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+			   <li class="nav-item"><a class="nav-link" href="../presentation/about.php">About</a></li>
+			    <li class="nav-item"><a class="nav-link" href="../../service.php">Services</a></li>
 
 			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="../event/evenement.php" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="department.html">Departments</a></li>
-						<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
+						<li><a class="dropdown-item" href="../event/evenement.php">Departments</a></li>
+						<li><a class="dropdown-item" href="../../department-single.php">Department Single</a></li>
 					</ul>
 			  	</li>
 
 			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="profil.php" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
-						<li><a class="dropdown-item" href="doctor-single.html">Doctor Single</a></li>
-						<li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li>
+						<li><a class="dropdown-item" href="profil.php">Doctors</a></li>
+						<li><a class="dropdown-item" href="../../doctor-single.php">Doctor Single</a></li>
+						<li><a class="dropdown-item" href="../connexion/inscription.php">Appoinment</a></li>
 					</ul>
 			  	</li>
 
 			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
+					<a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
+						<li><a class="dropdown-item" href="../formation/lycee.php">Blog with Sidebar</a></li>
 
-						<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
+						<li><a class="dropdown-item" href="../formation/bts.php">Blog Single</a></li>
 					</ul>
 			  	</li>
-			   <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+			   <li class="nav-item"><a class="nav-link" href="../contact/contact.php">Contact</a></li>
 			</ul>
 		  </div>
 		</div>
@@ -163,11 +163,11 @@
 	      	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 	               <div class="doctor-img">
-	               		<img src="images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
+	               		<img src="../../images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
 	               </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Thomas Henry</a></h4>
                 	<p>Cardiology</p>
                 </div> 
 	      	</div>
@@ -177,11 +177,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/2.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/2.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Harrision Samuel</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Harrision Samuel</a></h4>
                 	<p>Radiology</p>
                 </div> 
 	      	</div>
@@ -191,11 +191,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Alexandar James</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Alexandar James</a></h4>
                 	<p>Dental</p>
                 </div> 
 	      	</div>
@@ -205,11 +205,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Edward john</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Edward john</a></h4>
                 	<p>Pediatry</p>
                 </div> 
 	      	</div>
@@ -219,11 +219,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Thomas Henry</a></h4>
                 	<p>Neurology</p>
                 </div> 
 	      	</div>
@@ -233,11 +233,11 @@
        		 <div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Henry samuel</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Henry samuel</a></h4>
                 	<p>Palmology</p>
                 </div> 
 	      	</div>
@@ -247,11 +247,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas alexandar</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Thomas alexandar</a></h4>
                 	<p>Cardiology</p>
                 </div> 
 	        </div>
@@ -261,11 +261,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
 		             </div>
 	             </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">HarissonThomas </a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">HarissonThomas </a></h4>
                 	<p>Traumatology</p>
                 </div> 
 	      	</div>
@@ -275,11 +275,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Jonas Thomson</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Jonas Thomson</a></h4>
                 	<p>Cardiology</p>
                 </div> 
 	      	</div>
@@ -289,11 +289,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
 		            </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Henry Forth</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Henry Forth</a></h4>
                 	<p>hematology</p>
                 </div> 
 	      	</div>
@@ -303,11 +303,11 @@
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
 		        	<div class="doctor-img">
-		               <img src="images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
+		               <img src="../../images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
 		             </div>
 	             </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
+                	<h4 class="mb-0"><a href="../../doctor-single.php">Thomas Henry</a></h4>
                 	<p>Dental</p>
                 </div> 
 	      	</div>
@@ -323,7 +323,7 @@
 				<div class="cta-content">
 					<div class="divider mb-4"></div>
 					<h2 class="mb-5 text-lg">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
-					<a href="appoinment.html" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
+					<a href="../connexion/inscription.php" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
 				</div>
 			</div>
 		</div>
@@ -337,7 +337,7 @@
 			<div class="col-lg-4 mr-auto col-sm-6">
 				<div class="widget mb-5 mb-lg-0">
 					<div class="logo mb-4">
-						<img src="images/logo.png" alt="" class="img-fluid">
+						<img src="../../images/logo.png" alt="" class="img-fluid">
 					</div>
 					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
 
@@ -438,24 +438,24 @@
 
     
     <!-- Main jQuery -->
-    <script src="plugins/jquery/jquery.js"></script>
+    <script src="../../plugins/jquery/jquery.js"></script>
     <!-- Bootstrap 4.3.2 -->
-    <script src="plugins/bootstrap/js/popper.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/counterup/jquery.easing.js"></script>
+    <script src="../../plugins/bootstrap/js/popper.js"></script>
+    <script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../plugins/counterup/jquery.easing.js"></script>
     <!-- Slick Slider -->
-    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <script src="../../plugins/slick-carousel/slick/slick.min.js"></script>
     <!-- Counterup -->
-    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
+    <script src="../../plugins/counterup/jquery.waypoints.min.js"></script>
     
-    <script src="plugins/shuffle/shuffle.min.js"></script>
-    <script src="plugins/counterup/jquery.counterup.min.js"></script>
+    <script src="../../plugins/shuffle/shuffle.min.js"></script>
+    <script src="../../plugins/counterup/jquery.counterup.min.js"></script>
     <!-- Google Map -->
-    <script src="plugins/google-map/map.js"></script>
+    <script src="../../plugins/google-map/map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
     
-    <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/contact.js"></script>
 
   </body>
   </html>
