@@ -26,7 +26,7 @@
 <body id="top">
 
 <?php
-include('view/header/headerinview.php');
+include('../header/headerinview.php');
 ?>
 <li class="nav-item"><a class="nav-link" href="about.php">Information</a></li>
 <li class="nav-item dropdown">
@@ -330,7 +330,7 @@ include('view/header/headerinview.php');
 </section>
 
 <?php
-include('view/footer/footerinview.php');
+include('../footer/footerinview.php');
 ?>
   </body>
   </html>

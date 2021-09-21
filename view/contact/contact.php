@@ -26,7 +26,7 @@
 <body id="top">
 
 <?php
-include('view/header/headerinview.php');
+include('../header/headerinview.php');
 ?>
 <li class="nav-item"><a class="nav-link" href="../presentation/about.php">Information</a></li>
 <li class="nav-item dropdown">
@@ -162,7 +162,7 @@ include('view/header/headerinview.php');
     <div id="map"></div>
 </div>
 <?php
-include('view/footer/footerinview.php');
+include('../footer/footerinview.php');
 ?>
   </body>
   </html>
