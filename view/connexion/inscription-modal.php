@@ -47,15 +47,6 @@
                     </div>
                     </br>
                     <div class="row">
-                        <div class="col-md-4">
-                            <label class="text-center">Date Naissance :</label>
-                        </div>
-                        <div class="col-md-8 ml-auto">
-                            <input type="date" class="form-modal-inscription" id="date" name="date" required>
-                        </div>
-                    </div>
-                    </br>
-                    <div class="row">
                         <div class="col-md-3">
                             <label class="text-center">Profil :</label>
                         </div>
