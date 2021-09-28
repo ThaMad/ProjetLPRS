@@ -1,3 +1,39 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+    <meta name="author" content="themefisher.com">
+
+    <title>Novena- Health & Care Medical template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Icon Font Css -->
+    <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+    <!-- Slick Slider  CSS -->
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="scss/templates/_slider.scss">
+
+
+</head>
+
+<body id="top">
+<?php
+include('view/connexion/connexion-modal.php');
+include('view/connexion/inscription-modal.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
+$manager = new Manager();
+$bdd = $manager->connexion_bdd();
+?>
 <header>
 	<div class="header-top-bar">
 		<div class="container">
@@ -24,6 +60,7 @@
 		  <div class="collapse navbar-collapse" id="navbarmain">
 			<ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a class="nav-link" href="index.php">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" id="connexion" href="#" >Connexion</a></li>
                 <li class="nav-item"><a class="nav-link" href="view/presentation/about.php">Information</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="view/formation/lycee.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
@@ -32,7 +69,6 @@
                         <li><a class="dropdown-item" href="view/formation/bts.php">Parcours BTS</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="view/connexion/connexion.php">Connexion</a></li>
                 <li class="nav-item"><a class="nav-link" href="view/profil/profil.php">Profil</a></li>
                 <li class="nav-item"><a class="nav-link" href="view/event/event.php">Evenement</a></li>
                 <li class="nav-item"><a class="nav-link" href="view/contact/contact.php">Contact</a></li>
@@ -40,4 +76,5 @@
 		  </div>
 		</div>
 	</nav>
+
 </header>

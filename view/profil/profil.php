@@ -36,7 +36,6 @@ include('../header/headerinview.php');
         <li><a class="dropdown-item" href="../formation/bts.php">Parcours BTS</a></li>
     </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../connexion/connexion.php">Connexion</a></li>
 <li class="nav-item"><a class="nav-link" href="../profil/profil.php">Profil</a></li>
 <li class="nav-item"><a class="nav-link" href="../event/event.php">Evenement</a></li>
 <li class="nav-item"><a class="nav-link" href="../contact/contact.php">Contact</a></li>
@@ -319,7 +318,7 @@ include('../header/headerinview.php');
 					<div class="divider mb-4"></div>
 					<h2 class="mb-5 text-lg">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
 <<<<<<< HEAD:view/profil/profil.php
-					<a href="../connexion/inscription.php" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
+					<a href="../connexion/inscription-modal.php" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
 =======
 					<a href="appoinment.php" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
 >>>>>>> 605900c8fbbfc55b8258d9e7ab19b43e09d41d69:doctor.php

@@ -67,3 +67,5 @@ Essential Scripts
 
 <script src="js/script.js"></script>
 <script src="js/contact.js"></script>
+<script src="js/connexion.js"></script>
+

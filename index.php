@@ -1,37 +1,6 @@
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
-  <meta name="author" content="themefisher.com">
-
-  <title>Novena- Health & Care Medical template</title>
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-  <!-- Icon Font Css -->
-  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
-  <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
-  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body id="top">
-
 <?php
 include('view/header/header.php');
 ?>
-	
-
-
-
 <!-- Slider Start -->
 <section class="banner">
 	<div class="container">
@@ -43,7 +12,7 @@ include('view/header/header.php');
 					
 					<p class="mb-4 pr-5">Enseignement catholique sous contrat avec l'état.</p>
 					<div class="btn-container ">
-						<a href="view/connexion/connexion.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Connectez-vous <i class="icofont-simple-right ml-2  "></i></a>
+						<a href="#" id="connexion" class="btn btn-main-2 btn-icon btn-round-full">Connectez-vous <i class="icofont-simple-right ml-2  "></i></a>
 					</div>
 				</div>
 			</div>
@@ -61,7 +30,7 @@ include('view/header/header.php');
 						</div>
 						<h4 class="mb-3">Inscrivez_vous</h4>
 						<p class="mb-4">Si vous n'avez pas encore de compte vous pouvez vous inscrire sur le lien ci-dessous.</p>
-						<a href="view/connexion/inscription.php" class="btn btn-main btn-round-full">Inscription</a>
+						<a href="#" id="inscription" class="btn btn-main btn-round-full">Inscription</a>
 					</div>
 				
 					<div class="feature-item mb-5 mb-lg-0">
@@ -119,10 +88,10 @@ include('view/header/header.php');
 	</div>
 </section>
 
+
 <?php
 include('view/footer/footer.php');
 ?>
-
-  </body>
-  </html>
+</body>
+</html>
    
