@@ -1,3 +1,8 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
+$manager = new Manager();
+$bdd = $manager->connexion_bdd();
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -5,10 +10,10 @@
     <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
     <meta name="author" content="themefisher.com">
 
-    <title>Novena- Health & Care Medical template</title>
+    <title>Lycée Robert Schuman</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" src="/ProjetLPRS/images/favicon.ico" />
 
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
@@ -30,9 +35,6 @@
 <?php
 include('view/connexion/connexion-modal.php');
 include('view/connexion/inscription-modal.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
-$manager = new Manager();
-$bdd = $manager->connexion_bdd();
 ?>
 <header>
 	<div class="header-top-bar">
