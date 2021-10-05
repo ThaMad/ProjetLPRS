@@ -28,32 +28,27 @@ include('view/header/header.php');
 						<div class="feature-icon mb-4">
 							<i class="icofont-connection"></i>
 						</div>
-						<h4 class="mb-3">Inscrivez_vous</h4>
-						<p class="mb-4">Si vous n'avez pas encore de compte vous pouvez vous inscrire sur le lien ci-dessous.</p>
+						<h4 class="mb-3">Inscrivez-vous</h4>
+						<p class="mb-4">Si vous n'avez pas encore de compte ? Inscrivez-vous !</p>
 						<a href="#" id="inscription" class="btn btn-main btn-round-full">Inscription</a>
 					</div>
 				
 					<div class="feature-item mb-5 mb-lg-0">
 						<div class="feature-icon mb-4">
-							<i class="icofont-ui-clock"></i>
+							<i class="icofont-building-alt"></i>
 						</div>
-						<h4 class="mb-3">Heures d'ouvertures</h4>
-						<ul class="w-hours list-unstyled">
-		                    <li class="d-flex justify-content-between">Lundi : <span>8:00 - 18:00</span></li>
-		                    <li class="d-flex justify-content-between">Mardi : <span>8:00 - 18:00</span></li>
-		                    <li class="d-flex justify-content-between">Mercredi : <span>8:00 - 18:00</span></li>
-                            <li class="d-flex justify-content-between">Jeudi : <span>8:00 - 18:00</span></li>
-                            <li class="d-flex justify-content-between">Vendredi : <span>8:00 - 18:00</span></li>
-                        </ul>
+						<h4 class="mb-3">L'Établissement</h4>
+                        <p class="mb-4">Qui sommes-nous ? Découvrez notre historique et nos projets.</p>
+                        <a href="./view/presentation/about.php" class="btn btn-main btn-round-full">Etablissement</a>
 					</div>
 				
 					<div class="feature-item mb-5 mb-lg-0">
 						<div class="feature-icon mb-4">
 							<i class="icofont-support"></i>
 						</div>
-						<span>Plus d'info</span>
-						<h4 class="mb-3">00-00-00-00-00</h4>
-						<p>Pour plus d'information vous pouvez nous contacter au numéro ci-dessus.</p>
+						<h4 class="mb-3">Dates clés</h4>
+						<p>Les dates à retenir concernant l'établissement Robert Schuman et l'élève.</p>
+                        <a href="./view/presentation/about.php" class="btn btn-main btn-round-full">Date</a>
 					</div>
 				</div>
 			</div>
