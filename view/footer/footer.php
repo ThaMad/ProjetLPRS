@@ -50,6 +50,7 @@ Essential Scripts
 
 <!-- Main jQuery -->
 <script src="plugins/jquery/jquery.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 <!-- Bootstrap 4.3.2 -->
 <script src="plugins/bootstrap/js/popper.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>

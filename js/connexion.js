@@ -13,20 +13,52 @@ $("body").delegate("#mdp-oublier", "click", function () {
 
 $("body").delegate("#inscription-envoi", "click", function (e) {
     e.preventDefault();
-    var url = $('#form-inscription').attr('action');
-    let request =
+    var action = $('#form-inscription').attr('action');
+    if($('#eleveradio').is(':checked')){
+        var profil = $('#eleveradio').val();
+    }
+    else if($('#parentradio').is(':checked')){
+        profil = $('#parentradio').val();
+    }
     $.ajax({
         type: "post",
-        url: url,
-        dataType: 'json',
-    })
-        request.done(function (response) {
-            alert('success');
-            $('#modal-inscription').modal('hide')
-        })
-        request.fail(function (error) {
-            alert(error);
-        });
-    console.log(request)
+        url: action,
+        data: {
+            'nom': $('#nom').val(),
+            'prenom': $('#prenom').val(),
+            'mail': $('#mail_inscript').val(),
+            'profil': profil,
+            'mdp': $('#mdp').val()
+        },
+        success: function () {
+                alert('success inscription votre compte doit maintenant être validé par un administrateur');
+                $('#modal-inscription').modal('hide');
+                $('#modal-connexion').modal('show');
+        },
+        error: function () {
+            alert('error inscription');
+        },
+    });
+});
+
+$("body").delegate("#connexion-envoi", "click", function (e) {
+    e.preventDefault();
+    var action = $('#form-connexion').attr('action');
+    $.ajax({
+        type: "post",
+        url: action,
+        data: {
+            'mail': $('#mail_connexion').val(),
+            'mdp': $('#password').val(),
+        },
+        success: function () {
+            alert('success connexion');
+            $('#modal-connexion').modal('hide');
+            location.reload();
+        },
+        error: function () {
+            alert('error connexion');
+        },
+    });
 });
 

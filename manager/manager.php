@@ -4,10 +4,10 @@ class Manager
 {
 
     // Methode qui permet la connexion à la BDD
-    function connexion_bdd()
+    public function connexion_bdd()
     {
         //Informations database Hôte
-        $env_host = "DB_HOST";
+        $env_host = "localhost";
         putenv("$env_host=localhost");
 
         //Informations database Name
@@ -22,45 +22,92 @@ class Manager
         $env_pass = "DB_PASS";
         putenv("$env_pass=");
 
-
         try {
             $bdd = new PDO('mysql:host=' . getenv($env_host) . ';dbname=' . getenv($env_name) . ';charset=utf8', getenv($env_user), getenv($env_pass));
         } catch (Exception $e) {
             die('ERREUR:' . $e->getMessage());
         }
         return $bdd;
-
     }
 
-    public function inscription($a)
+    public function inscription($user)
     {
         session_start();
-        $req = connexion_bdd()->prepare('SELECT * from user where mail=:mail ');
+        $bdd = self::connexion_bdd();
+        $req = $bdd->prepare('SELECT * from user where mail=:mail ');
         $req->execute(array(
-            'mail' => $a->getMail(),
+            'mail' => $user->getMail(),
         ));
         $res = $req->fetch();
         if ($res) {
             throw new Exception("Error utilisateur deja existant");
         }
-        if ($a->getNom() != '' and $a->getPrenom() != '' and $a->getMail() != '' and $a->getMdp() != '' and $a->getProfil() != "") {
-            $this->dbh = new bdd();
-            $req = $this->dbh->getBase()->prepare('INSERT INTO utilisateur(nom,prenom,date_naissance,adresse,mail,username,mdp) values (:nom,:prenom,:date_naissance,:adresse,:mail,:username,:mdp)');
+        if ($user->getNom() != '' and $user->getPrenom() != '' and $user->getMail() != '' and $user->getProfil() != '' and $user->getMdp() != '' ) {
+            $req = $bdd->prepare('INSERT INTO user(nom,prenom,mail,profil,mdp) values (:nom,:prenom,:mail,:profil,:mdp)');
             $req->execute(array(
-                    'nom' => $a->getNom(),
-                    'prenom' => $a->getPrenom(),
-                    'mail' => $a->getMail(),
-                    'mdp' => $a->getMdp(),
-                    'profil' => $a->getProfil()
+                'nom' => $user->getNom(),
+                'prenom' => $user->getPrenom(),
+                'mail' => $user->getMail(),
+                'profil' => $user->getProfil(),
+                'mdp' => $user->getMdp(),
             ));
             $res = $req->fetch();
-
             if ($res) {
                 $_SESSION['mdp'] = $res['mdp'];
+
+                return success;
             }
         } else {
-            echo 'erreur un champ est vide';
-            header('Location: ../vue/inscription.php');
+            return error;
         }
+    }
+    public function connexion($user){
+        session_start();
+        $bdd = self::connexion_bdd();
+        if($user->getMail() =='' and $user->getMdp() =='' ){
+            throw new Exception("toutecasevide",1);
+        }
+
+        if($user->getMail() ==''){
+            throw new Exception("uservide",1);
+        }
+
+        if($user->getMdp() ==''){
+            throw new Exception("passwordvide",1);
+
+        }
+        $req =$bdd->prepare("SELECT mdp,mail,profil FROM user WHERE mail=:mail");
+        $req->execute(array(
+            'mail'=> $user->getMail()
+        ));
+        $res = $req->fetch();
+
+        if(password_verify($user->getMdp(), $res['mdp']) && $res['profil']== 'admin'){
+            $_SESSION['mailadmin'] = $res["mail"];
+            header("Location: ../index.php");
+            return success;
+        }
+        elseif(password_verify($user->getMdp(),$res['mdp']) && $res['profil']== 'parent'){
+            $_SESSION['mailparent'] = $res["mail"];
+            header("Location: ../index.php");
+            return success;
+        }
+        elseif (password_verify($user->getMdp(),$res['mdp']) && $res['profil']== 'eleve'){
+            $_SESSION['maileleve'] = $res["mail"];
+            header("Location: ../index.php");
+            return success;
+        }
+        else {
+            throw new Exception("Error pendant la connexion",1);
+            return error;
+        }
+    }
+
+
+    public function deconnexion()
+    {
+        session_start();
+        session_destroy();
+        header("Location: ../index.php");
     }
 }
