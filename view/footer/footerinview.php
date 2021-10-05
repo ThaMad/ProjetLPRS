@@ -68,4 +68,6 @@ Essential Scripts
 <script src="../../js/script.js"></script>
 <script src="../../js/contact.js"></script>
 <script src="../../js/connexion.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
 
