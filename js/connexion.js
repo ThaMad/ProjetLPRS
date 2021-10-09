@@ -31,12 +31,12 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
             'mdp': $('#mdp').val()
         },
         success: function () {
-                alert('success inscription votre compte doit maintenant être validé par un administrateur');
+                app.displaySuccessNotification('success inscription votre compte doit maintenant être validé par un administrateur');
                 $('#modal-inscription').modal('hide');
                 $('#modal-connexion').modal('show');
         },
         error: function () {
-            alert('error inscription');
+            app.displayErrorNotification('error inscription');
         },
     });
 });

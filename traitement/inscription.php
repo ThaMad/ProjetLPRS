@@ -1,7 +1,14 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+require_once "../PHPMailer/PHPMailer.php";
+require_once "../PHPMailer/SMTP.php";
+require_once "../PHPMailer/Exception.php";
 require_once '../model/user.php';
 require_once '../manager/manager.php';
-if(isset($_POST["mail"])) {
+if (isset($_POST["mail"])) {
+    $email = $_POST['mail'];
     try {
         $user = new user(array(
             'nom' => $_POST["nom"],
@@ -17,8 +24,11 @@ if(isset($_POST["mail"])) {
         echo $e->getMessage();
         header("Location: ../index.php");
     }
-}else{
+} else {
     $response = 'error';
     return $response;
 }
+
+
+
 ?>

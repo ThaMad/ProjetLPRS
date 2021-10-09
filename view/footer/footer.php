@@ -55,6 +55,7 @@ Essential Scripts
 <script src="plugins/bootstrap/js/popper.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/counterup/jquery.easing.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <!-- Slick Slider -->
 <script src="plugins/slick-carousel/slick/slick.min.js"></script>
 <!-- Counterup -->
@@ -64,9 +65,10 @@ Essential Scripts
 <script src="plugins/counterup/jquery.counterup.min.js"></script>
 <!-- Google Map -->
 <script src="plugins/google-map/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+<script src="plugins/toastr/js/toastr.min.js"></script>
 
 <script src="js/script.js"></script>
 <script src="js/contact.js"></script>
 <script src="js/connexion.js"></script>
+<script src="js/app.js"></script>
 
