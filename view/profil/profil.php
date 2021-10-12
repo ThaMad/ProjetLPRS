@@ -1,25 +1,30 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
+$manager = new Manager();
+$bdd = $manager->connexion_bdd();
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
-  <meta name="author" content="themefisher.com">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+    <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+    <title>Novena- Health & Care Medical template</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
 
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-  <!-- Icon Font Css -->
-  <link rel="stylesheet" href="../../plugins/icofont/icofont.min.css">
-  <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick.css">
-  <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Icon Font Css -->
+    <link rel="stylesheet" href="../../plugins/icofont/icofont.min.css">
+    <!-- Slick Slider  CSS -->
+    <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="../../css/style.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../css/style.css">
 
 </head>
 
@@ -30,7 +35,8 @@ include('../header/headerinview.php');
 ?>
 <li class="nav-item"><a class="nav-link" href="about.php">Information</a></li>
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
+    <a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
     <ul class="dropdown-menu" aria-labelledby="dropdown05">
         <li><a class="dropdown-item" href="../formation/lycee.php">Parcours Lycée</a></li>
         <li><a class="dropdown-item" href="../formation/bts.php">Parcours BTS</a></li>
@@ -45,35 +51,62 @@ include('../header/headerinview.php');
 </nav>
 </header>
 
-	
+<?php
+$req = $bdd->prepare('SELECT nom,prenom,profil,mail,classe FROM user WHERE mail = :mail');
+$req->execute(array('mail' => $_SESSION['mail']));
+$a = $req->fetchall();
 
+foreach ($a
 
-<section class="page-title bg-1">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <h1 class="text-capitalize mb-5 text-lg">Mon Profil</h1>
+         as $value){
+?>
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <h1 class="text-capitalize mb-5 text-lg"><?php echo $value['nom'] . ' ' . $value['prenom']; ?></h1>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 <section class="section doctors">
-  <div class="container">
-      <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action active text-center">Mes informations personnelles</a>
-          <a href="#" class="list-group-item list-group-item-action text-center">Modifier mes infos</a>
-          <a href="#" class="list-group-item list-group-item-action text-center">Evenement créer et participer</a>
-          <a href="#" class="list-group-item list-group-item-action text-center">Message</a>
-          <a href="../../traitement/deconnexion.php" class="list-group-item list-group-item-action text-center">Déconnexion</a>
-      </div>
-  </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="text-center">Nom :</label>
+                <input type="text" class="form-control" id="nominfodata" name="nom" value="<?php echo $value['nom']; ?>" disabled>
+                </br>
+                <label class="text-center">Prenom :</label>
+                <input type="text" class="form-control" id="prenominfodata" name="prenom" value="<?php echo $value['prenom']; ?>" disabled>
+                </br>
+                <label class="text-center">Mail :</label>
+                <input type="text" class="form-control" id="mailinfodata" name="mail" value="<?php echo $value['mail']; ?>" disabled>
+                </br>
+                <label class="text-center">Profil :</label>
+                <input type="text" class="form-control" id="profilinfodata" name="profil" value="<?php echo $value['profil']; ?>" disabled>
+                </br>
+                <label class="text-center">Classe :</label>
+                <input type="text" class="form-control" id="classeinfodata" name="classe" value="<?php echo $value['classe'];} ?>" disabled>
+
+                <button type="button" class="btn btn-secondary" id="retour" style="visibility: hidden">Retour</button>
+                <button type="button" class="btn btn-primary" id="save-modification" style="visibility: hidden">Modification</button>
+            </div>
+            <div class="col-md-6">
+                <button class="list-group-item list-group-item-action text-center" id="modifdata">Modifier mes infos</button>
+                <button href="#" class="list-group-item list-group-item-action text-center">Evenement créer et participer
+                </button>
+                <button href="#" class="list-group-item list-group-item-action text-center">Message</button>
+                <a href="../../traitement/deconnexion.php" class="list-group-item list-group-item-action text-center">Déconnexion</a>
+            </div>
+        </div>
+    </div>
 </section>
 <?php
 include('../footer/footerinview.php');
 ?>
-  </body>
-  </html>
+</body>
+</html>
