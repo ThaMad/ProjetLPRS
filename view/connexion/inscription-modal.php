@@ -15,7 +15,7 @@
                             <label class="text-center">Nom :</label>
                         </div>
                         <div class="col-md-10 ml-auto">
-                            <input type="text" class="form-modal-inscription" id="nom" name="nom" required>
+                            <input type="text" class="form-modal-inscription" id="nom" name="nom" required="true">
                         </div>
                     </div>
                     </br>
@@ -24,7 +24,7 @@
                             <label class="text-center">Prenom :</label>
                         </div>
                         <div class="col-md-9 ml-auto">
-                            <input type="text" class="form-modal-inscription" id="prenom" name="prenom" required>
+                            <input type="text" class="form-modal-inscription" id="prenom" name="prenom" required="true">
                         </div>
                     </div>
                     </br>
@@ -33,7 +33,7 @@
                             <label class="text-center">Mail :</label>
                         </div>
                         <div class="col-md-10 ml-auto">
-                            <input type="email" class="form-modal-inscription" id="mail_inscript" name="mail" required>
+                            <input type="email" class="form-modal-inscription" id="mail_inscript" name="mail" required="true">
                         </div>
                     </div>
                     </br>
@@ -42,7 +42,7 @@
                             <label class="text-center">Mot de passe :</label>
                         </div>
                         <div class="col-md-8 ml-auto">
-                            <input type="password" class="form-modal-inscription" id="mdp" name="mdp" required>
+                            <input type="password" class="form-modal-inscription" id="mdp" name="mdp" required="true">
                         </div>
                     </div>
                     </br>

@@ -20,6 +20,9 @@ if (isset($_POST["mail"])) {
         $man = new manager();
         $man->inscription($user);
 
+        $response['success'] = 'Bravo vous êtes inscrit';
+        return $response;
+
     } catch (Exception $e) {
         echo $e->getMessage();
         header("Location: ../index.php");

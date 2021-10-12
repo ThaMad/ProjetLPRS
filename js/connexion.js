@@ -13,32 +13,48 @@ $("body").delegate("#mdp-oublier", "click", function () {
 
 $("body").delegate("#inscription-envoi", "click", function (e) {
     e.preventDefault();
-    var action = $('#form-inscription').attr('action');
-    if($('#eleveradio').is(':checked')){
-        var profil = $('#eleveradio').val();
+    if($('#nom').val() == "" || $('#prenom').val() == "" || $('#mail_inscript').val() == "" || $('#mdp').val() == "" ){
+        if($('#nom').val() == ""){
+            app.displayErrorNotification('Champ nom vide ou incorrect');
+        }
+        if($('#prenom').val() == ""){
+            app.displayErrorNotification('Champ prenom vide ou incorrect');
+        }
+        if($('#mail_inscript').val() == ""){
+            app.displayErrorNotification('Champ mail vide ou incorrect');
+        }
+        if($('#mdp').val() == ""){
+            app.displayErrorNotification('Champ mot de passe vide ou incorrect');
+        }
     }
-    else if($('#parentradio').is(':checked')){
-        profil = $('#parentradio').val();
-    }
-    $.ajax({
-        type: "post",
-        url: action,
-        data: {
-            'nom': $('#nom').val(),
-            'prenom': $('#prenom').val(),
-            'mail': $('#mail_inscript').val(),
-            'profil': profil,
-            'mdp': $('#mdp').val()
-        },
-        success: function () {
-                app.displaySuccessNotification('success inscription votre compte doit maintenant être validé par un administrateur');
+    else
+    {
+        var action = $('#form-inscription').attr('action');
+        if ($('#eleveradio').is(':checked')) {
+            var profil = $('#eleveradio').val();
+        } else if ($('#parentradio').is(':checked')) {
+            profil = $('#parentradio').val();
+        }
+        $.ajax({
+            type: "post",
+            url: action,
+            data: {
+                'nom': $('#nom').val(),
+                'prenom': $('#prenom').val(),
+                'mail': $('#mail_inscript').val(),
+                'profil': profil,
+                'mdp': $('#mdp').val()
+            },
+            success: function (response) {
+                app.displaySuccessNotification(response.success);
                 $('#modal-inscription').modal('hide');
                 $('#modal-connexion').modal('show');
-        },
-        error: function () {
-            app.displayErrorNotification('error inscription');
-        },
-    });
+            },
+            error: function (response) {
+                app.displayErrorNotification(response);
+            },
+        });
+    }
 });
 
 $("body").delegate("#connexion-envoi", "click", function (e) {

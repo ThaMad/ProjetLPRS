@@ -23,7 +23,7 @@ $bdd = $manager->connexion_bdd();
     <!-- Slick Slider  CSS -->
     <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
-    <link href="plugins/css/toastr.min.css" rel="stylesheet" />
+    <link href="plugins/toastr/css/toastr.min.css" rel="stylesheet" />
 
 
     <!-- Main Stylesheet -->

@@ -235,10 +235,12 @@ table[class=body] .article {
                     $toMail = $user->getMail();
                     $a = $this->mail($subject, $body, $toMail);
                 $_SESSION['mdp'] = $res['mdp'];
+                $msg['response'] = 'bravo vous êtes inscrit';
                 return success;
             }
         } else {
-            return error;
+            $msg['response'] = 'erreur dans l inscription';
+            return $msg;
         }
     }
     public function connexion($user){

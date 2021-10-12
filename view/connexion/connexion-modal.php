@@ -18,7 +18,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-8 ml-auto">
-                            <input type="email" class="form-control" id="mail_connexion" name="mail" required>
+                            <input type="email" class="form-control" id="mail_connexion" name="mail" required="true">
                         </div>
                         <div class="col-sm-1 ml-auto"></div>
                     </div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-8 ml-auto">
-                            <input type="password" class="form-control " id="password" name="mdp" required>
+                            <input type="password" class="form-control " id="password" name="mdp" required="true">
                         </div>
                         <div class="col-sm-1 ml-auto"></div>
                     </div>
