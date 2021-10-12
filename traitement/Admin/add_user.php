@@ -14,7 +14,7 @@ $user = new user(['nom' => $_POST['nom'],
     'classe' => $_POST['classe'],
     'profil'=>$_POST['profil'] ]);
 //on appelle la fonction ajoutEtudiant
-$manager->ajoutEtudiant($user);
+$manager->ajoutUser($user);
 
 
 ?>

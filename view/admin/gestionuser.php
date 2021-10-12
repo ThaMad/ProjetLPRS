@@ -31,6 +31,7 @@
 
 <?php
 include('../header/headerinview.php');
+include('./ajout_user_modal.php');
 ?>
 
 
@@ -134,10 +135,10 @@ $classes = $classes-> fetchall();
                         <td>
                             <?php
                             if($value['valide']=="0"){?>
-                                <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/User/traitement_unblock_user.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-unlock"></i> Activer </a>
+                                <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/admin/activer.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-unlock"></i> Activer </a>
                             <?php }
                             if ($value['valide']=="1"){?>
-                                <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/User/traitement_block_user.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-ban"></i> Desactiver </a>
+                                <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/admin/desactiver.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-ban"></i> Desactiver </a>
                             <?php }?>
                             </a>
                         </td>
@@ -152,7 +153,7 @@ $classes = $classes-> fetchall();
 
         </div>
             <div style="padding-left: 100px;" >
-                <div class="btnEvent"><button class="btn btn-info add-new" data-toggle="modal" data-target="#add_user" data-whatever="@getbootstrap"><i class="fa fa-plus"></i> Ajouter un utilisateur</button></div>
+                <div class="btnEvent"><button class="btn btn-info add-new" data-toggle="modal" data-target="#add_user" data-whatever="@getbootstrap" id="add_user"><i class="fa fa-plus"></i> Ajouter un utilisateur</button></div>
             </div>
 
         </center>
@@ -205,6 +206,7 @@ include('../footer/footerinview.php');
 
 
 </script>
+<script src="js/add_user.js"></script>
 
 </body>
 </html>
