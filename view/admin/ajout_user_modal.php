@@ -1,4 +1,17 @@
 
+<?php
+require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
+//On déclare la variables $toolsManager de type toolsManager
+$Manager = new Manager();
+//On déclare la variable $db de type toolsManager en appelant la méthode connexion_bd
+$db = $Manager->connexion_bdd();
+
+$classes = $db->prepare('SELECT * FROM classe');
+$classes->execute(array());
+$classes = $classes-> fetchall();
+
+
+?>
 <div class="modal fade " id="add_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -11,7 +24,7 @@
             </div>
 
             <div  style="background-image: url('Design/image/backgroundImage.png');" class="scrolly modal-body">
-                <form action="../../traitement/admin/add_user.php" method="POST" enctype="multipart/form-data">
+                <form action="../../traitement/admin/add_user.php" method="POST" enctype="multipart/form-data" id="form_adduser">
 
                     <div class="text-center mb-4 mt-5">
                         <label for="EventTitle" class="txtForm">Profil</label></br>
@@ -53,11 +66,11 @@
                     </div>
                     <div class="text-center mb-4 mt-5">
                         <label for="EventTitle" class="txtForm">Email</label></br>
-                        <input type="email" name="mail" class="formText" maxlength="40" size="30" id="prenom" placeholder="Entrez un email" required/>
+                        <input type="email" name="mail" class="formText" maxlength="40" size="30" id="mail" placeholder="Entrez un email" required/>
                     </div>
 
                     <div class="text-center mb-4">
-                        <input style="height: 35px; width:220px;" type="submit" class="btnValider" value="Ajouter un utilisateur">
+                        <input style="height: 35px; width:220px;" type="submit" class="btnValider" id="envoi_adduser" value="Ajouter un utilisateur">
                     </div>
 
 

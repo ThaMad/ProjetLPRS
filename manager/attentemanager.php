@@ -287,4 +287,40 @@ table[class=body] .article {
 
     }
 
+    public function activer($idUser){
+        //on appelle la méthode connexion_bd depuis le parent de la classe boite_ideeManager
+        $bdd = parent::connexion_bdd();
+        //on prépare la requête SQL
+        $activer = $bdd->prepare("UPDATE user SET valide='1' WHERE idUser = ?");
+        //on déclare la variable pour supprie l'idees
+        $activer = $activer->execute(array($idUser));
+        if($activer!=null){
+            header('Location:/ProjetLPRS/view/Admin/gestionuser.php?user_valide=Y7Z3i7aEm');
+        }
+
+        else{
+            header('Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_valide=K7YJ4pkp9');
+        }
+
+
+    }
+
+    public function desactiver($idUser){
+        //on appelle la méthode connexion_bd depuis le parent de la classe boite_ideeManager
+        $bdd = parent::connexion_bdd();
+        //on prépare la requête SQL
+        $desactiver = $bdd->prepare("UPDATE user SET valide='0' WHERE idUser = ?");
+        //on déclare la variable pour supprie l'idees
+        $desactiver = $desactiver->execute(array($idUser));
+        if($desactiver!=null){
+            header('Location:/ProjetLPRS/view/Admin/gestionuser.php?user_desactive=Y7Z3i7aEm');
+        }
+
+        else{
+            header('Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_desactive=K7YJ4pkp9');
+        }
+
+
+    }
+
     }
