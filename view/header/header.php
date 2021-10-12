@@ -69,7 +69,11 @@ include('view/connexion/inscription-modal.php');
             <div class="collapse navbar-collapse" id="navbarmain">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <?php if(!isset($_SESSION['mail'])){ ?>
                     <li class="nav-item"><a class="nav-link" id="connexion" href="#">Connexion</a></li>
+                    <?php } else { ?>
+                    <li class="nav-item"><a class="nav-link" id="profil" href="view/profil/profil.php">Mon Profil</a></li>
+                    <?php } ?>
                     <li class="nav-item"><a class="nav-link" href="view/presentation/about.php">Information</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="view/formation/lycee.php" id="dropdown05"
@@ -80,7 +84,6 @@ include('view/connexion/inscription-modal.php');
                             <li><a class="dropdown-item" href="view/formation/bts.php">Parcours BTS</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="view/profil/profil.php">Profil</a></li>
                     <li class="nav-item"><a class="nav-link" href="view/event/event.php">Evenement</a></li>
                     <li class="nav-item"><a class="nav-link" href="view/contact/contact.php">Contact</a></li>
                 </ul>

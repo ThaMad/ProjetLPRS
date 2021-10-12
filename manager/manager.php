@@ -234,7 +234,7 @@ table[class=body] .article {
 ';
                     $toMail = $user->getMail();
                     $a = $this->mail($subject, $body, $toMail);
-                $_SESSION['mdp'] = $res['mdp'];
+
                 $msg['response'] = 'bravo vous êtes inscrit';
                 return success;
             }
@@ -249,14 +249,11 @@ table[class=body] .article {
         if($user->getMail() =='' and $user->getMdp() =='' ){
             throw new Exception("toutecasevide",1);
         }
-
         if($user->getMail() ==''){
             throw new Exception("uservide",1);
         }
-
         if($user->getMdp() ==''){
             throw new Exception("passwordvide",1);
-
         }
         $req =$bdd->prepare("SELECT mdp,mail,profil FROM user WHERE mail=:mail");
         $req->execute(array(
@@ -265,21 +262,20 @@ table[class=body] .article {
         $res = $req->fetch();
 
         if(password_verify($user->getMdp(), $res['mdp']) && $res['profil']== 'admin'){
-            $_SESSION['mailadmin'] = $res["mail"];
+            $_SESSION['mail'] = $res["mail"];
             header("Location: ../index.php");
             return success;
         }
         elseif(password_verify($user->getMdp(),$res['mdp']) && $res['profil']== 'parent'){
-            $_SESSION['mailparent'] = $res["mail"];
+            $_SESSION['mail'] = $res["mail"];
             header("Location: ../index.php");
             return success;
         }
-        elseif (password_verify($user->getMdp(),$res['mdp']) && $res['profil']== 'eleve'){
-            $_SESSION['maileleve'] = $res["mail"];
+        elseif (password_verify($user->getMdp(),$res['mdp']) && $res['profil']== 'etudiant'){
+            $_SESSION['mail'] = $res["mail"];
             header("Location: ../index.php");
             return success;
-        }
-        else {
+        } else {
             throw new Exception("Error pendant la connexion",1);
             return error;
         }

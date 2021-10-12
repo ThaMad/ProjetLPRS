@@ -59,22 +59,32 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
 
 $("body").delegate("#connexion-envoi", "click", function (e) {
     e.preventDefault();
-    var action = $('#form-connexion').attr('action');
-    $.ajax({
-        type: "post",
-        url: action,
-        data: {
-            'mail': $('#mail_connexion').val(),
-            'mdp': $('#password').val(),
-        },
-        success: function () {
-            alert('success connexion');
-            $('#modal-connexion').modal('hide');
-            location.reload();
-        },
-        error: function () {
-            alert('error connexion');
-        },
-    });
+    if($('#mail_connexion').val() == "" || $('#password').val() == ""){
+        if($('#mail_connexion').val() == ""){
+            app.displayErrorNotification('Champ mail vide ou incorrect');
+        }
+        if($('#password').val() == ""){
+            app.displayErrorNotification('Champ mot de passe vide ou incorrect');
+        }
+    }
+    else {
+        var action = $('#form-connexion').attr('action');
+        $.ajax({
+            type: "post",
+            url: action,
+            data: {
+                'mail': $('#mail_connexion').val(),
+                'mdp': $('#password').val(),
+            },
+            success: function (response) {
+                app.displaySuccessNotification(response.success);
+                $('#modal-connexion').modal('hide');
+                location.reload();
+            },
+            error: function (response) {
+                app.displayErrorNotification(response);
+            },
+        });
+    }
 });
 

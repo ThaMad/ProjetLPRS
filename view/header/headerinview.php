@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 $manager = new Manager();
 $bdd = $manager->connexion_bdd();
@@ -62,7 +63,10 @@ include('../connexion/mdp-oublier-modal.php');
             <div class="collapse navbar-collapse" id="navbarmain">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a class="nav-link" href="../../index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" id="connexion" href="#" >Connexion</a></li>
-
+                    <?php if(!isset($_SESSION['mail'])){ ?>
+                        <li class="nav-item"><a class="nav-link" id="connexion" href="#">Connexion</a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" id="profil" href="../profil/profil.php">Mon Profil</a></li>
+                    <?php } ?>
 
 
