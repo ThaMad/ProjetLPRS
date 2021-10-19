@@ -1,5 +1,7 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 class Manager
 {
     // Methode qui permet la connexion à la BDD
@@ -50,13 +52,15 @@ class Manager
                 'profil' => $user->getProfil(),
                 'mdp' => $user->getMdp(),
             ));
-            $res = $req->fetch();
-            if ($res) {
+            if (isset($req)) {
+                $requestid=$bdd->prepare('SELECT nom,prenom,idUser,mdp from user WHERE mail = ?');
+                $requestid->execute(array($user->getMail()));
+                $info = $requestid->fetch();
                     //$decryptedmdp=$this->decrypt($info['mdp'],'1f4276388ad3214c873428dbef42243f');
-                    $mdpuser = $res['mdp'];
-                    $iduser = $res['idUser'];
-                    $preuser = $res['prenom'];
-                    $nomuser = $res['nom'];
+                    $mdpuser = $info['mdp'];
+                    $iduser = $info['idUser'];
+                    $preuser = $info['prenom'];
+                    $nomuser = $info['nom'];
                     $subject = 'Bienvenue sur le Lycée & UFA Robert Schuman !';
                     $body = '<!doctype html>
 <html>
@@ -232,9 +236,6 @@ table[class=body] .article {
 ';
                     $toMail = $user->getMail();
                     $a = $this->mail($subject, $body, $toMail);
-
-                $msg['response'] = 'bravo vous êtes inscrit';
-                return success;
             }
         } else {
             $msg['response'] = 'erreur dans l inscription';
@@ -303,26 +304,26 @@ table[class=body] .article {
 
     function mail($subject,$body,$toMail){
 
-        require_once "../PHPMailer/PHPMailer.php";
-        require_once "../PHPMailer/SMTP.php";
-        require_once "../PHPMailer/Exception.php";
-        require_once "../PHPMailer/POP3.php";
-        require_once "../PHPMailer/OAuth.php";
+        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/PHPMailer.php");
+        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/SMTP.php");
+        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/Exception.php");
+        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/POP3.php");
+        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/OAuth.php");
         $mail = new PHPMailer(true);
 
         try {
             //Server settings
-            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+            $mail->SMTPDebug = 0;                      // Enable verbose debug output
             $mail->isSMTP();                                            // Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'projet.lprs.devgmail.com';                     // SMTP username
+            $mail->Username   = 'projet.lprs.dev@gmail.com';                     // SMTP username
             $mail->Password   = 'projetLPRS';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port       = 465;                                    // TCP port to connect to
             $mail->CharSet = 'text/html; charset=UTF-8;';
             //Recipients
-            $mail->setFrom("projet.lprs.devgmail.com","Lycée et UFA Robert Schuman");
+            $mail->setFrom("projet.lprs.dev@gmail.com","Lycée et UFA Robert Schuman");
             $mail->addAddress($toMail);
             // Add a recipient
             if(isset($toMail)){
