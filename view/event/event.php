@@ -36,7 +36,6 @@ include('../header/headerinview.php');
         <li><a class="dropdown-item" href="../formation/bts.php">Parcours BTS</a></li>
     </ul>
 </li>
-<li class="nav-item"><a class="nav-link" href="../profil/profil.php">Profil</a></li>
 <li class="nav-item"><a class="nav-link" href="event.php">Evenement</a></li>
 <li class="nav-item"><a class="nav-link" href="../contact/contact.php">Contact</a></li>
 </ul>
