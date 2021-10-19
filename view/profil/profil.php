@@ -72,40 +72,79 @@ foreach ($a
             </div>
         </div>
     </section>
-
-<section class="section doctors">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <label class="text-center">Nom :</label>
-                <input type="text" class="form-control" id="nominfodata" name="nom" value="<?php echo $value['nom']; ?>" disabled>
-                </br>
-                <label class="text-center">Prenom :</label>
-                <input type="text" class="form-control" id="prenominfodata" name="prenom" value="<?php echo $value['prenom']; ?>" disabled>
-                </br>
-                <label class="text-center">Mail :</label>
-                <input type="text" class="form-control" id="mailinfodata" name="mail" value="<?php echo $value['mail']; ?>" disabled>
-                </br>
-                <label class="text-center">Profil :</label>
-                <input type="text" class="form-control" id="profilinfodata" name="profil" value="<?php echo $value['profil']; ?>" disabled>
-                </br>
-                <label class="text-center">Classe :</label>
-                <input type="text" class="form-control" id="classeinfodata" name="classe" value="<?php echo $value['classe'];} ?>" disabled>
-
-                <button type="button" class="btn btn-secondary" id="retour" style="visibility: hidden">Retour</button>
-                <button type="button" class="btn btn-primary" id="save-modification" style="visibility: hidden">Modification</button>
-            </div>
-            <div class="col-md-6">
-                <button class="list-group-item list-group-item-action text-center" id="modifdata">Modifier mes infos</button>
-                <button href="#" class="list-group-item list-group-item-action text-center">Evenement créer et participer
-                </button>
-                <button href="#" class="list-group-item list-group-item-action text-center">Message</button>
-                <a href="../../traitement/deconnexion.php" class="list-group-item list-group-item-action text-center">Déconnexion</a>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="btn btn-primary text-center" id="modifdata" style="margin-top: 10px;">Modifier mes
+                        infos
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button href="#" class="btn btn-primary text-center" style="margin-top: 10px;">Evenement créer et
+                        participer
+                    </button>
+                </div>
+                <div class="col-md-2">
+                    <button href="#" class="btn btn-primary text-center" style="margin-top: 10px;">Message</button>
+                </div>
+                <div class="col-md-3">
+                    <a href="../../traitement/deconnexion.php" class="btn btn-primary text-center"
+                       style="margin-top: 10px;">Déconnexion</a>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+<section class="section doctors">
+    <form action="../../traitement/modification-profil.php" method="post" id="form-modification-profil">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <label class="text-center">Nom :</label>
+                    <input type="text" class="form-control" id="nominfodata" name="nom"
+                           value="<?php echo $value['nom']; ?>" disabled>
+                    </br>
+                    <label class="text-center">Prenom :</label>
+                    <input type="text" class="form-control" id="prenominfodata" name="prenom"
+                           value="<?php echo $value['prenom']; ?>" disabled>
+                    </br>
+                    <label class="text-center">Mail :</label>
+                    <input type="email" class="form-control" id="mailinfodata" name="mail"
+                           value="<?php echo $value['mail']; ?>" disabled>
+                    </br>
+                    <label class="text-center">Profil :</label>
+                    <input type="radio" id="etudiantinfodata" name="customRadioInline1"
+                           value="etudiant"
+                           style="margin-left: 10px;" <?php if ($value['profil'] == 'etudiant') { ?> checked <?php } ?>
+                           disabled>
+                    <label for="customRadioInline1">Etudiant</label>
+                    <input type="radio" id="parentinfodata" name="customRadioInline1"
+                           value="parent"
+                           style="margin-left: 10px;" <?php if ($value['profil'] == 'parent') { ?> checked <?php } ?>
+                           disabled>
+                    <label for="customRadioInline2">Parent</label>
+                    </br>
+                    <label class="text-center">Classe :</label>
+                    <input type="text" class="form-control" id="classeinfodata" name="classe"
+                           value="<?php echo $value['classe'];
+                           } ?>" disabled>
+
+                    </br>
+                    <button type="button" class="btn btn-secondary" id="retour" style="margin-right: 2px;" hidden>
+                        Retour
+                    </button>
+                    <button type="button" class="btn btn-primary" id="save-modification" hidden>
+                        Modification
+                    </button>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+    </form>
 </section>
 <?php
+include('../page-attente.php');
 include('../footer/footerinview.php');
 ?>
 </body>

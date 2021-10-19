@@ -14,7 +14,7 @@ $bdd = $manager->connexion_bdd();
     <title>Lycée Robert Schuman</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" src="/ProjetLPRS/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" src="../../images/favicon.ico" />
 
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
@@ -23,7 +23,7 @@ $bdd = $manager->connexion_bdd();
     <!-- Slick Slider  CSS -->
     <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
-    <link href="../../plugins/css/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../plugins/toastr/css/toastr.min.css"/>
 
 
     <!-- Main Stylesheet -->

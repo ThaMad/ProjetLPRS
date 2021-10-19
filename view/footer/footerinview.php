@@ -70,7 +70,7 @@ Essential Scripts
 <script src="../../js/contact.js"></script>
 <script src="../../js/profil.js"></script>
 <script src="../../js/connexion.js"></script>
-<script src="../js/app.js"></script>
+<script src="../../js/app.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 

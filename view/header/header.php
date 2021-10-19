@@ -14,7 +14,7 @@ $bdd = $manager->connexion_bdd();
     <title>Lycée Robert Schuman</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" src="/ProjetLPRS/images/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" src="../ProjetLPRS/images/favicon.ico"/>
 
     <!-- bootstrap.min css -->
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">

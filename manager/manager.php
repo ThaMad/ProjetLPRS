@@ -289,6 +289,20 @@ table[class=body] .article {
         header("Location: ../index.php");
     }
 
+    public function modificationProfil($user) {
+        session_start();
+        $bdd = self::connexion_bdd();
+        $req = $bdd->prepare('UPDATE user SET nom=:nom,prenom=:prenom,mail = :mail,profil= :profil, classe=:classe WHERE mail=:mail');
+        $req->execute(array(
+            'nom' => $user->getNom(),
+            'prenom' => $user->getPrenom(),
+            'mail' => $user->getMail(),
+            'profil'=>$user->getProfil(),
+            'classe'=>$user->getClasse(),
+        ));
+            header("Location: ../index.php");
+    }
+
     function mail($subject,$body,$toMail){
 
         require_once "../PHPMailer/PHPMailer.php";
