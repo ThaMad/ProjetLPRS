@@ -2,8 +2,6 @@
 
 class Manager
 {
-
-
     // Methode qui permet la connexion à la BDD
     public function connexion_bdd()
     {

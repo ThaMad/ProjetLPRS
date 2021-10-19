@@ -25,10 +25,9 @@ $bdd = $manager->connexion_bdd();
     <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
     <link rel="stylesheet" href="../../plugins/toastr/css/toastr.min.css"/>
 
-
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="../../css/style.css">
-
+    <link rel="stylesheet" href="../../css/event.css">
 </head>
 
 <body id="top">
