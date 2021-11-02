@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-add-event" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="traitement/addevent.php" method="post" id="form-add-event">
+        <form action="../../traitement/addevent.php" method="post" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ajout d'un évenement</h5>
@@ -15,7 +15,7 @@
                             <label class="text-center">Libelle :</label>
                         </div>
                         <div class="col-md-8 ml-auto">
-                            <input type="text" class="form-modal-inscription" id="libelle" name="libelle" required>
+                            <input type="text" class="form-control" id="libelle" name="libelle" required>
                         </div>
                     </div>
                     </br>
@@ -24,7 +24,7 @@
                             <label class="text-center">Date Début :</label>
                         </div>
                         <div class="col-md-8 ml-auto">
-                            <input type="date" class="form-modal-inscription" id="dateD" name="dateD" required>
+                            <input type="date" class="form-control" id="dateD" name="dateD" required>
                         </div>
                     </div>
                     </br>
@@ -33,7 +33,7 @@
                             <label class="text-center">Date Fin :</label>
                         </div>
                         <div class="col-md-8 ml-auto">
-                            <input type="date" class="form-modal-inscription" id="dateF" name="dateF" required>
+                            <input type="date" class="form-control" id="dateF" name="dateF" required>
                         </div>
                     </div>
                     </br>
@@ -42,7 +42,7 @@
                             <label class="text-center">Description :</label>
                         </div>
                         <div class="col-md-8 ml-auto">
-                            <textarea class="form-modal-inscription" id="description" name="description" required></textarea>
+                            <textarea class="form-control" id="description" name="description" required></textarea>
                         </div>
                     </div>
                     </br>
@@ -51,13 +51,13 @@
                             <label class="text-center">Lien Image :</label>
                         </div>
                         <div class="col-md-8 ml-auto ">
-                                <input type="file" id="inputImage" name="image" value="">
+                            <input type="file" id="imageUpload" name="imageUpload" value="" accept=".png, .jpeg, .jpg">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button type="button" class="btn btn-primary" id="inscription-envoi">Ajouter</button>
+                    <button type="submit" class="btn btn-primary" id="ajouterEvent">Ajouter</button>
                 </div>
             </div>
         </form>

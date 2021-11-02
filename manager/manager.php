@@ -43,7 +43,7 @@ class Manager
         if ($res) {
             throw new Exception("Error utilisateur deja existant");
         }
-        if ($user->getNom() != '' and $user->getPrenom() != '' and $user->getMail() != '' and $user->getProfil() != '' and $user->getMdp() != '' ) {
+        if ($user->getNom() != '' and $user->getPrenom() != '' and $user->getMail() != '' and $user->getProfil() != '' and $user->getMdp() != '') {
             $req = $bdd->prepare('INSERT INTO user(nom,prenom,mail,profil,mdp) values (:nom,:prenom,:mail,:profil,:mdp)');
             $req->execute(array(
                 'nom' => $user->getNom(),
@@ -53,16 +53,16 @@ class Manager
                 'mdp' => $user->getMdp(),
             ));
             if (isset($req)) {
-                $requestid=$bdd->prepare('SELECT nom,prenom,idUser,mdp from user WHERE mail = ?');
+                $requestid = $bdd->prepare('SELECT nom,prenom,idUser,mdp from user WHERE mail = ?');
                 $requestid->execute(array($user->getMail()));
                 $info = $requestid->fetch();
-                    //$decryptedmdp=$this->decrypt($info['mdp'],'1f4276388ad3214c873428dbef42243f');
-                    $mdpuser = $info['mdp'];
-                    $iduser = $info['idUser'];
-                    $preuser = $info['prenom'];
-                    $nomuser = $info['nom'];
-                    $subject = 'Bienvenue sur le Lycée & UFA Robert Schuman !';
-                    $body = '<!doctype html>
+                //$decryptedmdp=$this->decrypt($info['mdp'],'1f4276388ad3214c873428dbef42243f');
+                $mdpuser = $info['mdp'];
+                $iduser = $info['idUser'];
+                $preuser = $info['prenom'];
+                $nomuser = $info['nom'];
+                $subject = 'Bienvenue sur le Lycée & UFA Robert Schuman !';
+                $body = '<!doctype html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width">
@@ -234,48 +234,48 @@ table[class=body] .article {
   </body>
 </html>
 ';
-                    $toMail = $user->getMail();
-                    $a = $this->mail($subject, $body, $toMail);
+                $toMail = $user->getMail();
+                $a = $this->mail($subject, $body, $toMail);
             }
         } else {
             $msg['response'] = 'erreur dans l inscription';
             return $msg;
         }
     }
-    public function connexion($user){
+
+    public function connexion($user)
+    {
         session_start();
         $bdd = self::connexion_bdd();
-        if($user->getMail() =='' and $user->getMdp() =='' ){
-            throw new Exception("toutecasevide",1);
+        if ($user->getMail() == '' and $user->getMdp() == '') {
+            throw new Exception("toutecasevide", 1);
         }
-        if($user->getMail() ==''){
-            throw new Exception("uservide",1);
+        if ($user->getMail() == '') {
+            throw new Exception("uservide", 1);
         }
-        if($user->getMdp() ==''){
-            throw new Exception("passwordvide",1);
+        if ($user->getMdp() == '') {
+            throw new Exception("passwordvide", 1);
         }
-        $req =$bdd->prepare("SELECT mdp,mail,profil FROM user WHERE mail=:mail");
+        $req = $bdd->prepare("SELECT mdp,mail,profil FROM user WHERE mail=:mail");
         $req->execute(array(
-            'mail'=> $user->getMail()
+            'mail' => $user->getMail()
         ));
         $res = $req->fetch();
 
-        if(password_verify($user->getMdp(), $res['mdp']) && $res['profil']== 'admin'){
-            $_SESSION['mail'] = $res["mail"];
+        if (password_verify($user->getMdp(), $res['mdp']) && $res['profil'] == 'admin') {
+            $_SESSION['mailAdmin'] = $res["mail"];
             header("Location: ../index.php");
             return success;
-        }
-        elseif(password_verify($user->getMdp(),$res['mdp']) && $res['profil']== 'parent'){
-            $_SESSION['mail'] = $res["mail"];
+        } elseif (password_verify($user->getMdp(), $res['mdp']) && $res['profil'] == 'parent') {
+            $_SESSION['mailParent'] = $res["mail"];
             header("Location: ../index.php");
             return success;
-        }
-        elseif (password_verify($user->getMdp(),$res['mdp']) && $res['profil']== 'etudiant'){
-            $_SESSION['mail'] = $res["mail"];
+        } elseif (password_verify($user->getMdp(), $res['mdp']) && $res['profil'] == 'etudiant') {
+            $_SESSION['mailEtudiant'] = $res["mail"];
             header("Location: ../index.php");
             return success;
         } else {
-            throw new Exception("Error pendant la connexion",1);
+            throw new Exception("Error pendant la connexion", 1);
             return error;
         }
     }
@@ -288,7 +288,8 @@ table[class=body] .article {
         header("Location: ../index.php");
     }
 
-    public function modificationProfil($user) {
+    public function modificationProfil($user)
+    {
         session_start();
         $bdd = self::connexion_bdd();
         $req = $bdd->prepare('UPDATE user SET nom=:nom,prenom=:prenom,mail = :mail,profil= :profil, classe=:classe WHERE mail=:mail');
@@ -296,46 +297,74 @@ table[class=body] .article {
             'nom' => $user->getNom(),
             'prenom' => $user->getPrenom(),
             'mail' => $user->getMail(),
-            'profil'=>$user->getProfil(),
-            'classe'=>$user->getClasse(),
+            'profil' => $user->getProfil(),
+            'classe' => $user->getClasse(),
         ));
-            header("Location: ../index.php");
+        header("Location: ../index.php");
     }
 
-    function mail($subject,$body,$toMail){
+    public function addevent($event)
+    {
+        session_start();
+        $bdd = self::connexion_bdd();
+        $req = $bdd->prepare('SELECT * from evenement where libelle=:libelle ');
+        $req->execute(array(
+            'libelle' => $event->getLibelle(),
+        ));
+        $res = $req->fetch();
+        if ($res) {
+            throw new Exception("Error evenement deja existant");
+        } elseif ($event->getLibelle() != '' and $event->getDateDebut() != '' and $event->getDateFin() != '' and $event->getDescription() != '') {
+            $req = $bdd->prepare('INSERT INTO evenement(libelle,dateDebut,dateFin,description,image) values (:libelle,:dateDebut,:dateFin,:description,:image)');
+            $req->execute(array(
+                'libelle' => $event->getLibelle(),
+                'dateDebut' => $event->getDateDebut(),
+                'dateFin' => $event->getDateFin(),
+                'description' => $event->getDescription(),
+                'image' => $event->getImage(),
+            ));
 
-        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/PHPMailer.php");
-        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/SMTP.php");
-        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/Exception.php");
-        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/POP3.php");
-        require_once ($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/PHPMailer/OAuth.php");
+            header("Location: ../view/event/event.php");
+
+        } else {
+            throw new Exception("Error il manque un élément");
+        }
+    }
+
+    function mail($subject, $body, $toMail)
+    {
+
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/PHPMailer.php");
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/SMTP.php");
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/Exception.php");
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/POP3.php");
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/OAuth.php");
         $mail = new PHPMailer(true);
 
         try {
             //Server settings
             $mail->SMTPDebug = 0;                      // Enable verbose debug output
             $mail->isSMTP();                                            // Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'projet.lprs.dev@gmail.com';                     // SMTP username
-            $mail->Password   = 'projetLPRS';
+            $mail->Host = 'smtp.gmail.com';                    // Set the SMTP server to send through
+            $mail->SMTPAuth = true;                                   // Enable SMTP authentication
+            $mail->Username = 'projet.lprs.dev@gmail.com';                     // SMTP username
+            $mail->Password = 'projetLPRS';
             $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-            $mail->Port       = 465;                                    // TCP port to connect to
+            $mail->Port = 465;                                    // TCP port to connect to
             $mail->CharSet = 'text/html; charset=UTF-8;';
             //Recipients
-            $mail->setFrom("projet.lprs.dev@gmail.com","Lycée et UFA Robert Schuman");
+            $mail->setFrom("projet.lprs.dev@gmail.com", "Lycée et UFA Robert Schuman");
             $mail->addAddress($toMail);
             // Add a recipient
-            if(isset($toMail)){
+            if (isset($toMail)) {
                 $mail->isHTML(true);                                  // Set email format to HTML
                 $mail->Subject = $subject;
-                $mail->Body    = $body;
-                $mail->AltBody =  strip_tags($body);
+                $mail->Body = $body;
+                $mail->AltBody = strip_tags($body);
                 $mail->send();
 
             }
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     }
