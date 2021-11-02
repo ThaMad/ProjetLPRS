@@ -45,8 +45,9 @@ $db = $Manager->connexion_bdd();
 $user= $db->prepare("SELECT idUser, nom, prenom, profil, libelle FROM user INNER JOIN classe ON user.classe = classe.idClasse WHERE profil = 'etudiant' OR profil = 'professeur' or profil = 'parent' ");
 $user->execute(array());
 $user = $user->fetchall();
-
+$myid= "2"
 ?>
+
 
 <li class="nav-item"><a class="nav-link" href="about.php">Information</a></li>
 <li class="nav-item dropdown">
@@ -116,18 +117,73 @@ $user = $user->fetchall();
             <main class="mainchat" id="chatmain">
                 <header>
                     <?php
-                    if (empty($_GET["destinataire"])) { ?>
+                    if (empty($_GET['destinataire'])) { ?>
                     <div>
                         <h2>Selectionnez un destinataire</h2>
                     </div>
                     <?php }
-                    else if (isset($_GET["destinataire"])){?>
+                    else if (isset($_GET['destinataire'])){
+                        $destinataireid = $_GET['destinataire'];
+                    $destinfo= $db->prepare("SELECT nom, prenom FROM user WHERE idUser = ? ");
+                    $destinfo->execute(array($destinataireid));
+                    $destinfo = $destinfo->fetch(); ?>
                     <div>
                         <h2>Conversation avec  <?php
-                         echo $_GET["prenom"]; echo $_GET["nom"]; ?></h2>
+                         echo $destinfo['prenom']; echo " "; echo $destinfo['nom']; ?></h2>
                     </div>
 
                 </header>
+                <?php
+                $conversation = $db ->prepare("SELECT * from conversation WHERE userA = $destinataireid or userA = $myid AND userB = $destinataireid or userB = $myid");
+                $conversation->execute(array());
+                $conversation=$conversation->fetch();
+                if (empty($conversation)){ ?>
+
+                <ul id="chat">
+                <footer>
+                    <form action="../../traitement/newconversation.php" method="post">
+                        <input name="userA" type="hidden" value="<?php echo $myid;?>">
+                        <input name="userB" type="hidden" value="<?php echo $destinataireid;?>">
+                        <textarea name="message" placeholder="Commencez la conversation, envoyez le premier message !"> </textarea>
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
+                        <button type="submit" class="btn btn-secondary">SEND</button>
+                        <form>
+                </footer>
+            </main>
+        </div>
+
+        <script id="message-template" type="text/x-handlebars-template">
+            <li class="clearfix">
+                <div class="message-data align-right">
+                    <span class="message-data-time" >{{time}}, Today</span> &nbsp; &nbsp;
+                    <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+                </div>
+                <div class="message other-message float-right">
+                    {{messageOutput}}
+                </div>
+            </li>
+        </script>
+
+        <script id="message-response-template" type="text/x-handlebars-template">
+            <li>
+                <div class="message-data">
+                    <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                    <span class="message-data-time">{{time}}, Today</span>
+                </div>
+                <div class="message my-message">
+                    {{response}}
+                </div>
+            </li>
+        </script>
+
+                    <?php
+                }
+
+                else{
+
+                ?>
+
                 <ul id="chat">
                     <li class="you">
                         <div class="entete">
@@ -228,7 +284,7 @@ $user = $user->fetchall();
                 </div>
             </li>
         </script>
-        <?php } ?>
+        <?php }} ?>
 
     </div>
 
