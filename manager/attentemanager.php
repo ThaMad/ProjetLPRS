@@ -323,4 +323,34 @@ table[class=body] .article {
 
     }
 
+    public function newConversation($conversation){
+
+
+        $db = parent::connexion_bdd();
+        $testuserA=$conversation->getUserA();
+        $testuserB=$conversation->getUserB();
+        $requestcheck = $db ->prepare("SELECT * from conversation WHERE userA = $testuserA or userA = $testuserB AND userB = $testuserB or userB = $testuserA");
+        $requestcheck->execute(array());
+        $requestcheck=$requestcheck->fetch();
+        if ($requestcheck){
+
+            header("Location:/ProjetLPRS/view/chatbox/chatbox.php?erreur_conv=cQfTjWnZ");
+        }
+
+        else{
+            $request = $db->prepare('INSERT INTO conversation(userA,userB,message,date) VALUES (?,?,?,?)');
+
+            $request->execute(array(
+                $conversation->getUserA(), $conversation->getUserB(),$conversation->getMessage(),$conversation->getDate()
+            ));
+            if (isset($request)) {
+
+                header("Location:/ProjetLPRS/view/chatbox/chatbox.php?new_conv=Y7Z3i7aEm");
+            }
+            else{
+                header("Location:/ProjetLPRS/view/chatbox/chatbox.php?errornewconv=K7YJ4pkp9");}
+        }
+
+    }
+
     }
