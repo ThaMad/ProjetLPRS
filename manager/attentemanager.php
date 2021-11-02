@@ -323,25 +323,16 @@ table[class=body] .article {
 
     }
 
-    public function newConversation($conversation){
+    public function newConversation($messages){
 
 
         $db = parent::connexion_bdd();
-        $testuserA=$conversation->getUserA();
-        $testuserB=$conversation->getUserB();
-        $requestcheck = $db ->prepare("SELECT * from conversation WHERE userA = $testuserA or userA = $testuserB AND userB = $testuserB or userB = $testuserA");
-        $requestcheck->execute(array());
-        $requestcheck=$requestcheck->fetch();
-        if ($requestcheck){
-
-            header("Location:/ProjetLPRS/view/chatbox/chatbox.php?erreur_conv=cQfTjWnZ");
-        }
-
-        else{
-            $request = $db->prepare('INSERT INTO conversation(userA,userB,message,date) VALUES (?,?,?,?)');
+        $testuserExp=$messages->getUserExp();
+        $testuserDest=$messages->getUserDest();
+            $request = $db->prepare('INSERT INTO messages(userExp,userDest,message,date) VALUES (?,?,?,?)');
 
             $request->execute(array(
-                $conversation->getUserA(), $conversation->getUserB(),$conversation->getMessage(),$conversation->getDate()
+                $messages->getUserExp(), $messages->getUserDest(),$messages->getMessage(),$messages->getDate()
             ));
             if (isset($request)) {
 
@@ -351,6 +342,5 @@ table[class=body] .article {
                 header("Location:/ProjetLPRS/view/chatbox/chatbox.php?errornewconv=K7YJ4pkp9");}
         }
 
-    }
 
     }

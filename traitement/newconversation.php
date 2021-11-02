@@ -1,16 +1,16 @@
 <?php
-require_once '../model/conversation.php';
+require_once '../model/messages.php';
 require_once '../manager/attentemanager.php';
 
 if (isset ($_POST['message'])){
     try{
-        $conversation = new conversation(array(
-        'userA' => $_POST["userA"],
-            'userB'=> $_POST["userB"],
-            'message'=>$_POST["message"],
+        $messages = new messages(array(
+        'userExp' => $_POST['userExp'],
+            'userDest'=> $_POST['userDest'],
+            'message'=>$_POST['message'],
             'date'=>$now = date_create()->format('Y-m-d H:i:s')));
         $man = new attentemanager();
-        $man->newConversation($conversation);
+        $man->newConversation($messages);
 
 
     } catch (Exception $e){

@@ -134,16 +134,17 @@ $myid= "2"
 
                 </header>
                 <?php
-                $conversation = $db ->prepare("SELECT * from conversation WHERE userA = $destinataireid or userA = $myid AND userB = $destinataireid or userB = $myid");
-                $conversation->execute(array());
-                $conversation=$conversation->fetch();
-                if (empty($conversation)){ ?>
+                $messages = $db ->prepare("SELECT * FROM messages WHERE (userExp = $destinataireid AND userDest= $myid) OR  (userExp = $myid AND userDest = $destinataireid) ORDER BY idMessage");
+                $messages->execute(array());
+                $messages=$messages->fetchall();
+
+                if (empty($messages)){ ?>
 
                 <ul id="chat">
                 <footer>
                     <form action="../../traitement/newconversation.php" method="post">
-                        <input name="userA" type="hidden" value="<?php echo $myid;?>">
-                        <input name="userB" type="hidden" value="<?php echo $destinataireid;?>">
+                        <input name="userExp" type="hidden" value="<?php echo $myid;?>">
+                        <input name="userDest" type="hidden" value="<?php echo $destinataireid;?>">
                         <textarea name="message" placeholder="Commencez la conversation, envoyez le premier message !"> </textarea>
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
@@ -152,7 +153,7 @@ $myid= "2"
                 </footer>
             </main>
         </div>
-
+    </ul>
         <script id="message-template" type="text/x-handlebars-template">
             <li class="clearfix">
                 <div class="message-data align-right">
@@ -181,83 +182,49 @@ $myid= "2"
                 }
 
                 else{
-
+?>
+        <ul id="chat">
+        <?php
+                    foreach ($messages as $value){
+                        if ($value['userExp']==$destinataireid) {
                 ?>
-
-                <ul id="chat">
                     <li class="you">
                         <div class="entete">
                             <span class="status green"></span>
-                            <h2>Vincent</h2>
-                            <h3>10:12AM, Today</h3>
+                            <h2> <?php echo $destinfo['prenom']; echo ' '; echo $destinfo['nom'];?></h2>
+                            <h3><?php echo $value['date']?></h3>
                         </div>
                         <div class="triangle"></div>
                         <div class="message">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            <?php echo $value['message']; ?>
                         </div>
                     </li>
+            <?php }
+                        else if ($value['userExp']==$myid) {
+            ?>
                     <li class="me">
                         <div class="entete">
-                            <h3>10:12AM, Today</h3>
-                            <h2>Vincent</h2>
+                            <h3><?php echo $value['date'] ?></h3>
+                            <h2>Moi</h2>
                             <span class="status blue"></span>
                         </div>
                         <div class="triangle"></div>
                         <div class="message">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                            <?php echo $value['message'];?>
                         </div>
                     </li>
-                    <li class="me">
-                        <div class="entete">
-                            <h3>10:12AM, Today</h3>
-                            <h2>Vincent</h2>
-                            <span class="status blue"></span>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">
-                            OK
-                        </div>
-                    </li>
-                    <li class="you">
-                        <div class="entete">
-                            <span class="status green"></span>
-                            <h2>Vincent</h2>
-                            <h3>10:12AM, Today</h3>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        </div>
-                    </li>
-                    <li class="me">
-                        <div class="entete">
-                            <h3>10:12AM, Today</h3>
-                            <h2>Vincent</h2>
-                            <span class="status blue"></span>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        </div>
-                    </li>
-                    <li class="me">
-                        <div class="entete">
-                            <h3>10:12AM, Today</h3>
-                            <h2>Vincent</h2>
-                            <span class="status blue"></span>
-                        </div>
-                        <div class="triangle"></div>
-                        <div class="message">
-                            OK
-                        </div>
-                    </li>
+            <?php } }?>
                 </ul>
-                <footer>
-                    <textarea placeholder="Type your message"></textarea>
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-                    <a href="#">Send</a>
-                </footer>
+        <footer>
+            <form action="../../traitement/newconversation.php" method="post">
+                <input name="userExp" type="hidden" value="<?php echo $myid;?>">
+                <input name="userDest" type="hidden" value="<?php echo $destinataireid;?>">
+                <textarea name="message" placeholder="Saisissez votre message"> </textarea>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
+                <button type="submit" class="btn btn-secondary">SEND</button>
+                <form>
+        </footer>
             </main>
         </div>
 
