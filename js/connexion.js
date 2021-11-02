@@ -13,7 +13,7 @@ $("body").delegate("#mdp-oublier", "click", function () {
 
 $("body").delegate("#inscription-envoi", "click", function (e) {
     e.preventDefault();
-    if($('#nom').val() == "" || $('#prenom').val() == "" || $('#mail_inscript').val() == "" || $('#mdp').val() == "" ){
+    if($('#nom').val() == "" || $('#prenom').val() == "" || $('#mail_inscript').val() == "" || $('#mdp').val() == "" || (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked'))){
         if($('#nom').val() == ""){
             app.displayErrorNotification('Champ nom vide ou incorrect');
         }
@@ -25,6 +25,9 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
         }
         if($('#mdp').val() == ""){
             app.displayErrorNotification('Champ mot de passe vide ou incorrect');
+        }
+        if (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked') ) {
+            app.displayErrorNotification('Champ profil vide ou incorrect');
         }
     }
     else

@@ -33,7 +33,7 @@
                             <label class="text-center">Mail :</label>
                         </div>
                         <div class="col-md-10 ml-auto">
-                            <input type="email" class="form-modal-inscription" id="mail_inscript" name="mail" required>
+                            <input type="email"  class="form-modal-inscription" id="mail_inscript" name="mail" required="true">
                         </div>
                     </div>
                     </br>
