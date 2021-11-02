@@ -50,9 +50,12 @@ Essential Scripts
 
 <!-- Main jQuery -->
 <script src="../../plugins/jquery/jquery.js"></script>
+<script src="../../plugins/jquery/jquery-1.10.2.js"></script>
+
 <!-- Bootstrap 4.3.2 -->
 <script src="../../plugins/bootstrap/js/popper.js"></script>
 <script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../plugins/datepicker/js/bootstrap-datepicker.js"></script>
 <script src="../../plugins/counterup/jquery.easing.js"></script>
 <script src="../../plugins/toastr/js/toastr.min.js"></script>
 <!-- Slick Slider -->
@@ -62,6 +65,7 @@ Essential Scripts
 
 <script src="../../plugins/shuffle/shuffle.min.js"></script>
 <script src="../../plugins/counterup/jquery.counterup.min.js"></script>
+
 <!-- Google Map -->
 <script src="../../plugins/google-map/map.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>

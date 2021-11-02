@@ -3,7 +3,7 @@
 
 class evenement
 {
-    private $idEvent, $libelle, $dateDebut, $dateFin;
+    private $idEvent, $libelle, $dateDebut, $dateFin, $description, $image, $valide;
 
 
 
@@ -61,6 +61,30 @@ class evenement
         return $this->dateFin;
     }
 
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getValide()
+    {
+        return $this->valide;
+    }
+
     // SETTER
 
     /**
@@ -94,5 +118,29 @@ class evenement
     public function setDateFin($dateFin)
     {
         $this->dateFin = $dateFin;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @param bool $valide
+     */
+    public function setValide($valide)
+    {
+        $this->valide = $valide;
     }
 }

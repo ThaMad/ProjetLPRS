@@ -34,6 +34,9 @@ include('addevent.php');
         </div>
     </div>
 </section>
+<?php
+if(isset($_SESSION['mailEtudiant']) || isset($_SESSION['mailProf']) || isset($_SESSION['mailAdmin'])){
+?>
 <section>
     <div class="container">
         <div class="row justify-content-center">
@@ -45,13 +48,17 @@ include('addevent.php');
         </div>
     </div>
 </section>
+<?php }
+?>
 <?php
-$req = $bdd->prepare('SELECT libelle,dateDebut,dateFin,description,image FROM evenement');
+$req = $bdd->prepare('SELECT libelle,dateDebut,dateFin,description,image,valide FROM evenement');
 $req->execute();
 $a = $req->fetchall();
 
+
 foreach ($a
          as $value) {
+    if($value['valide'] !== '0'){
     ?>
     <section class="section service-2">
         <div class="container">
@@ -75,7 +82,7 @@ foreach ($a
             </div>
         </div>
     </section>
-<?php } ?>
+<?php }} ?>
 <?php
 include('../footer/footerinview.php');
 ?>

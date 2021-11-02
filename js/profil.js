@@ -55,7 +55,6 @@ $("body").delegate("#save-modification", "click", function () {
             },
             success: function (response) {
                 app.displaySuccessNotification(response.success);
-                // window.location.replace('../../index.php')
             },
             error: function (response) {
                 app.displayErrorNotification(response);
