@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-connexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="traitement/connexion.php" method="post" id="form-connexion">
+        <form action="<?php if($_SESSION['page'] = 'pageInView'){echo '../../traitement/connexion.php'; } else { echo 'traitement/connexion.php'; }?>" method="post" id="form-connexion">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>

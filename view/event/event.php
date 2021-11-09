@@ -77,7 +77,15 @@ foreach ($a
                 </div>
                 <div class="col-md-2 "></div>
                 <div class="col-md-4 ">
-                    <p><?php echo $value['description']; ?></p>
+                    <p><?php echo $value['description'];
+                        date_default_timezone_set('Europe/Paris');
+                        $curDateTime = date("Y-m-d");
+                        $myDate = date("Y-m-d", strtotime($value['dateDebut']));
+                        if($myDate < $curDateTime){
+                            echo "active";exit;
+                        }else{
+                            echo "inactive";exit;
+                        }?></p>
                 </div>
             </div>
         </div>

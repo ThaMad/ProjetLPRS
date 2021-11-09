@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['page'] = 'index';
 require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 $manager = new Manager();
 $bdd = $manager->connexion_bdd();
