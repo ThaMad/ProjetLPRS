@@ -1,3 +1,21 @@
+<?php
+
+require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
+//On déclare la variables $toolsManager de type toolsManager
+$Manager = new Manager();
+//On déclare la variable $db de type toolsManager en appelant@ la méthode connexion_bd
+$db = $Manager->connexion_bdd();
+
+$user= $db->prepare("SELECT idUser, nom, prenom, mail, profil, libelle, valide FROM user INNER JOIN classe ON user.classe = classe.idClasse ");
+$user->execute(array());
+$user = $user->fetchall();
+
+$classes = $db->prepare('SELECT * FROM classe');
+$classes->execute(array());
+$classes = $classes-> fetchall();
+
+include('../header/headerinview.php');
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -30,28 +48,18 @@
 <body id="top">
 
 <?php
-include('../header/headerinview.php');
-include('./ajout_user_modal.php');
+if (!isset($_SESSION['mail']) ){
+    header('Location: /ProjetLPRS/index.php');
+}
+else if ($_SESSION['profil']!== 'admin'){
+    header('Location: /ProjetLPRS/index.php');
+}
+else if($_SESSION['profil']=== 'admin') {
+    
+include('ajout_user_modal.php');
 ?>
 
 
-<?php
-require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
-//On déclare la variables $toolsManager de type toolsManager
-$Manager = new Manager();
-//On déclare la variable $db de type toolsManager en appelant la méthode connexion_bd
-$db = $Manager->connexion_bdd();
-
-$user= $db->prepare("SELECT idUser, nom, prenom, mail, profil, libelle, valide FROM user INNER JOIN classe ON user.classe = classe.idClasse ");
-$user->execute(array());
-$user = $user->fetchall();
-
-$classes = $db->prepare('SELECT * FROM classe');
-$classes->execute(array());
-$classes = $classes-> fetchall();
-
-
-?>
 
 <li class="nav-item"><a class="nav-link" href="about.php">Information</a></li>
 <li class="nav-item dropdown">
@@ -210,3 +218,4 @@ include('../footer/footerinview.php');
 
 </body>
 </html>
+<?php } ?>

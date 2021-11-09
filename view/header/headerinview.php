@@ -34,11 +34,6 @@ $bdd = $manager->connexion_bdd();
 </head>
 
 <body id="top">
-<?php
-include('../connexion/connexion-modal.php');
-include('../connexion/inscription-modal.php');
-include('../connexion/mdp-oublier-modal.php');
-?>
 <header>
     <div class="header-top-bar">
         <div class="container">

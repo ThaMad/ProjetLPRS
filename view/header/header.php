@@ -36,10 +36,6 @@ $bdd = $manager->connexion_bdd();
 </head>
 
 <body id="top">
-<?php
-include('view/connexion/connexion-modal.php');
-include('view/connexion/inscription-modal.php');
-?>
 <header>
     <div class="header-top-bar">
         <div class="container">

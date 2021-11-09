@@ -72,3 +72,7 @@ Essential Scripts
 <script src="js/connexion.js"></script>
 <script src="js/app.js"></script>
 
+<?php
+include('view/connexion/connexion-modal.php');
+include('view/connexion/inscription-modal.php');
+?>

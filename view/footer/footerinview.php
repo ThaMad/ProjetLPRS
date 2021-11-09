@@ -79,3 +79,9 @@ Essential Scripts
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 
+<?php
+
+include('../connexion/connexion-modal.php');
+include('../connexion/inscription-modal.php');
+include('../connexion/mdp-oublier-modal.php');
+?>
