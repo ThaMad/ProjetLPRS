@@ -317,17 +317,8 @@ table[class=body] .article {
                 'description' => $event->getDescription(),
                 'image' => $event->getImage(),
             ));
-            if(isset($_SESSION['mailEtudiant'])){
-                $mail = $_SESSION['mailEtudiant'];
-            }
-            if(isset($_SESSION['mailAdmin'])){
-                $mail = $_SESSION['mailAdmin'];
-            }
-            if(isset($_SESSION['mailParent'])){
-                $mail = $_SESSION['mailParent'];
-            }
-            if(isset($_SESSION['mailProf'])){
-                $mail = $_SESSION['mailProf'];
+            if(isset($_SESSION['mail'])){
+                $mail = $_SESSION['mail'];
             }
             $request = $bdd->prepare('SELECT * from user where mail= :mail ');
             $request->execute(array(
@@ -350,10 +341,46 @@ table[class=body] .article {
 
             header("Location: ../view/event/event.php");
 
-
         } else {
             throw new Exception("Error il manque un élément");
         }
+    }
+
+    function participerEvent($event,$mail){
+        $bdd = self::connexion_bdd();
+        $req = $bdd->prepare('SELECT * from creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser where libelle=:libelle and mail=:mail');
+        $req->execute(array(
+            'libelle' => $event,
+            'mail' => $mail,
+        ));
+        $res = $req->fetch();
+        if (!empty($res)) {
+            $_SESSION['erreur'] = 'vous participez deja';
+            header("Location: ../view/event/event.php");
+        }
+        else{
+            $request = $bdd->prepare('SELECT * from user where mail= :mail ');
+            $request->execute(array(
+                'mail' => $mail,
+            ));
+            $result = $request->fetchall();
+            $req2 = $bdd->prepare('SELECT * from evenement where libelle= :libelle ');
+            $req2->execute(array(
+                'libelle' => $event,
+            ));
+            $res2 = $req2->fetchall();
+            $idUser = intval($result[0]['idUser']);
+            $idEvent = intval($res2[0]['idEvent']);
+            $request2 = $bdd->prepare('INSERT INTO creation(user,event) values (:user,:event)');
+            $request2->execute(array(
+                'user' => $idUser,
+                'event' => $idEvent,
+            ));
+            $_SESSION['success'] = 'vous participez à l évenement';
+            header("Location: ../view/event/event.php");
+
+        }
+
     }
 
     function mail($subject, $body, $toMail)

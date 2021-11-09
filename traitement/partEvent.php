@@ -1,15 +1,13 @@
 <?php
-require_once '../model/user.php';
+session_start();
+require_once '../model/creation.php';
 require_once '../manager/manager.php';
-
-if(isset($_POST["mail"])) {
+if(isset($_POST["event"])) {
     try {
-        $user = new user(array(
-            "mail" => $_POST["mail"],
-            "mdp" => $_POST['mdp']
-        ));
+        $event = $_POST["event"];
+        $mail = $_SESSION['mail'];
         $man = new manager();
-        $man->connexion($user);
+        $man->participerEvent($event,$mail);
     } catch (Exception $e) {
         $_SESSION["erreurcasevide"] = $e->getMessage();
     }
