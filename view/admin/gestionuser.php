@@ -55,7 +55,7 @@ else if ($_SESSION['profil']!== 'admin'){
     header('Location: /ProjetLPRS/index.php');
 }
 else if($_SESSION['profil']=== 'admin') {
-    
+
 include('ajout_user_modal.php');
 ?>
 
@@ -134,7 +134,12 @@ include('ajout_user_modal.php');
                         <td><?php echo $value['libelle'];?></td>
                         <td><?php echo $value['mail'];?></td>
                         <td><?php echo $value['profil'];?></td>
-                        <td><?php echo $value['valide'];?></td>
+                        <td><?php if($value['valide']==1){
+                            echo 'Validé';
+                            }
+                            else if($value['valide']==0){
+                                echo 'Non validé';
+                            }?></td>
 
 
                         <td>
