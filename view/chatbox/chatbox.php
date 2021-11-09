@@ -1,3 +1,13 @@
+
+<?php
+require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
+//On déclare la variables $toolsManager de type toolsManager
+$Manager = new Manager();
+//On déclare la variable $db de type toolsManager en appelant la méthode connexion_bd
+$db = $Manager->connexion_bdd();
+
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -32,20 +42,21 @@
 
 <?php
 include('../header/headerinview.php');
-?>
+if (!isset($_SESSION['mail']) ){
+    header('Location: /ProjetLPRS/index.php');
+}
 
+else if($_SESSION['mail']) {
 
-<?php
-require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
-//On déclare la variables $toolsManager de type toolsManager
-$Manager = new Manager();
-//On déclare la variable $db de type toolsManager en appelant la méthode connexion_bd
-$db = $Manager->connexion_bdd();
+$mymail=$_SESSION['mail'];
+$myinfo= $db->prepare('SELECT idUser,nom,prenom FROM user WHERE mail = ?');
+$myinfo->execute(array($mymail));
+$myinfo = $myinfo->fetch();
+$myid = $myinfo['idUser'];
 
-$user= $db->prepare("SELECT idUser, nom, prenom, profil, libelle FROM user INNER JOIN classe ON user.classe = classe.idClasse WHERE profil = 'etudiant' OR profil = 'professeur' or profil = 'parent' ");
-$user->execute(array());
+$user= $db->prepare("SELECT idUser, nom, prenom, profil, libelle FROM user INNER JOIN classe ON user.classe = classe.idClasse WHERE (profil != 'admin') AND idUser != ?");
+$user->execute(array($myid));
 $user = $user->fetchall();
-$myid= "2"
 ?>
 
 
@@ -105,7 +116,13 @@ $myid= "2"
                             <input id="destinataire" name="destinataire" type="hidden" value="<?php echo $value['idUser'];?>">
                             <h2 name="prenom"><?php echo $value['prenom'];?> </h2><h2 name="nom"> <?php echo $value['nom'];?> </h2>
                             <h3>
-                                <?php echo $value['libelle']; ?>
+                                <?php if ($value['profil']=='etudiant'){echo $value['libelle'];}
+                                else if ($value['profil']=='prof'){
+                                    echo 'Professeur';
+                                }
+                                else if ($value['profil']=='parent'){
+                                    echo 'Parent';
+                                }?>
                             </h3>
                         </div>
                     </li>
@@ -119,7 +136,8 @@ $myid= "2"
                     <?php
                     if (empty($_GET['destinataire'])) { ?>
                     <div>
-                        <h2>Selectionnez un destinataire</h2>
+                        <h2>Bonjour <?php echo $myinfo['prenom']; echo ' '; echo $myinfo['nom']; ?></h2>
+                        <br><h3>Selectionnez un destinataire</h3>
                     </div>
                     <?php }
                     else if (isset($_GET['destinataire'])){
@@ -142,13 +160,13 @@ $myid= "2"
 
                 <ul id="chat">
                 <footer>
-                    <form action="../../traitement/newconversation.php" method="post">
+                    <form action="../../traitement/newconversation.php" method="post" id="testForm2">
                         <input name="userExp" type="hidden" value="<?php echo $myid;?>">
                         <input name="userDest" type="hidden" value="<?php echo $destinataireid;?>">
                         <textarea name="message" placeholder="Commencez la conversation, envoyez le premier message !"> </textarea>
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-                        <button type="submit" class="btn btn-secondary">SEND</button>
+                        <input type="submit" class="btn btn-secondary" value="test">
                         <form>
                 </footer>
             </main>
@@ -216,13 +234,13 @@ $myid= "2"
             <?php } }?>
                 </ul>
         <footer>
-            <form action="../../traitement/newconversation.php" method="post">
+            <form action="../../traitement/newconversation.php" method="post" id="testForm">
                 <input name="userExp" type="hidden" value="<?php echo $myid;?>">
                 <input name="userDest" type="hidden" value="<?php echo $destinataireid;?>">
                 <textarea name="message" placeholder="Saisissez votre message"> </textarea>
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-                <button type="submit" class="btn btn-secondary">SEND</button>
+                <button type="submit" class="btn btn-secondary" onclick="$('#testForm').submit()">test</button>
                 <form>
         </footer>
             </main>
@@ -262,7 +280,7 @@ include('../footer/footerinview.php');
 ?>
 
 <script>
-    $(document).ready(function()){
+    $(document).ready(function(){
         $("#userul").click(function(){
             $("#chatmain").load("chatboxmessages.php?<?php echo $value["idUser"] ?>")
             }
@@ -271,7 +289,8 @@ include('../footer/footerinview.php');
     });
 
 </script>
-<script src="js/add_user.js"></script>
+
 
 </body>
 </html>
+<?php }?>

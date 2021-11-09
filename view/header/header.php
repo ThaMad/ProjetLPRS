@@ -70,6 +70,7 @@ $bdd = $manager->connexion_bdd();
                     <li class="nav-item"><a class="nav-link" id="connexion" href="#">Connexion</a></li>
                     <?php } else { ?>
                     <li class="nav-item"><a class="nav-link" id="profil" href="view/profil/profil.php">Mon Profil</a></li>
+                        <li class="nav-item"><a class="nav-link" id="profil" href="view/chatbox/chatbox.php">Messagerie</a></li>
                     <?php } ?>
                     <li class="nav-item"><a class="nav-link" href="view/presentation/about.php">Information</a></li>
                     <li class="nav-item dropdown">
