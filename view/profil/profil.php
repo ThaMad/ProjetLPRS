@@ -24,7 +24,7 @@ include('../header/headerinview.php');
 <?php
 $mail = $_SESSION['mail'];
 $req = $bdd->prepare('SELECT nom,prenom,profil,mail,classe FROM user WHERE mail = :mail');
-$req->execute(array('mail' => $mail ));
+$req->execute(array('mail' => $mail));
 $a = $req->fetchall();
 
 foreach ($a
@@ -52,7 +52,8 @@ foreach ($a
                     </button>
                 </div>
                 <div class="col-md-4">
-                    <button href="#" class="btn btn-primary text-center" style="margin-top: 10px;">Evenement créer et
+                    <button class="btn btn-primary text-center" style="margin-top: 10px;" id="tableauEvent">Evenement
+                        créer et
                         participer
                     </button>
                 </div>
@@ -68,7 +69,7 @@ foreach ($a
     </section>
 <section class="section doctors">
     <form action="../../traitement/modification-profil.php" method="post" id="form-modification-profil">
-        <div class="container">
+        <div class="container" id="containerProfil">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
@@ -113,6 +114,49 @@ foreach ($a
             </div>
         </div>
     </form>
+    <?php
+    $mail = $_SESSION['mail'];
+    $req = $bdd->prepare('SELECT * FROM creation INNER JOIN evenement ON evenement.idEvent = creation.event INNER JOIN user ON creation.user= user.idUser WHERE mail = :mail');
+    $req->execute(array('mail' => $mail));
+    $a = $req->fetchall();
+    ?>
+    <div class="container" id="containerTableau" hidden>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="table-responsive" style="width:100%;">
+                    <table id="table" class="display dt-responsive" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Libelle</th>
+                            <th>Date Debut</th>
+                            <th>Date Fin</th>
+                            <th>Creer</th>
+                            <th>Organisateur</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($a as $value) {
+                            ?>
+
+                            <tr>
+                                <td><?php echo $value['idEvent'];?></td>
+                                <td><?php echo $value['libelle'];?></td>
+                                <td><?php echo $value['dateDebut'];?></td>
+                                <td><?php echo $value['dateFin'];?></td>
+                                <td><?php echo $value['creation'];?></td>
+                                <td></td>
+                            </tr>
+
+                        <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
 </section>
 <?php
 include('../page-attente.php');

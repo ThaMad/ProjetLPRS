@@ -26,6 +26,8 @@ $bdd = $manager->connexion_bdd();
     <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
     <link rel="stylesheet" href="../../plugins/toastr/css/toastr.min.css"/>
+    <!-- DATA TABLE -->
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="../../css/style.css">
