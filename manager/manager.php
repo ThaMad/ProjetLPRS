@@ -262,19 +262,13 @@ table[class=body] .article {
         ));
         $res = $req->fetch();
 
-        if (password_verify($user->getMdp(), $res['mdp']) && $res['profil'] == 'admin') {
-            $_SESSION['mailAdmin'] = $res["mail"];
+        if (password_verify($user->getMdp(), $res['mdp'])) {
+            $_SESSION['profil'] = $res['profil'];
+            $_SESSION['mail'] = $res['mail'];
             header("Location: ../index.php");
             return success;
-        } elseif (password_verify($user->getMdp(), $res['mdp']) && $res['profil'] == 'parent') {
-            $_SESSION['mailParent'] = $res["mail"];
-            header("Location: ../index.php");
-            return success;
-        } elseif (password_verify($user->getMdp(), $res['mdp']) && $res['profil'] == 'etudiant') {
-            $_SESSION['mailEtudiant'] = $res["mail"];
-            header("Location: ../index.php");
-            return success;
-        } else {
+        }
+        else {
             throw new Exception("Error pendant la connexion", 1);
             return error;
         }

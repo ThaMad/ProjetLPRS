@@ -35,7 +35,7 @@ include('addevent.php');
     </div>
 </section>
 <?php
-if(isset($_SESSION['mailEtudiant']) || isset($_SESSION['mailProf']) || isset($_SESSION['mailAdmin'])){
+if(isset($_SESSION['mail']) && ($_SESSION['profil']=== 'etudiant' || $_SESSION['profil']=== 'admin' || $_SESSION['profil']=== 'prof')){
 ?>
 <section>
     <div class="container">
@@ -77,15 +77,13 @@ foreach ($a
                 </div>
                 <div class="col-md-2 "></div>
                 <div class="col-md-4 ">
-                    <p><?php echo $value['description'];
-                        date_default_timezone_set('Europe/Paris');
-                        $curDateTime = date("Y-m-d");
-                        $myDate = date("Y-m-d", strtotime($value['dateDebut']));
-                        if($myDate < $curDateTime){
-                            echo "active";exit;
-                        }else{
-                            echo "inactive";exit;
-                        }?></p>
+                    <p><?php echo $value['description']; ?></p>
+                    <?php date_default_timezone_set('Europe/Paris');
+                    $curDateTime = date("Y-m-d");
+                    $myDate = $value['dateDebut'];
+                    if($myDate > $curDateTime && ($_SESSION['profil'] === 'etudiant' || $_SESSION['profil'] === 'prof' || $_SESSION['profil'] === 'parent')){?>
+                            <button class="btn btn-primary text-center" id="ParticipeEvent" style="margin-top: 10px;">Je Participe !</button>
+                        <?php } ?>
                 </div>
             </div>
         </div>
