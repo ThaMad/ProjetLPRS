@@ -22,18 +22,7 @@ include('../header/headerinview.php');
 </header>
 
 <?php
-if(isset($_SESSION['mailProf'])){
-    $mail = $_SESSION['mailProf'];
-}
-elseif(isset($_SESSION['mailEtudiant'])){
-    $mail = $_SESSION['mailEtudiant'];
-}
-elseif(isset($_SESSION['mailAdmin'])){
-    $mail = $_SESSION['mailAdmin'];
-}
-elseif(isset($_SESSION['mailParent'])){
-    $mail = $_SESSION['mailParent'];
-}
+$mail = $_SESSION['mail'];
 $req = $bdd->prepare('SELECT nom,prenom,profil,mail,classe FROM user WHERE mail = :mail');
 $req->execute(array('mail' => $mail ));
 $a = $req->fetchall();

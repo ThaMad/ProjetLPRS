@@ -3,7 +3,7 @@
 
 class creation
 {
-    private $user, $event, $creation;
+    private $user, $event, $creation, $organisateur;
 
 
 
@@ -51,6 +51,14 @@ class creation
         return $this->creation;
     }
 
+    /**
+     * @return bool
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
+    }
+
     // SETTER
 
     /**
@@ -75,6 +83,14 @@ class creation
     public function setCreation($creation)
     {
         $this->creation = $creation;
+    }
+
+    /**
+     * @param mixed $organisateur
+     */
+    public function setOrganisateur($organisateur)
+    {
+        $this->organisateur = $organisateur;
     }
 
 }

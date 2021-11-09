@@ -81,8 +81,8 @@ foreach ($a
                     <?php date_default_timezone_set('Europe/Paris');
                     $curDateTime = date("Y-m-d");
                     $myDate = $value['dateDebut'];
-                    if($myDate > $curDateTime && ($_SESSION['profil'] === 'etudiant' || $_SESSION['profil'] === 'prof' || $_SESSION['profil'] === 'parent')){?>
-                            <button class="btn btn-primary text-center" id="ParticipeEvent" style="margin-top: 10px;">Je Participe !</button>
+                    if($myDate > $curDateTime && (isset($_SESSION['profil']) && ($_SESSION['profil'] === 'etudiant' || $_SESSION['profil'] === 'prof' || $_SESSION['profil'] === 'parent'))){?>
+                            <a href="../../traitement/partEvent.php" class="btn btn-primary text-center" style="margin-top: 10px;">Je Participe !</a>
                         <?php } ?>
                 </div>
             </div>
