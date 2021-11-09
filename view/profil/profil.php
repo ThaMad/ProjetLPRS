@@ -121,45 +121,56 @@ foreach ($a
     $a = $req->fetchall();
     ?>
     <div class="container" id="containerTableau" hidden>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <div class="table-responsive" style="width:100%;">
-                    <table id="table" class="display dt-responsive" style="width:100%;">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Libelle</th>
-                            <th>Date Debut</th>
-                            <th>Date Fin</th>
-                            <th>Creer</th>
-                            <th>Organisateur</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        foreach ($a as $value) {
-                            ?>
-
-                            <tr>
-                                <td><?php echo $value['idEvent'];?></td>
-                                <td><?php echo $value['libelle'];?></td>
-                                <td><?php echo $value['dateDebut'];?></td>
-                                <td><?php echo $value['dateFin'];?></td>
-                                <td><?php echo $value['creation'];?></td>
-                                <td></td>
-                            </tr>
-
+        <div class="table-responsive" style="width:100%;">
+            <table id="table" class="display dt-responsive" style="width:100%;">
+                <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Libelle</th>
+                    <th class="text-center">Date Debut</th>
+                    <th class="text-center">Date Fin</th>
+                    <th class="text-center">Createur</th>
+                    <th class="text-center">Organisateur</th>
+                    <th class="text-center">Ajout organisateur</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($a as $value) {
+                    ?>
+                    <tr>
+                        <td class="text-center"><?php echo $value['idEvent']; ?></td>
+                        <td class="text-center"><?php echo $value['libelle']; ?></td>
+                        <td class="text-center"><?php echo $value['dateDebut']; ?></td>
+                        <td class="text-center"><?php echo $value['dateFin']; ?></td>
+                        <td class="text-center"><?php if ($value['creation'] == '0') {
+                                echo 'non';
+                            } else {
+                                echo 'oui';
+                            } ?></td>
+                        <td class="text-center"><?php if ($value['organisateur'] == '0') {
+                                echo 'non';
+                            } else {
+                                echo 'oui';
+                            } ?></td>
+                        <?php if ($value['creation'] == '1') { ?>
+                            <td><button style="background:#000;" class="d-block mx-auto btn btn-answer text-white" id="addOrga">
+                                    <i class="fas fa-unlock"></i> Ajouter Organisateur </button>
+                            </td>
+                        <?php } else{?>
+                            <td>Tu n'es pas le créateur</td>
                         <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
+                    </tr>
+
+                <?php } ?>
+                </tbody>
+            </table>
         </div>
+    </div>
 </section>
 <?php
 include('../page-attente.php');
+include('addOrga.php');
 include('../footer/footerinview.php');
 ?>
 </body>

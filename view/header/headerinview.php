@@ -27,7 +27,7 @@ $bdd = $manager->connexion_bdd();
     <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
     <link rel="stylesheet" href="../../plugins/toastr/css/toastr.min.css"/>
     <!-- DATA TABLE -->
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../../plugins/datatable/css/jquery.dataTables.min.css">
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="../../css/style.css">
@@ -51,7 +51,7 @@ $bdd = $manager->connexion_bdd();
     </div>
     <nav class="navbar navbar-expand-lg navigation" id="navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="../../index.php">
                 <img src="../../images/logo.jpg" alt="" class="img-fluid">
             </a>
 

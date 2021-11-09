@@ -53,7 +53,7 @@
                         <div class="col-md-4 ml-auto ">
                             <div class="custom-control">
                                 <input type="radio" id="eleveradio" name="customRadioInline1" value="etudiant">
-                                <label for="customRadioInline1">Eleve</label>
+                                <label for="customRadioInline1">Etudiant</label>
                             </div>
                         </div>
                         <div class="col-md-4 ml-auto">

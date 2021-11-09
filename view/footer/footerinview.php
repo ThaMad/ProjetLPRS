@@ -66,6 +66,8 @@ Essential Scripts
 <script src="../../plugins/shuffle/shuffle.min.js"></script>
 <script src="../../plugins/counterup/jquery.counterup.min.js"></script>
 
+<script src="../../plugins/datatable/js/jquery.dataTables.min.js"></script>
+
 <!-- Google Map -->
 <!--<script src="../../plugins/google-map/map.js"></script>-->
 <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>-->
@@ -77,7 +79,6 @@ Essential Scripts
 <script src="../../js/event.js"></script>
 <script src="../../js/connexion.js"></script>
 <script src="../../js/app.js"></script>
-<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 
 
 <?php
