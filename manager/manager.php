@@ -9,7 +9,7 @@ class Manager
     {
         //Informations database Hôte
         $env_host = "localhost";
-        putenv("$env_host=localhost:8889");
+        putenv("$env_host=localhost");
 
         //Informations database Name
         $env_name = "DB_NAME";
@@ -21,7 +21,7 @@ class Manager
 
         //Informations database Pass
         $env_pass = "DB_PASS";
-        putenv("$env_pass=root");
+        putenv("$env_pass=");
 
         try {
             $bdd = new PDO('mysql:host=' . getenv($env_host) . ';dbname=' . getenv($env_name) . ';charset=utf8', getenv($env_user), getenv($env_pass));
@@ -378,6 +378,52 @@ table[class=body] .article {
             ));
             $_SESSION['success'] = 'vous participez à l évenement';
             header("Location: ../view/event/event.php");
+
+        }
+
+    }
+    function addOrganisateur($event,$mail){
+        $bdd = self::connexion_bdd();
+        $req = $bdd->prepare('SELECT * from creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser where libelle=:libelle and mail=:mail');
+        $req->execute(array(
+            'libelle' => $event,
+            'mail' => $mail,
+        ));
+        $res = $req->fetch();
+        if (isset($res) && $res['organisateur']=='1') {
+            $_SESSION['erreur'] = 'Cette utilisateur est déjà organisateur';
+            header("Location: ../view/profil/profil.php");
+        } else if (isset($res) && $res['organisateur']=='0'){
+            $request = $bdd->prepare('UPDATE creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser SET organisateur=:organisateur where libelle=:libelle and mail=:mail');
+            $request->execute(array(
+                'libelle' => $event,
+                'mail' => $mail,
+                'organisateur'=>'1',
+            ));
+            $_SESSION['success'] = 'Cette utilisateur est un organisateur de cette evenement';
+            header("Location: ../view/profil/profil.php");
+        }
+        else{
+            $request = $bdd->prepare('SELECT * from user where mail= :mail ');
+            $request->execute(array(
+                'mail' => $mail,
+            ));
+            $result = $request->fetchall();
+            $req2 = $bdd->prepare('SELECT * from evenement where libelle= :libelle ');
+            $req2->execute(array(
+                'libelle' => $event,
+            ));
+            $res2 = $req2->fetchall();
+            $idUser = intval($result[0]['idUser']);
+            $idEvent = intval($res2[0]['idEvent']);
+            $request2 = $bdd->prepare('INSERT INTO creation(user,event,organisateur) values (:user,:event,:organisateur)');
+            $request2->execute(array(
+                'user' => $idUser,
+                'event' => $idEvent,
+                'organisateur' => '1',
+            ));
+            $_SESSION['success'] = 'Cette utilisateur est un organisateur de cette evenement';
+            header("Location: ../view/profil/profil.php");
 
         }
 

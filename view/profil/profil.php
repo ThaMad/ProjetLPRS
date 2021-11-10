@@ -137,6 +137,9 @@ foreach ($a
                 <tbody>
                 <?php
                 foreach ($a as $value) {
+                    date_default_timezone_set('Europe/Paris');
+                    $curDateTime = date("Y-m-d");
+                    $myDate = $value['dateDebut'];
                     ?>
                     <tr>
                         <td class="text-center"><?php echo $value['idEvent']; ?></td>
@@ -153,12 +156,14 @@ foreach ($a
                             } else {
                                 echo 'oui';
                             } ?></td>
-                        <?php if ($value['creation'] == '1') { ?>
-                            <td><button style="background:#000;" class="d-block mx-auto btn btn-answer text-white" id="addOrga">
+                        <?php if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
+                            <td class="text-center"><button style="background:#000;" class="d-block mx-auto btn btn-answer text-white" id="addOrga" value="<?php echo $value['libelle']; ?>">
                                     <i class="fas fa-unlock"></i> Ajouter Organisateur </button>
                             </td>
-                        <?php } else{?>
-                            <td>Tu n'es pas le créateur</td>
+                        <?php } else if($value['creation'] == '1' && $myDate <= $curDateTime){?>
+                            <td class="text-center">Evenement fini</td>
+                        <?php } else { ?>
+                        <td class="text-center">Tu n'es pas le créateur</td>
                         <?php } ?>
                     </tr>
 
@@ -172,6 +177,14 @@ foreach ($a
 include('../page-attente.php');
 include('addOrga.php');
 include('../footer/footerinview.php');
-?>
+if(isset($_SESSION['erreur']) && $_SESSION['erreur'] !=''){ ?>
+    <script type="text/javascript">
+        app.displayErrorNotification('<?php echo $_SESSION['erreur']; ?>');
+    </script>
+    <?php $_SESSION['erreur']=''; } elseif(isset($_SESSION['success']) && $_SESSION['success'] !=''){ ?>
+    <script type="text/javascript">
+        app.displaySuccessNotification('<?php echo $_SESSION['success']; ?>');
+    </script>
+    <?php $_SESSION['success']=''; } ?>
 </body>
 </html>

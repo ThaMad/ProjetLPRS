@@ -50,8 +50,8 @@ $bdd = $manager->connexion_bdd();
                         $req->execute(array('profil' => 'etudiant'));
                         $a = $req->fetchall();
                         ?>
-                        <div class="col-md-4 ml-auto">
-                            <select class=form-control>
+                        <div class="col-md-9 ml-auto">
+                            <select class=form-control id="selectEtudiant" name="etudiant">
                                 <?php
                                 foreach ($a as $value) {
                                 ?>
@@ -70,7 +70,7 @@ $bdd = $manager->connexion_bdd();
                         $a = $req->fetchall();
                         ?>
                         <div class="col-md-9 ml-auto">
-                            <select class=form-control>
+                            <select class=form-control id="selectParent" name="parent">
                                 <?php
                                 foreach ($a as $value) {
                                     ?>
@@ -88,8 +88,8 @@ $bdd = $manager->connexion_bdd();
                         $req->execute(array('profil' => 'prof'));
                         $a = $req->fetchall();
                         ?>
-                        <div class="col-md-4 ml-auto">
-                            <select class=form-control>
+                        <div class="col-md-9 ml-auto">
+                            <select class=form-control id="selectProf" name="prof">
                                 <?php
                                 foreach ($a as $value) {
                                     ?>
@@ -102,7 +102,7 @@ $bdd = $manager->connexion_bdd();
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-primary" id="ajouterEvent">Ajouter</button>
+                    <button type="submit" class="btn btn-primary" id="ajouterEvent" name="event" value="">Ajouter</button>
                 </div>
             </div>
         </form>

@@ -104,7 +104,7 @@ if(isset($_SESSION['erreur']) && $_SESSION['erreur'] !=''){ ?>
     </script>
 <?php $_SESSION['erreur']=''; } elseif(isset($_SESSION['success']) && $_SESSION['success'] !=''){ ?>
 <script type="text/javascript">
-        app.displaySuccessNotification('vous participez à l évènement);
+        app.displaySuccessNotification('vous participez à l évènement');
     </script>
 <?php $_SESSION['success']=''; } ?>
 </body>
