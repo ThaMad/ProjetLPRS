@@ -47,19 +47,25 @@
                     </div>
                     </br>
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-sm-2">
                             <label class="text-center">Profil :</label>
                         </div>
-                        <div class="col-md-4 ml-auto ">
+                        <div class="col-sm-3 ml-auto ">
                             <div class="custom-control">
                                 <input type="radio" id="eleveradio" name="customRadioInline1" value="etudiant">
                                 <label for="customRadioInline1">Etudiant</label>
                             </div>
                         </div>
-                        <div class="col-md-4 ml-auto">
+                        <div class="col-sm-3 ml-auto">
                             <div class="custom-control">
                                 <input type="radio" id="parentradio" name="customRadioInline1" value="parent">
                                 <label for="customRadioInline2">Parent</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 ml-auto">
+                            <div class="custom-control">
+                                <input type="radio" id="profradio" name="customRadioInline1" value="prof">
+                                <label for="customRadioInline2">Professeur</label>
                             </div>
                         </div>
                     </div>
