@@ -1,6 +1,4 @@
 $("body").delegate("#modifdata", "click", function () {
-    $("#tableauEvent").prop('hidden', true);
-    $("#lienParent").prop('hidden', false);
     $('#nominfodata').removeAttr('disabled');
     $('#prenominfodata').prop('disabled',false);
     $('#mailinfodata').prop('disabled',false);
@@ -12,8 +10,6 @@ $("body").delegate("#modifdata", "click", function () {
 });
 
 $("body").delegate("#retour", "click", function () {
-    $("#lienParent").prop('hidden', true);
-    $("#tableauEvent").prop('hidden', false);
     $('#nominfodata').prop('disabled',true);
     $('#prenominfodata').prop('disabled',true);
     $('#mailinfodata').prop('disabled',true);
