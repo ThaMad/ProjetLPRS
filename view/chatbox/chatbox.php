@@ -166,8 +166,8 @@ $user = $user->fetchall();
                         <textarea name="message" placeholder="Commencez la conversation, envoyez le premier message !"> </textarea>
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-                        <input type="submit" class="btn btn-secondary" value="Envoyer">
-                        <form>
+                        <input type="submit" class="btn btn-secondary">
+                        </form>
                 </footer>
             </main>
         </div>
@@ -240,7 +240,7 @@ $user = $user->fetchall();
                 <textarea name="message" placeholder="Saisissez votre message"> </textarea>
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_picture.png" alt="">
                 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_file.png" alt="">
-                <input type="submit" class="btn btn-secondary">Envoyer</input>
+                <input type="submit" class="btn btn-secondary">
                 </form>
         </footer>
             </main>
