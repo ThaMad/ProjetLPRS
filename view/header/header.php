@@ -68,9 +68,12 @@ $bdd = $manager->connexion_bdd();
                     <li class="nav-item active"><a class="nav-link" href="index.php">Accueil</a></li>
                     <?php if(!isset($_SESSION['profil']) && !isset($_SESSION['mail'])){ ?>
                     <li class="nav-item"><a class="nav-link" id="connexion" href="#">Connexion</a></li>
-                    <?php } else { ?>
+                    <?php } else {
+                        if ($_SESSION['profil'] == 'admin'){?>
+                            <li class="nav-item"><a class="nav-link" href="view/admin/gestionuser.php">Administration</a></li>
+                                <?php }?>
                     <li class="nav-item"><a class="nav-link" id="profil" href="view/profil/profil.php">Mon Profil</a></li>
-                        <li class="nav-item"><a class="nav-link" id="profil" href="view/chatbox/chatbox.php">Messagerie</a></li>
+                        <li class="nav-item"><a class="nav-link" href="view/chatbox/chatbox.php">Messagerie</a></li>
                     <?php } ?>
                     <li class="nav-item"><a class="nav-link" href="view/presentation/about.php">Information</a></li>
                     <li class="nav-item dropdown">
