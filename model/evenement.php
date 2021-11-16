@@ -3,7 +3,7 @@
 
 class evenement
 {
-    private $idEvent, $libelle, $dateDebut, $dateFin, $description, $image, $valide;
+    private $idEvent, $libelle, $dateDebut, $dateFin, $description, $image, $valide, $lieu;
 
 
 
@@ -85,6 +85,14 @@ class evenement
         return $this->valide;
     }
 
+    /**
+     * @return bool
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
     // SETTER
 
     /**
@@ -142,5 +150,13 @@ class evenement
     public function setValide($valide)
     {
         $this->valide = $valide;
+    }
+
+    /**
+     * @param mixed $lieu
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
     }
 }

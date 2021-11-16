@@ -11,6 +11,7 @@ if (isset($_POST["libelle"])) {
             "dateFin" => $_POST['dateF'],
             "description" => $_POST['description'],
             "image" => $file,
+            "lieu"=> $_POST['lieu'],
         ));
         $man = new manager();
         $man->addevent($event);

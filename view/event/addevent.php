@@ -54,6 +54,23 @@
                             <input type="file" id="imageUpload" name="imageUpload" value="" accept=".png, .jpeg, .jpg">
                         </div>
                     </div>
+                    </br>
+                    <div class="row">
+                        <div class="col-md-4 ml-auto ">
+                            <div class="custom-control">
+                                <input type="radio" id="lieu" name="lieu" value="0" <?php if (isset($_SESSION['profil'])
+                                    && $_SESSION['profil'] == 'etudiant') { ?> checked <?php } ?> required>
+                                <label for="customRadioInline1">Interne</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ml-auto">
+                            <div class="custom-control">
+                                <input type="radio" id="lieu" name="lieu" value="1" <?php if (isset($_SESSION['profil'])
+                                    && $_SESSION['profil'] == 'etudiant') { ?> disabled <?php } ?> required>
+                                <label for="customRadioInline2">Externe</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

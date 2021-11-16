@@ -5,22 +5,6 @@ $bdd = $manager->connexion_bdd();
 include('../header/headerinview.php');
 include('addevent.php');
 ?>
-<li class="nav-item"><a class="nav-link" href="../presentation/about.php">Information</a></li>
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown"
-       aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="dropdown05">
-        <li><a class="dropdown-item" href="../formation/lycee.php">Parcours Lycée</a></li>
-        <li><a class="dropdown-item" href="../formation/bts.php">Parcours BTS</a></li>
-    </ul>
-</li>
-<li class="nav-item"><a class="nav-link" href="event.php">Evenement</a></li>
-<li class="nav-item"><a class="nav-link" href="../contact/contact.php">Contact</a></li>
-</ul>
-</div>
-</div>
-</nav>
-</header>
 
 <section class="page-title bg-1">
     <div class="overlay"></div>
@@ -100,11 +84,11 @@ foreach ($a
 include('../footer/footerinview.php');
 if(isset($_SESSION['erreur']) && $_SESSION['erreur'] !=''){ ?>
     <script type="text/javascript">
-        app.displayErrorNotification('vous participez déjà');
+        app.displayErrorNotification('<?php echo $_SESSION['erreur']; ?>');
     </script>
 <?php $_SESSION['erreur']=''; } elseif(isset($_SESSION['success']) && $_SESSION['success'] !=''){ ?>
 <script type="text/javascript">
-        app.displaySuccessNotification('vous participez à l évènement');
+        app.displaySuccessNotification('<?php echo $_SESSION['success']; ?>');
     </script>
 <?php $_SESSION['success']=''; } ?>
 </body>

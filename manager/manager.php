@@ -9,7 +9,7 @@ class Manager
     {
         //Informations database Hôte
         $env_host = "localhost";
-        putenv("$env_host=localhost:8889");
+        putenv("$env_host=localhost");
 
         //Informations database Name
         $env_name = "DB_NAME";
@@ -21,7 +21,7 @@ class Manager
 
         //Informations database Pass
         $env_pass = "DB_PASS";
-        putenv("$env_pass=root");
+        putenv("$env_pass=");
 
         try {
             $bdd = new PDO('mysql:host=' . getenv($env_host) . ';dbname=' . getenv($env_name) . ';charset=utf8', getenv($env_user), getenv($env_pass));
@@ -301,8 +301,8 @@ table[class=body] .article {
             'classe' => $user->getClasse(),
             'session'=> $_SESSION['mail'],
         ));
-        $res = $req->fetch();
-        if($res) {
+
+        if($req) {
             $_SESSION['success']= "Votre compte a été modifier";
             return $_SESSION['success'];
             header("Location: ../view/profil/profil.php");
@@ -310,13 +310,17 @@ table[class=body] .article {
             $_SESSION['erreur']= "Votre compte n'a pas pu être modifier";
             return $_SESSION['erreur'];
             header("Location: ../view/profil/profil.php");
-
         }
     }
 
     public function addevent($event)
     {
         session_start();
+        if($_SESSION['profil']== 'prof'){
+            $valide = 1;
+        } else {
+            $valide = 0;
+        }
         $bdd = self::connexion_bdd();
         $req = $bdd->prepare('SELECT * from evenement where libelle=:libelle ');
         $req->execute(array(
@@ -324,15 +328,18 @@ table[class=body] .article {
         ));
         $res = $req->fetch();
         if ($res) {
-            throw new Exception("Error evenement deja existant");
-        } elseif ($event->getLibelle() != '' and $event->getDateDebut() != '' and $event->getDateFin() != '' and $event->getDescription() != '') {
-            $req = $bdd->prepare('INSERT INTO evenement(libelle,dateDebut,dateFin,description,image) values (:libelle,:dateDebut,:dateFin,:description,:image)');
+            $_SESSION['erreur']= "Error evenement deja existant";
+            header("Location: ../view/event/event.php");
+        } elseif ($event->getLibelle() != '' and $event->getDateDebut() != '' and $event->getDateFin() != '' and $event->getDescription() != '' and $event->getLieu() != '') {
+            $req = $bdd->prepare('INSERT INTO evenement(libelle,dateDebut,dateFin,description,image,valide,lieu) values (:libelle,:dateDebut,:dateFin,:description,:image,:valide,:lieu)');
             $req->execute(array(
                 'libelle' => $event->getLibelle(),
                 'dateDebut' => $event->getDateDebut(),
                 'dateFin' => $event->getDateFin(),
                 'description' => $event->getDescription(),
                 'image' => $event->getImage(),
+                'valide' => $valide,
+                'lieu' => $event->getLieu(),
             ));
             if(isset($_SESSION['mail'])){
                 $mail = $_SESSION['mail'];
@@ -349,17 +356,23 @@ table[class=body] .article {
             $res2 = $req2->fetchall();
             $idUser = intval($result[0]['idUser']);
             $idEvent = intval($res2[0]['idEvent']);
-            $request2 = $bdd->prepare('INSERT INTO creation(user,event,creation) values (:user,:event,:creation)');
+            $request2 = $bdd->prepare('INSERT INTO creation(user,event,creation,organisateur) values (:user,:event,:creation,:organisateur)');
             $request2->execute(array(
                 'user' => $idUser,
                 'event' => $idEvent,
-                'creation' => '1'
+                'creation' => '1',
+                'organisateur' => '1'
             ));
-
+            if($_SESSION['profil']== 'prof') {
+                $_SESSION['success'] = "L'event est bien ajouté";
+            }else {
+                $_SESSION['success'] = "L'event est bien ajouté en attente de validation";
+            }
             header("Location: ../view/event/event.php");
 
         } else {
-            throw new Exception("Error il manque un élément");
+            $_SESSION['erreur']= "Error il manque un élément";
+            header("Location: ../view/event/event.php");
         }
     }
 
