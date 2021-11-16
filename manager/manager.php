@@ -261,22 +261,27 @@ table[class=body] .article {
         if ($user->getMdp() == '') {
             throw new Exception("passwordvide", 1);
         }
-        $req = $bdd->prepare("SELECT mdp,mail,profil FROM user WHERE mail=:mail");
+        $req = $bdd->prepare("SELECT mdp,mail,profil,valide FROM user WHERE mail=:mail");
         $req->execute(array(
             'mail' => $user->getMail()
         ));
         $res = $req->fetch();
 
-        if (password_verify($user->getMdp(), $res['mdp'])) {
+        if (password_verify($user->getMdp(), $res['mdp']) && $res['valide']== 1) {
             $_SESSION['profil'] = $res['profil'];
             $_SESSION['mail'] = $res['mail'];
             $_SESSION['success']= "Bravo !! Vous êtes connecté";
             return $_SESSION['success'];
             header("Location: ../index.php");
         }
-        else {
+        else if(password_verify($user->getMdp(), $res['mdp']) && $res['valide']== 0){
+            $_SESSION['erreur']= "Error ton compte est en cours de validation";
+            return $_SESSION['erreur'];
+            header("Location: ../index.php");
+        }else {
             $_SESSION['erreur']= "Error pendant la connexion";
             return $_SESSION['erreur'];
+            header("Location: ../index.php");
         }
     }
 
