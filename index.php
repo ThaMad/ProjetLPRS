@@ -87,6 +87,16 @@ include('view/header/header.php');
 <?php
 include('view/footer/footer.php');
 ?>
+<?php if(isset($_SESSION['erreur']) && $_SESSION['erreur'] !=''){ ?>
+    <script type="text/javascript">
+        app.displayErrorNotification('<?php echo $_SESSION['erreur']; ?>');
+    </script>
+    <?php $_SESSION['erreur']=''; } elseif(isset($_SESSION['success']) && $_SESSION['success'] !=''){ ?>
+    <script type="text/javascript">
+        app.displaySuccessNotification('<?php echo $_SESSION['success']; ?>');
+    </script>
+    <?php $_SESSION['success'] = '';} ?>
+
 </body>
 </html>
    

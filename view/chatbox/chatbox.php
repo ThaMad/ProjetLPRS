@@ -38,7 +38,6 @@ $db = $Manager->connexion_bdd();
 
 </head>
 
-<body id="top">
 
 <?php
 include('../header/headerinview.php');
@@ -109,7 +108,7 @@ $user = $user->fetchall();
                     foreach ($user as $value){
 
                     ?>
-                        <form method="get" action="chatbox.php?idUser=<?php echo $_GET['destinataire'];?>">
+                        <form method="get" action="chatbox.php?idUser=<?= (isset($_GET['destinataire'])) ? $_GET['destinataire']  : ""?>">
 <button type="submit" class="btn btn-outline-secondary btn-lg btn-block">
                     <li>
                         <div>
