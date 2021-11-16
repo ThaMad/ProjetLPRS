@@ -49,7 +49,7 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
                 'mdp': $('#mdp').val()
             },
             success: function (response) {
-                app.displaySuccessNotification(response.success);
+                app.displaySuccessNotification(response);
                 $('#modal-inscription').modal('hide');
                 $('#modal-connexion').modal('show');
             },

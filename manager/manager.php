@@ -42,6 +42,8 @@ class Manager
         $res = $req->fetch();
         if ($res) {
             throw new Exception("Error utilisateur deja existant");
+            $_SESSION['erreur']= "Error utilisateur deja existant";
+            return $_SESSION['erreur'];
         }
         if ($user->getNom() != '' and $user->getPrenom() != '' and $user->getMail() != '' and $user->getProfil() != '' and $user->getMdp() != '') {
             $req = $bdd->prepare('INSERT INTO user(nom,prenom,mail,profil,mdp) values (:nom,:prenom,:mail,:profil,:mdp)');
@@ -236,10 +238,13 @@ table[class=body] .article {
 ';
                 $toMail = $user->getMail();
                 $a = $this->mail($subject, $body, $toMail);
+                $_SESSION['success']= "Bravo !! Vous êtes un nouveau utilisateur";
+                return $_SESSION['success'];
             }
         } else {
-            $msg['response'] = 'erreur dans l inscription';
-            return $msg;
+            $_SESSION['erreur'] = 'erreur dans l inscription';
+            return $_SESSION['erreur'];
+
         }
     }
 
@@ -265,12 +270,13 @@ table[class=body] .article {
         if (password_verify($user->getMdp(), $res['mdp'])) {
             $_SESSION['profil'] = $res['profil'];
             $_SESSION['mail'] = $res['mail'];
+            $_SESSION['success']= "Bravo !! Vous êtes connecté";
+            return $_SESSION['success'];
             header("Location: ../index.php");
-            return success;
         }
         else {
-            throw new Exception("Error pendant la connexion", 1);
-            return error;
+            $_SESSION['erreur']= "Error pendant la connexion";
+            return $_SESSION['erreur'];
         }
     }
 
@@ -286,15 +292,26 @@ table[class=body] .article {
     {
         session_start();
         $bdd = self::connexion_bdd();
-        $req = $bdd->prepare('UPDATE user SET nom=:nom,prenom=:prenom,mail = :mail,profil= :profil, classe=:classe WHERE mail=:mail');
+        $req = $bdd->prepare('UPDATE user SET nom=:nom,prenom=:prenom,mail =:mail,profil= :profil, classe=:classe WHERE mail=:session');
         $req->execute(array(
             'nom' => $user->getNom(),
             'prenom' => $user->getPrenom(),
             'mail' => $user->getMail(),
             'profil' => $user->getProfil(),
             'classe' => $user->getClasse(),
+            'session'=> $_SESSION['mail'],
         ));
-        header("Location: ../index.php");
+        $res = $req->fetch();
+        if($res) {
+            $_SESSION['success']= "Votre compte a été modifier";
+            return $_SESSION['success'];
+            header("Location: ../view/profil/profil.php");
+        } else{
+            $_SESSION['erreur']= "Votre compte n'a pas pu être modifier";
+            return $_SESSION['erreur'];
+            header("Location: ../view/profil/profil.php");
+
+        }
     }
 
     public function addevent($event)

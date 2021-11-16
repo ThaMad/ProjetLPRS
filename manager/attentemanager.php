@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 
 class attentemanager extends Manager
 {
@@ -61,26 +61,26 @@ class attentemanager extends Manager
         $bdd = parent::connexion_bdd();
         $delete_user = $bdd->prepare("DELETE FROM user WHERE idUser = ?");
         $delete_user = $delete_user->execute(array($idUser));
-        if ($delete_user!=null){
-        header('Location:/ProjetLPRS/view/admin/gestionuser.php');}
-        else{
-        echo 'error';}
+        if ($delete_user != null) {
+            header('Location:/ProjetLPRS/view/admin/gestionuser.php');
+        } else {
+            echo 'error';
+        }
     }
 
-    public function ajoutUser($user){
+    public function ajoutUser($user)
+    {
 
 
         $db = parent::connexion_bdd();
-        $testmail=$user->getMail();
+        $testmail = $user->getMail();
         $requestcheck = $db->prepare('SELECT mail FROM user WHERE mail = ?');
         $requestcheck->execute(array($testmail));
         $requestcheck = $requestcheck->fetch();
-        if ($requestcheck){
+        if ($requestcheck) {
 
             header("Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_mail_user=cQfTjWnZ");
-        }
-
-        else{
+        } else {
             $request = $db->prepare('INSERT INTO user (nom,prenom,mail,profil,classe,valide,mdp) VALUES (?, ?, LCASE(?), ?, ?, ?,?)');
             //$encrypteddefaultmdp = $this->encrypt($this->genererChaineAleatoire(), '1f4276388ad3214c873428dbef42243f');
             $request->execute(array(
@@ -280,67 +280,61 @@ table[class=body] .article {
                 $a=$this->mail($subject,$body,$iduser,$toMail);
 */
                 header("Location:/ProjetLPRS/view/Admin/gestionuser.php?new_user=Y7Z3i7aEm");
+            } else {
+                header("Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_new_user=K7YJ4pkp9");
             }
-            else{
-                header("Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_new_user=K7YJ4pkp9");}
         }
 
     }
 
-    public function activer($idUser){
+    public function activer($idUser)
+    {
         //on appelle la méthode connexion_bd depuis le parent de la classe boite_ideeManager
         $bdd = parent::connexion_bdd();
         //on prépare la requête SQL
         $activer = $bdd->prepare("UPDATE user SET valide='1' WHERE idUser = ?");
         //on déclare la variable pour supprie l'idees
         $activer = $activer->execute(array($idUser));
-        if($activer!=null){
+        if ($activer != null) {
             header('Location:/ProjetLPRS/view/Admin/gestionuser.php?user_valide=Y7Z3i7aEm');
-        }
-
-        else{
+        } else {
             header('Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_valide=K7YJ4pkp9');
         }
 
 
     }
 
-    public function desactiver($idUser){
+    public function desactiver($idUser)
+    {
         //on appelle la méthode connexion_bd depuis le parent de la classe boite_ideeManager
         $bdd = parent::connexion_bdd();
         //on prépare la requête SQL
         $desactiver = $bdd->prepare("UPDATE user SET valide='0' WHERE idUser = ?");
         //on déclare la variable pour supprie l'idees
         $desactiver = $desactiver->execute(array($idUser));
-        if($desactiver!=null){
+        if ($desactiver != null) {
             header('Location:/ProjetLPRS/view/Admin/gestionuser.php?user_desactive=Y7Z3i7aEm');
-        }
-
-        else{
+        } else {
             header('Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_desactive=K7YJ4pkp9');
         }
 
 
     }
 
-    public function newConversation($messages){
-
-
+    public function newConversation($messages)
+    {
         $db = parent::connexion_bdd();
-        $testuserExp=$messages->getUserExp();
-        $testuserDest=$messages->getUserDest();
-            $request = $db->prepare('INSERT INTO messages(userExp,userDest,message,date) VALUES (?,?,?,?)');
+        $request = $db->prepare('INSERT INTO messages(userExp,userDest,message,date) VALUES (?,?,?,?)');
 
-            $request->execute(array(
-                $messages->getUserExp(), $messages->getUserDest(),$messages->getMessage(),$messages->getDate()
-            ));
-            if (isset($request)) {
-
-                header("Location:/ProjetLPRS/view/chatbox/chatbox.php?new_conv=Y7Z3i7aEm");
-            }
-            else{
-                header("Location:/ProjetLPRS/view/chatbox/chatbox.php?errornewconv=K7YJ4pkp9");}
+        $request->execute(array(
+            $messages->getUserExp(), $messages->getUserDest(), $messages->getMessage(), $messages->getDate()
+        ));
+        if (isset($request)) {
+            header("Location:/ProjetLPRS/view/chatbox/chatbox.php?new_conv=Y7Z3i7aEm");
+        } else {
+            header("Location:/ProjetLPRS/view/chatbox/chatbox.php?errornewconv=K7YJ4pkp9");
         }
-
-
     }
+
+
+}
