@@ -1,4 +1,6 @@
 $("body").delegate("#modifdata", "click", function () {
+    $("#tableauEvent").prop('hidden', true);
+    $("#lienParent").prop('hidden', false);
     $('#nominfodata').removeAttr('disabled');
     $('#prenominfodata').prop('disabled',false);
     $('#mailinfodata').prop('disabled',false);
@@ -10,6 +12,8 @@ $("body").delegate("#modifdata", "click", function () {
 });
 
 $("body").delegate("#retour", "click", function () {
+    $("#lienParent").prop('hidden', true);
+    $("#tableauEvent").prop('hidden', false);
     $('#nominfodata').prop('disabled',true);
     $('#prenominfodata').prop('disabled',true);
     $('#mailinfodata').prop('disabled',true);
@@ -41,7 +45,7 @@ $("body").delegate("#save-modification", "click", function () {
         if ($('#etudiantinfodata').is(':checked')) {
             var profil = $('#etudiantinfodata').val();
         } else if ($('#parentinfodata').is(':checked')) {
-            profil = $('#parentrinfodata').val();
+            profil = $('#parentinfodata').val();
         }
         $.ajax({
             type: "post",
@@ -55,9 +59,11 @@ $("body").delegate("#save-modification", "click", function () {
             },
             success: function (response) {
                 app.displaySuccessNotification(response.success);
+                location.reload();
             },
             error: function (response) {
                 app.displayErrorNotification(response);
+                location.reload();
             },
         });
     }

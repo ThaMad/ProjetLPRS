@@ -56,6 +56,9 @@ foreach ($a
                         créer et
                         participer
                     </button>
+                        <button id="lienParent" class="btn btn-primary text-center"
+                           style="margin-top: 10px" hidden>Ajouter un lien
+                        </button>
                 </div>
                 <div class="col-md-2">
                     <button href="#" class="btn btn-primary text-center" style="margin-top: 10px;">Message</button>
@@ -112,6 +115,9 @@ foreach ($a
                 </div>
                 <div class="col-md-2"></div>
             </div>
+        </div>
+        <div>
+
         </div>
     </form>
     <?php
