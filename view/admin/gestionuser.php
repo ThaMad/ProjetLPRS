@@ -61,25 +61,6 @@ include('ajout_user_modal.php');
 
 
 
-<li class="nav-item"><a class="nav-link" href="about.php">Information</a></li>
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="dropdown05">
-        <li><a class="dropdown-item" href="../formation/lycee.php">Parcours Lycée</a></li>
-        <li><a class="dropdown-item" href="../formation/bts.php">Parcours BTS</a></li>
-    </ul>
-</li>
-<li class="nav-item"><a class="nav-link" href="../profil/profil.php">Profil</a></li>
-<li class="nav-item"><a class="nav-link" href="../event/event.php">Evenement</a></li>
-<li class="nav-item"><a class="nav-link" href="../contact/contact.php">Contact</a></li>
-</ul>
-</div>
-</div>
-</nav>
-</header>
-
-
-
 
 <section class="page-title bg-1">
     <div class="overlay"></div>

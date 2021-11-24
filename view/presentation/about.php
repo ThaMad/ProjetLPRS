@@ -5,7 +5,7 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+  <title> Lycée Robert Schuman - A propos</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -28,22 +28,6 @@
 <?php
 include("../header/headerinview.php");
 ?>
-<li class="nav-item"><a class="nav-link" href="about.php">Information</a></li>
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown"
-       aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="dropdown05">
-        <li><a class="dropdown-item" href="../formation/lycee.php">Parcours Lycée</a></li>
-        <li><a class="dropdown-item" href="../formation/bts.php">Parcours BTS</a></li>
-    </ul>
-</li>
-<li class="nav-item"><a class="nav-link" href="../event/event.php">Evenement</a></li>
-<li class="nav-item"><a class="nav-link" href="../contact/contact.php">Contact</a></li>
-</ul>
-</div>
-</div>
-</nav>
-</header>
 	
 
 
@@ -53,14 +37,9 @@ include("../header/headerinview.php");
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <span class="text-white">About Us</span>
-          <h1 class="text-capitalize mb-5 text-lg">About Us</h1>
+          <span class="text-white">Etablissement</span>
+          <h1 class="text-capitalize mb-5 text-lg">A propos </h1>
 
-          <!-- <ul class="list-inline breadcumb-nav">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">About Us</a></li>
-          </ul> -->
         </div>
       </div>
     </div>
@@ -71,11 +50,13 @@ include("../header/headerinview.php");
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">
-				<h2 class="title-color">Personal care for your healthy living</h2>
+				<h2 class="title-color">Lycée & UFA Robert Schuman</h2>
 			</div>
 			<div class="col-lg-8">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, quod laborum alias. Vitae dolorum, officia sit! Saepe ullam facere at, consequatur incidunt, quae esse, quis ut reprehenderit dignissimos, libero delectus.</p>
-				<img src="../../images/about/sign.png" alt="" class="img-fluid">
+				<p>
+
+                    L’établissement a été créé en 1920 par quelques ingénieurs centraliens chrétiens qui fondèrent une association pour alphabétiser des jeunes gens en difficultés : c’était la naissance de « l’Entraide Éducative ». Plus tard, s’ajouteront différentes formations professionnelles pour devenir le Lycée privé Robert Schuman (Sous contrat d’association avec l’État).</p>
+				<br> <img src="../../images/about/sign.jpg" alt="" class="img-fluid" style="height: 130px">
 			</div>
 		</div>
 	</div>
