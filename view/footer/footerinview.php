@@ -86,4 +86,5 @@ Essential Scripts
 include('../connexion/connexion-modal.php');
 include('../connexion/inscription-modal.php');
 include('../connexion/mdp-oublier-modal.php');
+
 ?>

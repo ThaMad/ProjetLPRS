@@ -19,6 +19,7 @@ $user= $bdd->prepare("SELECT idLien, nom, prenom, profil, libelle FROM lien INNE
 $user->execute(array());
 $user = $user->fetchall();
 
+
 foreach ($a
 
          as $value){
@@ -53,8 +54,9 @@ foreach ($a
                 if (isset($_SESSION["profil"]) && $_SESSION["profil"] == 'parent') {
                     ?>
                     <div class="col-md-3">
-                        <button id="lienParent" class="btn btn-primary text-center"
-                                style="margin-top: 10px">Ajouter un lien
+                        <button class="btn btn-primary text-center" data-toggle="modal" data-target="#add_link"
+                                data-whatever="@getbootstrap" id="add_link" style="margin-top: 10px"><i class="fa fa-plus"></i> Ajouter
+                            un lien
                         </button>
                     </div>
                 <?php } ?>
@@ -137,7 +139,7 @@ foreach ($a
                                         <td><?php echo $value['libelle']; ?></td>
                                         <td>
                                             <a class="d-block mx-auto btn btn-danger text-white"
-                                               href="../../traitement/delete_lien.php?idUser=<?php echo $value['idLien']; ?>"><i
+                                               href="../../traitement/delete_lien.php?idLien=<?php echo $value['idLien']; ?>"><i
                                                         class="fas fa-times">
                                                     Supprimer</i></a>
                                         </td>
@@ -147,20 +149,13 @@ foreach ($a
                             </table>
 
                         </div>
-                        <div style="padding-left: 100px;">
-                            <div class="btnEvent">
-                                <button class="btn btn-info add-new" data-toggle="modal" data-target="#add_user"
-                                        data-whatever="@getbootstrap" id="add_user"><i class="fa fa-plus"></i> Ajouter
-                                    un lien
-                                </button>
-                            </div>
-                        </div>
                     </center>
                 </div>
         </div>
 </section>
 </div>
 </form>
+
 <?php
 $mail = $_SESSION['mail'];
 $req = $bdd->prepare('SELECT * FROM creation INNER JOIN evenement ON evenement.idEvent = creation.event INNER JOIN user ON creation.user= user.idUser WHERE mail = :mail');
