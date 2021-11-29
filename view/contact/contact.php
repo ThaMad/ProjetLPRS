@@ -5,7 +5,7 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+  <title>Lycée & UFA Robert Schuman - Contact</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -28,21 +28,6 @@
 <?php
 include('../header/headerinview.php');
 ?>
-<li class="nav-item"><a class="nav-link" href="../presentation/about.php">Information</a></li>
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="../formation/lycee.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="dropdown05">
-        <li><a class="dropdown-item" href="../formation/lycee.php">Parcours Lycée</a></li>
-        <li><a class="dropdown-item" href="../formation/bts.php">Parcours BTS</a></li>
-    </ul>
-</li>
-<li class="nav-item"><a class="nav-link" href="../event/event.php">Evenement</a></li>
-<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-</ul>
-</div>
-</div>
-</nav>
-</header>
 	
 
 
@@ -52,14 +37,8 @@ include('../header/headerinview.php');
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <span class="text-white">Contact Us</span>
-          <h1 class="text-capitalize mb-5 text-lg">Get in Touch</h1>
-
-          <!-- <ul class="list-inline breadcumb-nav">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">Contact Us</a></li>
-          </ul> -->
+          <span class="text-white">Contact</span>
+          <h1 class="text-capitalize mb-5 text-lg">Contactez-nous</h1>
         </div>
       </div>
     </div>
@@ -73,22 +52,28 @@ include('../header/headerinview.php');
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-live-support"></i>
-                    <h5>Call Us</h5>
-                     +823-4565-13456
+                    <h5>Appelez nous</h5>
+                    <br>
+                    (Tel) 01 48 37 74 26 <br>
+                    (Fax) 01 48 35 48 14
+                    <br> <br><br>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-support-faq"></i>
-                    <h5>Email Us</h5>
-                     contact@mail.com
+                    <h5>Envoyez nous un email</h5>
+                    <br>
+                    administration@lyceerobertschuman.com
+                    <br> <br> <br> <br>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-6 col-md-6">
                 <div class="contact-block mb-4 mb-lg-0">
                     <i class="icofont-location-pin"></i>
-                    <h5>Location</h5>
-                     North Main Street,Brooklyn Australia
+                    <h5>Accès</h5>
+                    <br>
+                    RER B (Le Bourget) puis Bus 133 (Albert Chardavoine) ou RER B (La Courneuve) puis Bus 249 (Albert Chardavoine) ou Tramway T11: arrêt Dugny-La Courneuve
                 </div>
             </div>
         </div>
@@ -100,65 +85,19 @@ include('../header/headerinview.php');
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-title text-center">
-                    <h2 class="text-md mb-2">Contact us</h2>
+                    <h2 class="text-md mb-2">Nous rendre visite</h2>
                     <div class="divider mx-auto my-4"></div>
-                    <p class="mb-5">Laboriosam exercitationem molestias beatae eos pariatur, similique, excepturi mollitia sit perferendis maiores ratione aliquam?</p>
+                    <p class="mb-5">Lycée Technique Robert Schuman - 5 avenue du Général de Gaulle - 93440 Dugny</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <form id="contact-form" class="contact__form " method="post" action="../../mail.php">
-                 <!-- form message -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                                Your message was sent successfully.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="name" id="name" type="text" class="form-control" placeholder="Your Full Name" >
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="email" id="email" type="email" class="form-control" placeholder="Your Email Address">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="subject" id="subject" type="text" class="form-control" placeholder="Your Query Topic">
-                            </div>
-                        </div>
-                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <input name="phone" id="phone" type="text" class="form-control" placeholder="Your Phone Number">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group-2 mb-4">
-                        <textarea name="message" id="message" class="form-control" rows="8" placeholder="Your Message"></textarea>
-                    </div>
-
-                    <div class="text-center">
-                        <input class="btn btn-main btn-round-full" name="submit" type="submit" value="Send Messege"></input>
-                    </div>
-                </form>
-            </div>
-        </div>
+<center>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10480.879211230784!2d2.415391!3d48.9493004!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xa35833adc1739e08!2sLyc%C3%A9e%20technique%20Robert%20Schuman!5e0!3m2!1sfr!2sfr!4v1637662936093!5m2!1sfr!2sfr" width="900" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</center>
     </div>
 </section>
 
 
- <div class="google-map ">
-    <div id="map"></div>
-</div>
 <?php
 include('../footer/footerinview.php');
 ?>
