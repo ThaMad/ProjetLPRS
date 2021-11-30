@@ -1,64 +1,116 @@
-<!-- DATA TABLE -->
-<section class="section service-2">
-    <div class="container">
+<?php
 
-        <center>
-        <div class="table-responsive" style="width:100%;">
-            <table id="table" class="display dt-responsive" style="width:100%;">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Classe</th>
-                    <th>E-mail</th>
-                    <th>Profil</th>
-                    <th>Statut</th>
+require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
+//On déclare la variables $toolsManager de type toolsManager
+$Manager = new Manager();
+//On déclare la variable $db de type toolsManager en appelant@ la méthode connexion_bd
+$db = $Manager->connexion_bdd();
 
-                    <th>Supprimer</th>
-                    <th>Restrictions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach ($user as $value){
-                    ?>
-                    <tr>
-                        <td><?php echo $value['idUser'];?></td>
-                        <td id><?php echo $value['nom'];?></td>
-                        <td><?php echo $value['prenom'];?></td>
-                        <td><?php echo $value['libelle'];?></td>
-                        <td><?php echo $value['mail'];?></td>
-                        <td><?php echo $value['profil'];?></td>
-                        <td><?php if($value['valide']==1){
-                            echo 'Validé';
-                            }
-                            else if($value['valide']==0){
-                                echo 'Non validé';
-                            }?></td>
-                        <td>
-                            <a class="d-block mx-auto btn btn-danger text-white" href="../../traitement/Admin/delete_user.php?idUser=<?php echo $value['idUser'];?>"><i class="fas fa-times" onclick="DeleteUser(this.id)"> Supprimer</i></a>
-                        </td>
-                        <td>
-                            <?php
-                            if($value['valide']=="0"){?>
-                                <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/admin/activer.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-unlock"></i> Activer </a>
-                            <?php }
-                            if ($value['valide']=="1"){?>
-                                <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/admin/desactiver.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-ban"></i> Desactiver </a>
-                            <?php }?>
-                            </a>
-                        </td>
-                    </tr>
-                <?php } ?>
-                </tbody>
-            </table>
+$mail = $_SESSION['mail'];
 
+$myid= $db->prepare('SELECT idUser FROM user WHERE mail = ?');
+$myid->execute(array($mail));
+$myid = $myid->fetch();
+$myid = $myid['idUser'];
+
+$user = $db->prepare("SELECT idUser, nom, prenom, libelle FROM classe INNER JOIN user ON classe.idClasse = user.classe INNER JOIN lien ON user.idUser = lien.parent WHERE profil= 'eleve' AND parent !=$myid");
+$user->execute(array());
+$user = $user->fetchall();
+
+
+include('../header/headerinview.php');
+?>
+    <!-- DATA TABLE -->
+    <section class="section service-2">
+        <div class="container">
+            <h2 style="text-align: center">Liens</h2>
+            <center>
+                <div class="table-responsive" style="width:100%;">
+                    <table id="table" class="display dt-responsive" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>Lien</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Classe</th>
+                            <th>Supprimer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($user as $value) {
+                            ?>
+                            <tr>
+                                <td><input type="checkbox" name="idUser" value=<?php echo $value['idUser']; ?>></td>
+                                <td><?php echo $value['nom']; ?></td>
+                                <td><?php echo $value['prenom']; ?></td>
+                                <td><?php echo $value['libelle']; ?></td>
+                                <td>
+                                    <a class="d-block mx-auto btn btn-danger text-white"
+                                       href="../../traitement/delete_lien.php?idLien=<?php echo $value['idLien']; ?>"><i
+                                                class="fas fa-times">
+                                            Supprimer</i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
+
+                </div>
+            </center>
         </div>
-            <div style="padding-left: 100px;" >
-                <div class="btnEvent"><button class="btn btn-info add-new" data-toggle="modal" data-target="#add_user" data-whatever="@getbootstrap" id="add_user"><i class="fa fa-plus"></i> Ajouter un utilisateur</button></div>
-            </div>
-        </center>
+        </div>
+    </section>
     </div>
-    </div>
-</section>
+    </form>
+
+<?php
+include('../footer/footerinview.php');
+?>
+
+<script>
+
+    $(document).ready( function () {
+        $('#table').DataTable({
+            "sScrollY": "300px",
+            "bScrollCollapse": true,
+            "bPaginate": false,
+            "bJQueryUI": true,
+            paging : false,
+            responsive: true,
+            "language": {
+                "sProcessing":     "Traitement en cours...",
+                "sSearch":         "Rechercher&nbsp;:",
+                "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
+                "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                "sInfoPostFix":    "",
+                "sLoadingRecords": "Chargement en cours...",
+                "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+                "oPaginate": {
+                    "sFirst":      "Premier",
+                    "sPrevious":   "Pr&eacute;c&eacute;dent",
+                    "sNext":       "Suivant",
+                    "sLast":       "Dernier"
+                },
+                "oAria": {
+                    "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                    "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+                }
+            },
+            "aoColumnDefs": [
+                { "sWidth": "10%", "aTargets": [ -1 ] }
+            ]
+        });
+
+        $("#table").css("width","100%")
+    } );
+
+
+</script>
+
+</body>
+</html>
+
