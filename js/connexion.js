@@ -13,7 +13,7 @@ $("body").delegate("#mdp-oublier", "click", function () {
 
 $("body").delegate("#inscription-envoi", "click", function (e) {
     e.preventDefault();
-    if ($('#nom').val() == "" || $('#prenom').val() == "" || $('#mail_inscript').val() == "" || $('#mdp').val() == "" || (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked'))) {
+    if ($('#nom').val() == "" || $('#prenom').val() == "" || $('#mail_inscript').val() == "" || $('#mdp').val() == "" || (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked') && !$('#profradio').is(':checked'))) {
         if ($('#nom').val() == "") {
             app.displayErrorNotification('Champ nom vide ou incorrect');
         }
@@ -38,6 +38,7 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
         } else if ($('#profradio').is(':checked')) {
             profil = $('#profradio').val();
         }
+        console.log(profil);
         $.ajax({
             type: "post",
             url: action,

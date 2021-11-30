@@ -489,10 +489,10 @@ table[class=body] .article {
             'libelle' => $event,
             'mail' => $mail,
         ));
-        $_SESSION['success'] = 'vous participez à l évenement';
+        $_SESSION['success'] = 'vous ne participez plus à l évenement';
         header("Location: ../view/event/event.php");
     }
-    
+
     function mail($subject, $body, $toMail)
     {
 
