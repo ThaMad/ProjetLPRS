@@ -65,7 +65,7 @@
                         <div class="col-sm-3 ml-auto">
                             <div class="custom-control">
                                 <input type="radio" id="profradio" name="customRadioInline1" value="prof">
-                                <label for="customRadioInline2">Professeur</label>
+                                <label for="customRadioInline3">Professeur</label>
                             </div>
                         </div>
                     </div>

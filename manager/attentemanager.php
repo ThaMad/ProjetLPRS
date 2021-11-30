@@ -337,4 +337,40 @@ table[class=body] .article {
     }
 
 
+    public function ajoutProjet($projeted)
+    {
+
+
+        $db = parent::connexion_bdd();
+            $request = $db->prepare('INSERT INTO projet_ed (libelle,cours,classe,prof,date) VALUES (?,?,?,?,?)');
+            $res= $request->execute(array(
+                $projeted->getLibelle(),
+                $projeted->getCours(),
+                (int)$projeted->getClasse(),
+                (int)$projeted->getProf(),
+                $projeted->getDate(),
+            ));
+
+            if ($res== true) {
+                header("Location:/ProjetLPRS/view/projet_educatif/projets.php?new_projet=Y7Z3i7aEm");
+            } else {
+                header("Location:/ProjetLPRS/view/projet_educatif/projets.php?erreur_new_projet=K7YJ4pkp9");
+            }
+        }
+
+
+
+    public function suppressionProjet($idProjet)
+    {
+        $bdd = parent::connexion_bdd();
+        $delete_projet = $bdd->prepare("DELETE FROM projet_ed WHERE idProjet = ?");
+        $delete_projet = $delete_projet->execute(array($idProjet));
+        if ($delete_projet != null) {
+            header('Location:/ProjetLPRS/view/projet_educatif/projets.php?erreur_delete_projet=K7YJ4pkp9');
+        } else {
+            echo 'error';
+        }
+    }
+
+
 }
