@@ -10,12 +10,12 @@ $req = $bdd->prepare('SELECT nom,prenom,profil,mail,classe FROM user WHERE mail 
 $req->execute(array('mail' => $mail));
 $a = $req->fetchall();
 
-$myid= $bdd->prepare('SELECT idUser FROM user WHERE mail = ?');
+$myid = $bdd->prepare('SELECT idUser FROM user WHERE mail = ?');
 $myid->execute(array($mail));
 $myid = $myid->fetch();
 $myid = $myid['idUser'];
 
-$user= $bdd->prepare("SELECT idLien, nom, prenom, profil, libelle FROM lien INNER JOIN user ON lien.parent = user.idUser INNER JOIN classe ON user.classe = classe.idClasse WHERE (eleve= $myid) OR (parent= $myid) AND (idUser != $myid)");
+$user = $bdd->prepare("SELECT idLien, nom, prenom, profil, libelle FROM lien INNER JOIN user ON lien.parent = user.idUser INNER JOIN classe ON user.classe = classe.idClasse WHERE (eleve= $myid) OR (parent= $myid) AND (idUser != $myid)");
 $user->execute(array());
 $user = $user->fetchall();
 
@@ -55,7 +55,8 @@ foreach ($a
                     ?>
                     <div class="col-md-3">
                         <button class="btn btn-primary text-center" data-toggle="modal" data-target="#add_link"
-                                data-whatever="@getbootstrap" id="add_link" style="margin-top: 10px"><i class="fa fa-plus"></i> Ajouter
+                                data-whatever="@getbootstrap" id="add_link" style="margin-top: 10px"><i
+                                    class="fa fa-plus"></i> Ajouter
                             un lien
                         </button>
                     </div>
@@ -113,112 +114,110 @@ foreach ($a
                 <div class="col-md-2"></div>
             </div>
         </div>
-        <div>
-            <!-- DATA TABLE -->
-            <section class="section service-2">
-                <div class="container">
-                    <h2 style="text-align: center">Liens</h2>
-                    <center>
-                        <div class="table-responsive" style="width:100%;">
-                            <table id="tableLien" class="display dt-responsive" style="width:100%;">
-                                <thead>
-                                <tr>
-                                    <th>Lien</th>
-                                    <th>Nom</th>
-                                    <th>Prenom</th>
-                                    <th>Classe</th>
-                                    <th>Supprimer</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                foreach ($user as $value) {
-                                    ?>
-                                    <tr>
-                                        <td></td>
-                                        <td><?php echo $value['nom']; ?></td>
-                                        <td><?php echo $value['prenom']; ?></td>
-                                        <td><?php echo $value['libelle']; ?></td>
-                                        <td>
-                                            <a class="d-block mx-auto btn btn-danger text-white"
-                                               href="../../traitement/delete_lien.php?idLien=<?php echo $value['idLien']; ?>"><i
-                                                        class="fas fa-times">
-                                                    Supprimer</i></a>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
+        </br>
+        <!-- DATA TABLE -->
+        <div class="container" id="sectionLien">
+            <h2 style="text-align: center">Liens</h2>
+            <center>
+                <div class="table-responsive" style="width:100%;">
+                    <table id="tableLien" class="display dt-responsive" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>Lien</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Classe</th>
+                            <th>Supprimer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($user as $value) {
+                            ?>
+                            <tr>
+                                <td></td>
+                                <td><?php echo $value['nom']; ?></td>
+                                <td><?php echo $value['prenom']; ?></td>
+                                <td><?php echo $value['libelle']; ?></td>
+                                <td>
+                                    <a class="d-block mx-auto btn btn-danger text-white"
+                                       href="../../traitement/delete_lien.php?idLien=<?php echo $value['idLien']; ?>"><i
+                                                class="fas fa-times">
+                                            Supprimer</i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
 
-                        </div>
-                    </center>
                 </div>
+            </center>
         </div>
-</section>
-</div>
-</form>
+        </div>
+        </div>
+    </form>
 
-<?php
-$mail = $_SESSION['mail'];
-$req = $bdd->prepare('SELECT * FROM creation INNER JOIN evenement ON evenement.idEvent = creation.event INNER JOIN user ON creation.user= user.idUser WHERE mail = :mail');
-$req->execute(array('mail' => $mail));
-$a = $req->fetchall();
-?>
-<div class="container" id="containerTableau" hidden>
-    <div class="table-responsive" style="width:100%;">
-        <table id="table" class="display dt-responsive" style="width:100%;">
-            <thead>
-            <tr>
-                <th class="text-center">ID</th>
-                <th class="text-center">Libelle</th>
-                <th class="text-center">Date Debut</th>
-                <th class="text-center">Date Fin</th>
-                <th class="text-center">Createur</th>
-                <th class="text-center">Organisateur</th>
-                <th class="text-center">Ajout organisateur</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            foreach ($a as $value) {
-                date_default_timezone_set('Europe/Paris');
-                $curDateTime = date("Y-m-d");
-                $myDate = $value['dateDebut'];
-                ?>
+    <?php
+    $mail = $_SESSION['mail'];
+    $req = $bdd->prepare('SELECT * FROM creation INNER JOIN evenement ON evenement.idEvent = creation.event INNER JOIN user ON creation.user= user.idUser WHERE mail = :mail');
+    $req->execute(array('mail' => $mail));
+    $a = $req->fetchall();
+    ?>
+    <div class="container" id="containerTableau" hidden>
+        <h2 style="text-align: center">Evenements</h2>
+        <div class="table-responsive" style="width:100%;">
+            <table id="table" class="display dt-responsive" style="width:100%;">
+                <thead>
                 <tr>
-                    <td class="text-center"><?php echo $value['idEvent']; ?></td>
-                    <td class="text-center"><?php echo $value['libelle']; ?></td>
-                    <td class="text-center"><?php echo $value['dateDebut']; ?></td>
-                    <td class="text-center"><?php echo $value['dateFin']; ?></td>
-                    <td class="text-center"><?php if ($value['creation'] == '0') {
-                            echo 'non';
-                        } else {
-                            echo 'oui';
-                        } ?></td>
-                    <td class="text-center"><?php if ($value['organisateur'] == '0') {
-                            echo 'non';
-                        } else {
-                            echo 'oui';
-                        } ?></td>
-                    <?php if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
-                        <td class="text-center">
-                            <button style="background:#000;" class="d-block mx-auto btn btn-answer text-white"
-                                    id="addOrga" value="<?php echo $value['libelle']; ?>">
-                                <i class="fas fa-unlock"></i> Ajouter Organisateur
-                            </button>
-                        </td>
-                    <?php } else if ($value['creation'] == '1' && $myDate <= $curDateTime) { ?>
-                        <td class="text-center">Evenement fini</td>
-                    <?php } else { ?>
-                        <td class="text-center">Tu n'es pas le créateur</td>
-                    <?php } ?>
+                    <th>ID</th>
+                    <th>Libelle</th>
+                    <th>Date Debut</th>
+                    <th>Date Fin</th>
+                    <th>Createur</th>
+                    <th>Organisateur</th>
+                    <th>Ajout organisateur</th>
                 </tr>
-
-            <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <?php
+                foreach ($a as $value) {
+                    date_default_timezone_set('Europe/Paris');
+                    $curDateTime = date("Y-m-d");
+                    $myDate = $value['dateDebut'];
+                    ?>
+                    <tr>
+                        <td class="text-center"><?php echo $value['idEvent']; ?></td>
+                        <td class="text-center"><?php echo $value['libelle']; ?></td>
+                        <td class="text-center"><?php echo $value['dateDebut']; ?></td>
+                        <td class="text-center"><?php echo $value['dateFin']; ?></td>
+                        <td class="text-center"><?php if ($value['creation'] == '0') {
+                                echo 'non';
+                            } else {
+                                echo 'oui';
+                            } ?></td>
+                        <td class="text-center"><?php if ($value['organisateur'] == '0') {
+                                echo 'non';
+                            } else {
+                                echo 'oui';
+                            } ?></td>
+                        <?php if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
+                            <td class="text-center">
+                                <button style="background:#000;" class="d-block mx-auto btn btn-answer text-white"
+                                        id="addOrga" value="<?php echo $value['libelle']; ?>">
+                                    <i class="fas fa-unlock"></i> Ajouter Organisateur
+                                </button>
+                            </td>
+                        <?php } else if ($value['creation'] == '1' && $myDate <= $curDateTime) { ?>
+                            <td class="text-center">Evenement fini</td>
+                        <?php } else { ?>
+                            <td class="text-center">Tu n'es pas le créateur</td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 </section>
 <?php
 include('../page-attente.php');
@@ -237,82 +236,81 @@ if (isset($_SESSION['erreur']) && $_SESSION['erreur'] != '') { ?>
 } ?>
 </body>
 <script>
-
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#table').DataTable({
             "sScrollY": "300px",
             "bScrollCollapse": true,
             "bPaginate": false,
             "bJQueryUI": true,
-            paging : false,
+            paging: false,
             responsive: true,
             "language": {
-                "sProcessing":     "Traitement en cours...",
-                "sSearch":         "Rechercher&nbsp;:",
-                "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
-                "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-                "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-                "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-                "sInfoPostFix":    "",
+                "sProcessing": "Traitement en cours...",
+                "sSearch": "Rechercher&nbsp;:",
+                "sLengthMenu": "Afficher _MENU_ &eacute;l&eacute;ments",
+                "sInfo": "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                "sInfoEmpty": "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                "sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                "sInfoPostFix": "",
                 "sLoadingRecords": "Chargement en cours...",
-                "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-                "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+                "sZeroRecords": "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                "sEmptyTable": "Aucune donn&eacute;e disponible dans le tableau",
                 "oPaginate": {
-                    "sFirst":      "Premier",
-                    "sPrevious":   "Pr&eacute;c&eacute;dent",
-                    "sNext":       "Suivant",
-                    "sLast":       "Dernier"
+                    "sFirst": "Premier",
+                    "sPrevious": "Pr&eacute;c&eacute;dent",
+                    "sNext": "Suivant",
+                    "sLast": "Dernier"
                 },
                 "oAria": {
-                    "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                    "sSortAscending": ": activer pour trier la colonne par ordre croissant",
                     "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
                 }
             },
             "aoColumnDefs": [
-                { "sWidth": "10%", "aTargets": [ -1 ] }
+                {"sWidth": "10%", "aTargets": [-1]}
             ]
         });
 
-        $("#table").css("width","100%")
-    } );
+        $("#table").css("width", "100%")
+    });
 
-    $(document).ready( function () {
+    $(document).ready(function () {
         $('#tableLien').DataTable({
             "sScrollY": "300px",
             "bScrollCollapse": true,
             "bPaginate": false,
             "bJQueryUI": true,
-            paging : false,
+            paging: false,
             responsive: true,
             "language": {
-                "sProcessing":     "Traitement en cours...",
-                "sSearch":         "Rechercher&nbsp;:",
-                "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
-                "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-                "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-                "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-                "sInfoPostFix":    "",
+                "sProcessing": "Traitement en cours...",
+                "sSearch": "Rechercher&nbsp;:",
+                "sLengthMenu": "Afficher _MENU_ &eacute;l&eacute;ments",
+                "sInfo": "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                "sInfoEmpty": "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                "sInfoFiltered": "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                "sInfoPostFix": "",
                 "sLoadingRecords": "Chargement en cours...",
-                "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-                "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+                "sZeroRecords": "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                "sEmptyTable": "Aucune donn&eacute;e disponible dans le tableau",
                 "oPaginate": {
-                    "sFirst":      "Premier",
-                    "sPrevious":   "Pr&eacute;c&eacute;dent",
-                    "sNext":       "Suivant",
-                    "sLast":       "Dernier"
+                    "sFirst": "Premier",
+                    "sPrevious": "Pr&eacute;c&eacute;dent",
+                    "sNext": "Suivant",
+                    "sLast": "Dernier"
                 },
                 "oAria": {
-                    "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                    "sSortAscending": ": activer pour trier la colonne par ordre croissant",
                     "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
                 }
             },
             "aoColumnDefs": [
-                { "sWidth": "10%", "aTargets": [ -1 ] }
+                {"sWidth": "10%", "aTargets": [-1]}
             ]
         });
 
-        $("#tableLien").css("width","100%")
-    } );
+        $("#tableLien").css("width", "100%")
+    });
 
 
 </script>
