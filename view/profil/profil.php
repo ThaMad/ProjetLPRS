@@ -120,9 +120,10 @@ foreach ($a
                     <h2 style="text-align: center">Liens</h2>
                     <center>
                         <div class="table-responsive" style="width:100%;">
-                            <table id="table" class="display dt-responsive" style="width:100%;">
+                            <table id="tableLien" class="display dt-responsive" style="width:100%;">
                                 <thead>
                                 <tr>
+                                    <th>Lien</th>
                                     <th>Nom</th>
                                     <th>Prenom</th>
                                     <th>Classe</th>
@@ -134,6 +135,7 @@ foreach ($a
                                 foreach ($user as $value) {
                                     ?>
                                     <tr>
+                                        <td></td>
                                         <td><?php echo $value['nom']; ?></td>
                                         <td><?php echo $value['prenom']; ?></td>
                                         <td><?php echo $value['libelle']; ?></td>
@@ -272,6 +274,44 @@ if (isset($_SESSION['erreur']) && $_SESSION['erreur'] != '') { ?>
         });
 
         $("#table").css("width","100%")
+    } );
+
+    $(document).ready( function () {
+        $('#tableLien').DataTable({
+            "sScrollY": "300px",
+            "bScrollCollapse": true,
+            "bPaginate": false,
+            "bJQueryUI": true,
+            paging : false,
+            responsive: true,
+            "language": {
+                "sProcessing":     "Traitement en cours...",
+                "sSearch":         "Rechercher&nbsp;:",
+                "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
+                "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                "sInfoPostFix":    "",
+                "sLoadingRecords": "Chargement en cours...",
+                "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
+                "oPaginate": {
+                    "sFirst":      "Premier",
+                    "sPrevious":   "Pr&eacute;c&eacute;dent",
+                    "sNext":       "Suivant",
+                    "sLast":       "Dernier"
+                },
+                "oAria": {
+                    "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
+                    "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
+                }
+            },
+            "aoColumnDefs": [
+                { "sWidth": "10%", "aTargets": [ -1 ] }
+            ]
+        });
+
+        $("#tableLien").css("width","100%")
     } );
 
 
