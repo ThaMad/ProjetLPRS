@@ -42,7 +42,7 @@ class Manager
         $res = $req->fetch();
         if ($res) {
             throw new Exception("Error utilisateur deja existant");
-            $_SESSION['erreur']= "Error utilisateur deja existant";
+            $_SESSION['erreur'] = "Error utilisateur deja existant";
             return $_SESSION['erreur'];
         }
         if ($user->getNom() != '' and $user->getPrenom() != '' and $user->getMail() != '' and $user->getProfil() != '' and $user->getMdp() != '') {
@@ -238,7 +238,7 @@ table[class=body] .article {
 ';
                 $toMail = $user->getMail();
                 $a = $this->mail($subject, $body, $toMail);
-                $_SESSION['success']= "Bravo !! Vous êtes un nouveau utilisateur";
+                $_SESSION['success'] = "Bravo !! Vous êtes un nouveau utilisateur";
                 return $_SESSION['success'];
             }
         } else {
@@ -267,19 +267,18 @@ table[class=body] .article {
         ));
         $res = $req->fetch();
 
-        if (password_verify($user->getMdp(), $res['mdp']) && $res['valide']== 1) {
+        if (password_verify($user->getMdp(), $res['mdp']) && $res['valide'] == 1) {
             $_SESSION['profil'] = $res['profil'];
             $_SESSION['mail'] = $res['mail'];
-            $_SESSION['success']= "Bravo !! Vous êtes connecté";
+            $_SESSION['success'] = "Bravo !! Vous êtes connecté";
             return $_SESSION['success'];
             header("Location: ../index.php");
-        }
-        else if(password_verify($user->getMdp(), $res['mdp']) && $res['valide']== 0){
-            $_SESSION['erreur']= "Error ton compte est en cours de validation";
+        } else if (password_verify($user->getMdp(), $res['mdp']) && $res['valide'] == 0) {
+            $_SESSION['erreur'] = "Error ton compte est en cours de validation";
             return $_SESSION['erreur'];
             header("Location: ../index.php");
-        }else {
-            $_SESSION['erreur']= "Error pendant la connexion";
+        } else {
+            $_SESSION['erreur'] = "Error pendant la connexion";
             return $_SESSION['erreur'];
             header("Location: ../index.php");
         }
@@ -304,15 +303,15 @@ table[class=body] .article {
             'mail' => $user->getMail(),
             'profil' => $user->getProfil(),
             'classe' => $user->getClasse(),
-            'session'=> $_SESSION['mail'],
+            'session' => $_SESSION['mail'],
         ));
 
-        if($req) {
-            $_SESSION['success']= "Votre compte a été modifier";
+        if ($req) {
+            $_SESSION['success'] = "Votre compte a été modifier";
             return $_SESSION['success'];
             header("Location: ../view/profil/profil.php");
-        } else{
-            $_SESSION['erreur']= "Votre compte n'a pas pu être modifier";
+        } else {
+            $_SESSION['erreur'] = "Votre compte n'a pas pu être modifier";
             return $_SESSION['erreur'];
             header("Location: ../view/profil/profil.php");
         }
@@ -321,7 +320,7 @@ table[class=body] .article {
     public function addevent($event)
     {
         session_start();
-        if($_SESSION['profil']== 'prof'){
+        if ($_SESSION['profil'] == 'prof') {
             $valide = 1;
         } else {
             $valide = 0;
@@ -333,7 +332,7 @@ table[class=body] .article {
         ));
         $res = $req->fetch();
         if ($res) {
-            $_SESSION['erreur']= "Error evenement deja existant";
+            $_SESSION['erreur'] = "Error evenement deja existant";
             header("Location: ../view/event/event.php");
         } elseif ($event->getLibelle() != '' and $event->getDateDebut() != '' and $event->getDateFin() != '' and $event->getDescription() != '' and $event->getLieu() != '') {
             $req = $bdd->prepare('INSERT INTO evenement(libelle,dateDebut,dateFin,description,image,valide,lieu) values (:libelle,:dateDebut,:dateFin,:description,:image,:valide,:lieu)');
@@ -346,7 +345,7 @@ table[class=body] .article {
                 'valide' => $valide,
                 'lieu' => $event->getLieu(),
             ));
-            if(isset($_SESSION['mail'])){
+            if (isset($_SESSION['mail'])) {
                 $mail = $_SESSION['mail'];
             }
             $request = $bdd->prepare('SELECT * from user where mail= :mail ');
@@ -368,20 +367,21 @@ table[class=body] .article {
                 'creation' => '1',
                 'organisateur' => '1'
             ));
-            if($_SESSION['profil']== 'prof') {
+            if ($_SESSION['profil'] == 'prof') {
                 $_SESSION['success'] = "L'event est bien ajouté";
-            }else {
+            } else {
                 $_SESSION['success'] = "L'event est bien ajouté en attente de validation";
             }
             header("Location: ../view/event/event.php");
 
         } else {
-            $_SESSION['erreur']= "Error il manque un élément";
+            $_SESSION['erreur'] = "Error il manque un élément";
             header("Location: ../view/event/event.php");
         }
     }
 
-    function participerEvent($event,$mail){
+    function participerEvent($event, $mail)
+    {
         $bdd = self::connexion_bdd();
         $req = $bdd->prepare('SELECT * from creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser where libelle=:libelle and mail=:mail');
         $req->execute(array(
@@ -392,8 +392,7 @@ table[class=body] .article {
         if (!empty($res)) {
             $_SESSION['erreur'] = 'vous participez deja';
             header("Location: ../view/event/event.php");
-        }
-        else{
+        } else {
             $request = $bdd->prepare('SELECT * from user where mail= :mail ');
             $request->execute(array(
                 'mail' => $mail,
@@ -417,7 +416,9 @@ table[class=body] .article {
         }
 
     }
-    function addOrganisateur($event,$mail){
+
+    function addOrganisateur($event, $mail)
+    {
         $bdd = self::connexion_bdd();
         $req = $bdd->prepare('SELECT * from creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser where libelle=:libelle and mail=:mail');
         $req->execute(array(
@@ -425,20 +426,19 @@ table[class=body] .article {
             'mail' => $mail,
         ));
         $res = $req->fetch();
-        if (isset($res) && $res['organisateur']=='1') {
+        if (isset($res) && $res['organisateur'] == '1') {
             $_SESSION['erreur'] = 'Cette utilisateur est déjà organisateur';
             header("Location: ../view/profil/profil.php");
-        } else if (isset($res) && $res['organisateur']=='0'){
+        } else if (isset($res) && $res['organisateur'] == '0') {
             $request = $bdd->prepare('UPDATE creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser SET organisateur=:organisateur where libelle=:libelle and mail=:mail');
             $request->execute(array(
                 'libelle' => $event,
                 'mail' => $mail,
-                'organisateur'=>'1',
+                'organisateur' => '1',
             ));
             $_SESSION['success'] = 'Cette utilisateur est un organisateur de cette evenement';
             header("Location: ../view/profil/profil.php");
-        }
-        else{
+        } else {
             $request = $bdd->prepare('SELECT * from user where mail= :mail ');
             $request->execute(array(
                 'mail' => $mail,
@@ -464,6 +464,35 @@ table[class=body] .article {
 
     }
 
+    function annuleEvent($event)
+    {
+        session_start();
+        $bdd = self::connexion_bdd();
+        $req = $bdd->prepare('Delete from creation INNER JOIN evenement ON creation.event = evenement.idEvent where libelle=:libelle');
+        $req->execute(array(
+            'libelle' => $event,
+        ));
+        $req = $bdd->prepare('Delete from evenement where libelle=:libelle');
+        $req->execute(array(
+            'libelle' => $event,
+        ));
+        $_SESSION['success'] = 'vous supprimer l évenement';
+        header("Location: ../view/event/event.php");
+    }
+
+    function annulePart($event,$mail)
+    {
+        session_start();
+        $bdd = self::connexion_bdd();
+        $req = $bdd->prepare('DELETE from creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser where libelle=:libelle and mail=:mail');
+        $req->execute(array(
+            'libelle' => $event,
+            'mail' => $mail,
+        ));
+        $_SESSION['success'] = 'vous participez à l évenement';
+        header("Location: ../view/event/event.php");
+    }
+    
     function mail($subject, $body, $toMail)
     {
 

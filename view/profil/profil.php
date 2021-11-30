@@ -169,51 +169,68 @@ foreach ($a
             <table id="table" class="display dt-responsive" style="width:100%;">
                 <thead>
                 <tr>
-                    <th class="text-center">ID</th>
                     <th class="text-center">Libelle</th>
                     <th class="text-center">Date Debut</th>
                     <th class="text-center">Date Fin</th>
                     <th class="text-center">Createur</th>
                     <th class="text-center">Organisateur</th>
                     <th class="text-center">Ajout organisateur</th>
+                    <th class="text-center">Annulation</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                foreach ($a as $value) {
-                    date_default_timezone_set('Europe/Paris');
-                    $curDateTime = date("Y-m-d");
-                    $myDate = $value['dateDebut'];
-                    ?>
-                    <tr>
-                        <td class="text-center"><?php echo $value['idEvent']; ?></td>
-                        <td class="text-center"><?php echo $value['libelle']; ?></td>
-                        <td class="text-center"><?php echo $value['dateDebut']; ?></td>
-                        <td class="text-center"><?php echo $value['dateFin']; ?></td>
-                        <td class="text-center"><?php if ($value['creation'] == '0') {
-                                echo 'non';
-                            } else {
-                                echo 'oui';
-                            } ?></td>
-                        <td class="text-center"><?php if ($value['organisateur'] == '0') {
-                                echo 'non';
-                            } else {
-                                echo 'oui';
-                            } ?></td>
-                        <?php if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
-                            <td class="text-center">
-                                <button style="background:#000;" class="d-block mx-auto btn btn-answer text-white"
-                                        id="addOrga" value="<?php echo $value['libelle']; ?>">
-                                    <i class="fas fa-unlock"></i> Ajouter Organisateur
-                                </button>
-                            </td>
-                        <?php } else if ($value['creation'] == '1' && $myDate <= $curDateTime) { ?>
-                            <td class="text-center">Evenement fini</td>
-                        <?php } else { ?>
-                            <td class="text-center">Tu n'es pas le créateur</td>
-                        <?php } ?>
-                    </tr>
-                <?php } ?>
+                foreach ($a
+
+                as $value) {
+                date_default_timezone_set('Europe/Paris');
+                $curDateTime = date("Y-m-d");
+                $myDate = $value['dateDebut'];
+                ?>
+                <tr>
+                    <td class="text-center"><?php echo $value['libelle']; ?></td>
+                    <td class="text-center"><?php echo $value['dateDebut']; ?></td>
+                    <td class="text-center"><?php echo $value['dateFin']; ?></td>
+                    <td class="text-center"><?php if ($value['creation'] == '0') {
+                            echo 'non';
+                        } else {
+                            echo 'oui';
+                        } ?></td>
+                    <td class="text-center"><?php if ($value['organisateur'] == '0') {
+                            echo 'non';
+                        } else {
+                            echo 'oui';
+                        } ?></td>
+                    <?php if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
+                        <td class="text-center">
+                            <button style="background:#000;" class="d-block mx-auto btn btn-answer text-white"
+                                    id="addOrga" value="<?php echo $value['libelle']; ?>">
+                                <i class="fas fa-unlock"></i> Ajouter Organisateur
+                            </button>
+                        </td>
+                    <?php } else if ($value['creation'] == '1' && $myDate <= $curDateTime) { ?>
+                        <td class="text-center">Evenement fini</td>
+                    <?php } else { ?>
+                        <td class="text-center">Tu n'es pas le créateur</td>
+                    <?php } ?>
+                    <?php } if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
+                        <td class="text-center">
+                            <a style="background:#000;"  href="annuleEvent" class="d-block mx-auto btn btn-answer text-white"
+                                    id="deleteEvent" name="deleteEvent" value="<?php echo $value['libelle']; ?>">
+                                <i class="fas fa-unlock"></i> Annuler Evenement
+                            </a>
+                        </td>
+                    <?php } else if ($value['creation'] == '0' && $myDate > $curDateTime) {?>
+                        <td class="text-center">
+                            <button style="background:#000;" href="annulePart" class="d-block mx-auto btn btn-answer text-white"
+                                    id="deletePart" value="<?php echo $value['libelle']; ?>">
+                                <i class="fas fa-unlock"></i> Annuler Participation
+                            </button>
+                        </td>
+                    <?php } else { ?>
+                        <td class="text-center">Evenement déjà passer</td>
+                    <?php } ?>
+                </tr>
                 </tbody>
             </table>
         </div>
