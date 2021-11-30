@@ -13,30 +13,30 @@ $("body").delegate("#mdp-oublier", "click", function () {
 
 $("body").delegate("#inscription-envoi", "click", function (e) {
     e.preventDefault();
-    if($('#nom').val() == "" || $('#prenom').val() == "" || $('#mail_inscript').val() == "" || $('#mdp').val() == "" || (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked'))){
-        if($('#nom').val() == ""){
+    if ($('#nom').val() == "" || $('#prenom').val() == "" || $('#mail_inscript').val() == "" || $('#mdp').val() == "" || (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked'))) {
+        if ($('#nom').val() == "") {
             app.displayErrorNotification('Champ nom vide ou incorrect');
         }
-        if($('#prenom').val() == ""){
+        if ($('#prenom').val() == "") {
             app.displayErrorNotification('Champ prenom vide ou incorrect');
         }
-        if($('#mail_inscript').val() == ""){
+        if ($('#mail_inscript').val() == "") {
             app.displayErrorNotification('Champ mail vide ou incorrect');
         }
-        if($('#mdp').val() == ""){
+        if ($('#mdp').val() == "") {
             app.displayErrorNotification('Champ mot de passe vide ou incorrect');
         }
-        if (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked') ) {
+        if (!$('#eleveradio').is(':checked') && !$('#parentradio').is(':checked') && !$('#profradio').is(':checked')) {
             app.displayErrorNotification('Champ profil vide ou incorrect');
         }
-    }
-    else
-    {
+    } else {
         var action = $('#form-inscription').attr('action');
         if ($('#eleveradio').is(':checked')) {
             var profil = $('#eleveradio').val();
         } else if ($('#parentradio').is(':checked')) {
             profil = $('#parentradio').val();
+        } else if ($('#profradio').is(':checked')) {
+            profil = $('#profradio').val();
         }
         $.ajax({
             type: "post",
@@ -62,15 +62,14 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
 
 $("body").delegate("#connexion-envoi", "click", function (e) {
     e.preventDefault();
-    if($('#mail_connexion').val() == "" || $('#password').val() == ""){
-        if($('#mail_connexion').val() == ""){
+    if ($('#mail_connexion').val() == "" || $('#password').val() == "") {
+        if ($('#mail_connexion').val() == "") {
             app.displayErrorNotification('Champ mail vide ou incorrect');
         }
-        if($('#password').val() == ""){
+        if ($('#password').val() == "") {
             app.displayErrorNotification('Champ mot de passe vide ou incorrect');
         }
-    }
-    else {
+    } else {
         var action = $('#form-connexion').attr('action');
         $.ajax({
             type: "post",
