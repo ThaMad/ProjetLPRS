@@ -169,13 +169,13 @@ foreach ($a
             <table id="table" class="display dt-responsive" style="width:100%;">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Libelle</th>
-                    <th>Date Debut</th>
-                    <th>Date Fin</th>
-                    <th>Createur</th>
-                    <th>Organisateur</th>
-                    <th>Ajout organisateur</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Libelle</th>
+                    <th class="text-center">Date Debut</th>
+                    <th class="text-center">Date Fin</th>
+                    <th class="text-center">Createur</th>
+                    <th class="text-center">Organisateur</th>
+                    <th class="text-center">Ajout organisateur</th>
                 </tr>
                 </thead>
                 <tbody>
