@@ -71,7 +71,10 @@ $bdd = $manager->connexion_bdd();
                     <?php } else {
                         if ($_SESSION['profil'] == 'admin'){?>
                             <li class="nav-item"><a class="nav-link" href="view/admin/gestionuser.php">Administration</a></li>
-                                <?php }?>
+                        <?php }
+                        if ($_SESSION['profil'] == 'prof'){?>
+                            <li class="nav-item"><a class="nav-link" href="view/projet_educatif/projets.php">Projets Educatifs</a></li>
+                        <?php }?>
                     <li class="nav-item"><a class="nav-link" id="profil" href="view/profil/profil.php">Mon Profil</a></li>
                         <li class="nav-item"><a class="nav-link" href="view/chatbox/chatbox.php">Messagerie</a></li>
                     <?php } ?>
