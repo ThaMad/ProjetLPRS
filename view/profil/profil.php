@@ -212,24 +212,29 @@ foreach ($a
                         <td class="text-center">Evenement fini</td>
                     <?php } else { ?>
                         <td class="text-center">Tu n'es pas le créateur</td>
-                    <?php } ?>
-                    <?php } if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
+                    <?php }
+                    if ($value['creation'] == '1' && $myDate > $curDateTime) { ?>
                         <td class="text-center">
-                            <a style="background:#000;"  href="annuleEvent" class="d-block mx-auto btn btn-answer text-white"
-                                    id="deleteEvent" name="deleteEvent" value="<?php echo $value['libelle']; ?>">
-                                <i class="fas fa-unlock"></i> Annuler Evenement
-                            </a>
+                            <form action="../../traitement/annuleEvent.php" method="post">
+                                <button style="background:#000;" class="d-block mx-auto btn btn-answer text-white"
+                                        id="deleteEvent" name="deleteEvent" value="<?php echo $value['libelle']; ?>">
+                                    <i class="fas fa-unlock"></i> Annuler Evenement
+                                </button>
+                            </form>
                         </td>
-                    <?php } else if ($value['creation'] == '0' && $myDate > $curDateTime) {?>
+                    <?php } else if ($value['creation'] == '0' && $myDate > $curDateTime) { ?>
                         <td class="text-center">
-                            <button style="background:#000;" href="annulePart" class="d-block mx-auto btn btn-answer text-white"
-                                    id="deletePart" value="<?php echo $value['libelle']; ?>">
-                                <i class="fas fa-unlock"></i> Annuler Participation
-                            </button>
+                            <form action="../../traitement/annulePart.php" method="post">
+                                <button style="background:#000;" class="d-block mx-auto btn btn-answer text-white"
+                                        id="deletePart" name="deletePart" value="<?php echo $value['libelle']; ?>">
+                                    <i class="fas fa-unlock"></i> Annuler Participation
+                                </button>
+                            </form>
                         </td>
                     <?php } else { ?>
                         <td class="text-center">Evenement déjà passer</td>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                 </tr>
                 </tbody>
             </table>

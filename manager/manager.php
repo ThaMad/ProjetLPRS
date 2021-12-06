@@ -468,15 +468,20 @@ table[class=body] .article {
     {
         session_start();
         $bdd = self::connexion_bdd();
-        $req = $bdd->prepare('Delete from creation INNER JOIN evenement ON creation.event = evenement.idEvent where libelle=:libelle');
+        $req = $bdd->prepare('SELECT idEvent from evenement where libelle= :libelle');
         $req->execute(array(
-            'libelle' => $event,
+            'libelle' => $event->getLibelle(),
         ));
-        $req = $bdd->prepare('Delete from evenement where libelle=:libelle');
-        $req->execute(array(
-            'libelle' => $event,
+        $res = $req->fetch();
+        $req2 = $bdd->prepare('delete from creation  where event=:event');
+        $req2->execute(array(
+            'event' => $res['idEvent'],
         ));
-        $_SESSION['success'] = 'vous supprimer l évenement';
+        $req3 = $bdd->prepare('delete from evenement where libelle=:libelle');
+        $req3->execute(array(
+            'libelle' => $event->getLibelle(),
+        ));
+        $_SESSION['success'] = 'vous avez supprimer l évenement';
         header("Location: ../view/event/event.php");
     }
 
@@ -484,10 +489,20 @@ table[class=body] .article {
     {
         session_start();
         $bdd = self::connexion_bdd();
-        $req = $bdd->prepare('DELETE from creation INNER JOIN evenement ON creation.event = evenement.idEvent INNER JOIN user ON creation.user = user.idUser where libelle=:libelle and mail=:mail');
+        $req = $bdd->prepare('SELECT idEvent from evenement where libelle= :libelle');
         $req->execute(array(
-            'libelle' => $event,
+            'libelle' => $event->getLibelle(),
+        ));
+        $res = $req->fetch();
+        $req1 = $bdd->prepare('SELECT idUser from user where mail= :mail');
+        $req1->execute(array(
             'mail' => $mail,
+        ));
+        $res1 = $req1->fetch();
+        $req = $bdd->prepare('DELETE from creation where event=:event and user=:user');
+        $req->execute(array(
+            'event' => $res['idEvent'],
+            'user' => $res1['idUser'],
         ));
         $_SESSION['success'] = 'vous ne participez plus à l évenement';
         header("Location: ../view/event/event.php");
