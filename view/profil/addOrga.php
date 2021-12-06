@@ -87,7 +87,7 @@ $bdd = $manager->connexion_bdd();
                         $req = $bdd->prepare('SELECT * FROM user WHERE profil = :profil');
                         $req->execute(array('profil' => 'prof'));
                         $a = $req->fetchall();
-                        ?>
+                        ?>6
                         <div class="col-md-9 ml-auto">
                             <select class=form-control id="selectProf" name="prof">
                                 <?php

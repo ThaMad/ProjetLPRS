@@ -30,34 +30,35 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
             app.displayErrorNotification('Champ profil vide ou incorrect');
         }
     } else {
-        var action = $('#form-inscription').attr('action');
-        if ($('#eleveradio').is(':checked')) {
-            var profil = $('#eleveradio').val();
-        } else if ($('#parentradio').is(':checked')) {
-            profil = $('#parentradio').val();
-        } else if ($('#profradio').is(':checked')) {
-            profil = $('#profradio').val();
+        var mail = $('#mail_inscript').val();
+        if (mail.indexOf("ipsum") !== -1) {
+            var action = $('#form-inscription').attr('action');
+            if ($('#eleveradio').is(':checked')) {
+                var profil = $('#eleveradio').val();
+            } else if ($('#parentradio').is(':checked')) {
+                profil = $('#parentradio').val();
+            } else if ($('#profradio').is(':checked')) {
+                profil = $('#profradio').val();
+            }
+            console.log(profil);
+            $.ajax({
+                type: "post",
+                url: action,
+                data: {
+                    'nom': $('#nom').val(),
+                    'prenom': $('#prenom').val(),
+                    'mail': $('#mail_inscript').val(),
+                    'profil': profil,
+                    'mdp': $('#mdp').val()
+                },
+                success: function () {
+                    $('#modal-inscription').modal('hide');
+                    $('#modal-connexion').modal('show');
+                },
+            });
+        } else {
+            app.displayErrorNotification('Erreur avec le champ mail');
         }
-        console.log(profil);
-        $.ajax({
-            type: "post",
-            url: action,
-            data: {
-                'nom': $('#nom').val(),
-                'prenom': $('#prenom').val(),
-                'mail': $('#mail_inscript').val(),
-                'profil': profil,
-                'mdp': $('#mdp').val()
-            },
-            success: function (response) {
-                app.displaySuccessNotification(response);
-                $('#modal-inscription').modal('hide');
-                $('#modal-connexion').modal('show');
-            },
-            error: function (response) {
-                app.displayErrorNotification(response);
-            },
-        });
     }
 });
 
@@ -79,13 +80,11 @@ $("body").delegate("#connexion-envoi", "click", function (e) {
                 'mail': $('#mail_connexion').val(),
                 'mdp': $('#password').val(),
             },
-            success: function (response) {
-                app.displaySuccessNotification(response.success);
+            success: function () {
                 $('#modal-connexion').modal('hide');
                 location.reload();
             },
-            error: function (response) {
-                app.displayErrorNotification(response);
+            error: function () {
             },
         });
     }

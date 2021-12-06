@@ -21,18 +21,15 @@ $("body").delegate("#choixProfil", "change", function () {
         $('#listeParent').prop('hidden', true);
         $('#selectParent').val('');
         $('#listeProf').prop('hidden', true);
-        $('#selectProf').val('');
     } else if ($('#parentradio').is(':checked')) {
         $('#listeParent').prop('hidden', false);
         $('#listeEtudiant').prop('hidden', true);
         $('#selectEtudiant').val('');
         $('#listeProf').prop('hidden', true);
-        $('#selectProf').val('');
     } else if ($('#profradio').is(':checked')) {
         $('#listeProf').prop('hidden', false);
         $('#listeParent').prop('hidden', true);
         $('#selectParent').val('');
         $('#listeEtudiant').prop('hidden', true);
-        $('#selectEtudiant').val('');
     }
 });
