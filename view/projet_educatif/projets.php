@@ -6,7 +6,7 @@ $Manager = new Manager();
 //On déclare la variable $db de type toolsManager en appelant@ la méthode connexion_bd
 $db = $Manager->connexion_bdd();
 
-$projets= $db->prepare("SELECT idProjet, projet_ed.libelle, cours, classe.libelle AS libelleclasse, nom, prenom, date FROM projet_ed INNER JOIN user ON projet_ed.prof = user.idUser INNER JOIN classe ON user.classe = classe.idClasse ");
+$projets= $db->prepare("SELECT idProjet, projet_ed.libelle, cours, classe.libelle AS libelleclasse, nom, prenom, date FROM projet_ed INNER JOIN user ON projet_ed.prof = user.idUser INNER JOIN classe ON projet_ed.classe = classe.idClasse ");
 $projets->execute(array());
 $projets = $projets->fetchall();
 
