@@ -11,10 +11,12 @@ include('view/header/header.php');
 					<h1 class="mb-3 mt-3">LYCÉE PRIVÉ ET UFA - ROBERT SCHUMAN</h1>
 					
 					<p class="mb-4 pr-5">Enseignement catholique sous contrat avec l'état.</p>
+                    <?php if(!isset($_SESSION['mail'])){ ?>
 					<div class="btn-container ">
 						<a href="#" id="connexion" class="btn btn-main-2 btn-icon btn-round-full">Connectez-vous <i class="icofont-simple-right ml-2  "></i></a>
 					</div>
-				</div>
+                    <?php } ?>
+                </div>
 			</div>
 		</div>
 	</div>
@@ -24,7 +26,8 @@ include('view/header/header.php');
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="feature-block d-lg-flex">
-					<div class="feature-item mb-5 mb-lg-0">
+                    <?php if(!isset($_SESSION['mail'])){ ?>
+                    <div class="feature-item mb-5 mb-lg-0">
 						<div class="feature-icon mb-4">
 							<i class="icofont-connection"></i>
 						</div>
@@ -32,8 +35,19 @@ include('view/header/header.php');
 						<p class="mb-4">Si vous n'avez pas encore de compte ? Inscrivez-vous !</p>
 						<a href="#" id="inscription" class="btn btn-main btn-round-full">Inscription</a>
 					</div>
-				
-					<div class="feature-item mb-5 mb-lg-0">
+                    <?php } else {?>
+                    <div class="feature-item mb-5 mb-lg-0">
+                        <div class="feature-icon mb-4">
+                            <i class="icofont-connection"></i>
+                        </div>
+                        <h4 class="mb-3">Mon profil</h4>
+                        <p class="mb-4">Maintenant que vous êtes connecté jeter un oeil sur votre profil !</p>
+                        <a href="view/profil/profil.php" id="inscription" class="btn btn-main btn-round-full">Mon Profil</a>
+                    </div>
+                    <?php }?>
+
+
+                    <div class="feature-item mb-5 mb-lg-0">
 						<div class="feature-icon mb-4">
 							<i class="icofont-building-alt"></i>
 						</div>
