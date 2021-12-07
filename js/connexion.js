@@ -31,7 +31,7 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
         }
     } else {
         var mail = $('#mail_inscript').val();
-        if (mail.indexOf("ipsum") !== -1) {
+        if (mail.indexOf("@") !== -1) {
             var action = $('#form-inscription').attr('action');
             if ($('#eleveradio').is(':checked')) {
                 var profil = $('#eleveradio').val();
