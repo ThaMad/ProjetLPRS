@@ -70,12 +70,17 @@ $bdd = $manager->connexion_bdd();
                         <?php }
                     if ($_SESSION['profil'] == 'prof'){?>
                     <li class="nav-item"><a class="nav-link" href="../projet_educatif/projets.php">Projets Educatifs</a></li>
-                    <?php }?>
-                        <li class="nav-item"><a class="nav-link" id="profil" href="../profil/profil.php">Mon Profil</a></li>
+                    <?php }?><li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="../profil/profil.php">Profil<i class="icofont-thin-down"></i></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                                <li><a class="dropdown-item" href="../profil/profil.php">Mon profil</a></li>
+                                <li><a class="dropdown-item" href="../profil/rendezvous.php">Rendez-vous</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="../chatbox/chatbox.php">Messagerie</a></li>
                     <?php } ?>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Etablissement <i class="icofont-thin-down"></i></a>
+                        <a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Etablissement<i class="icofont-thin-down"></i></a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown05">
                             <li><a class="dropdown-item" href="../presentation/about.php">Qui sommes-nous ?</a></li>
                             <li><a class="dropdown-item" href="../presentation/datecle.php">Dates clés</a></li>

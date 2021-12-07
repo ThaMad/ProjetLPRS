@@ -125,7 +125,7 @@ include('ajout_user_modal.php');
 
 
                         <td>
-                            <a class="d-block mx-auto btn btn-danger text-white" href="../../traitement/Admin/delete_user.php?idUser=<?php echo $value['idUser'];?>"><i class="fas fa-times" onclick="DeleteUser(this.id)"> Supprimer</i></a>
+                            <a class="d-block mx-auto btn btn-danger text-white" href="../../traitement/Admin/delete_user.php?idUser=<?php echo $value['idUser'];?>"><i class="fas fa-times"> Supprimer</i></a>
                         </td>
                         <td>
                             <?php

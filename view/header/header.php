@@ -75,10 +75,22 @@ $bdd = $manager->connexion_bdd();
                         if ($_SESSION['profil'] == 'prof'){?>
                             <li class="nav-item"><a class="nav-link" href="view/projet_educatif/projets.php">Projets Educatifs</a></li>
                         <?php }?>
-                    <li class="nav-item"><a class="nav-link" id="profil" href="view/profil/profil.php">Mon Profil</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="view/profil/profil.php"> Profil <i class="icofont-thin-down"></i></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                                <li><a class="dropdown-item" href="view/profil/profil.php">Mon profil</a></li>
+                                <li><a class="dropdown-item" href="view/profil/rendezvous.php">Rendez-vous</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="view/chatbox/chatbox.php">Messagerie</a></li>
                     <?php } ?>
-                    <li class="nav-item"><a class="nav-link" href="view/presentation/about.php">Information</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Etablissement <i class="icofont-thin-down"></i></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                            <li><a class="dropdown-item" href="view/presentation/about.php">Qui sommes-nous ?</a></li>
+                            <li><a class="dropdown-item" href="view/presentation/datecle.php">Dates clés</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="view/formation/lycee.php" id="dropdown05"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formation <i

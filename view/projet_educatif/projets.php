@@ -91,7 +91,8 @@ else if ($_SESSION['profil']!== 'prof'){
                             <th>Classe</th>
                             <th>Professeur</th>
                             <th>Date</th>
-                            <th>Action</th>
+                            <th>Suppression</th>
+                            <th>Modification</th>
 
                         </tr>
                         </thead>
@@ -113,6 +114,8 @@ else if ($_SESSION['profil']!== 'prof'){
                                 <td><?php echo $value['nom']; echo ' '; echo $value['prenom'];?></td>
                                 <td><?php echo $value['date'];?></td>
                                 <td><a class="d-block mx-auto btn btn-danger text-white" href="../../traitement/delete_project.php?idProjet=<?php echo $value['idProjet'];?>"><i class="fas fa-times"> Supprimer</i></a></td>
+                                <td><a class="d-block mx-auto btn btn-info text-white" href="../../traitement/modify_project.php?idProjet=<?php echo $value['idProjet'];?>"><i class="fas fa-times"> Modifier</i></a></td>
+
 
                             </tr>
 

@@ -59,7 +59,24 @@ class attentemanager extends Manager
     public function suppressionUser($idUser)
     {
         $bdd = parent::connexion_bdd();
+        #ON SUPPRIME TOUT CE QUI EST LIÉ A L'ID USER
+        $delete_messages = $bdd->prepare("DELETE FROM messages WHERE userExp = $idUser OR userDest = $idUser");
+        $delete_messages = $delete_messages->execute(array());
+
+        $delete_lien = $bdd->prepare("DELETE FROM lien WHERE parent = $idUser OR eleve = $idUser");
+        $delete_lien = $delete_lien->execute(array());
+
+        $delete_creation = $bdd->prepare("DELETE FROM creation WHERE user = $idUser");
+        $delete_creation = $delete_creation->execute(array());
+
+        $delete_rdv = $bdd->prepare("DELETE FROM rdv WHERE parent = $idUser or professeur = $idUser");
+        $delete_rdv = $delete_rdv->execute(array());
+
+        $delete_projet = $bdd->prepare("DELETE FROM projet_ed WHERE prof = $idUser");
+        $delete_projet = $delete_projet->execute(array());
+
         $delete_user = $bdd->prepare("DELETE FROM user WHERE idUser = ?");
+        #PUIS ON SUPPRIME L'USER.
         $delete_user = $delete_user->execute(array($idUser));
         if ($delete_user != null) {
             header('Location:/ProjetLPRS/view/admin/gestionuser.php');
