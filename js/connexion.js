@@ -52,6 +52,7 @@ $("body").delegate("#inscription-envoi", "click", function (e) {
                     'mdp': $('#mdp').val()
                 },
                 success: function () {
+                    location.reload();
                     $('#modal-inscription').modal('hide');
                     $('#modal-connexion').modal('show');
                 },

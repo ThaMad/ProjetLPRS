@@ -7,6 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form method="post" action="<?php if($_SESSION['page'] == 'pageInView'){echo '../../traitement/mdpoublier.php'; } else { echo 'traitement/mdpoublier.php'; }?>"
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-8 ml-auto">
