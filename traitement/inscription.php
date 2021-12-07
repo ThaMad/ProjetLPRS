@@ -9,6 +9,7 @@ require_once '../model/user.php';
 require_once '../manager/manager.php';
 if (isset($_POST["mail"])) {
     $email = $_POST['mail'];
+    $mdp = $_POST["mdp"];
     try {
         $user = new user(array(
             'nom' => $_POST["nom"],
@@ -18,7 +19,7 @@ if (isset($_POST["mail"])) {
             'mdp' => password_hash($_POST["mdp"], PASSWORD_DEFAULT),
         ));
         $man = new manager();
-        $man->inscription($user);
+        $man->inscription($user, $mdp);
 
         $response['success'] = 'Bravo vous êtes inscrit';
         return $response;

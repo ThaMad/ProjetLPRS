@@ -1,6 +1,7 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 class Manager
 {
@@ -9,7 +10,7 @@ class Manager
     {
         //Informations database Hôte
         $env_host = "localhost";
-        putenv("$env_host=localhost:8889");
+        putenv("$env_host=localhost");
 
         //Informations database Name
         $env_name = "DB_NAME";
@@ -21,7 +22,7 @@ class Manager
 
         //Informations database Pass
         $env_pass = "DB_PASS";
-        putenv("$env_pass=root");
+        putenv("$env_pass=");
 
         try {
             $bdd = new PDO('mysql:host=' . getenv($env_host) . ';dbname=' . getenv($env_name) . ';charset=utf8', getenv($env_user), getenv($env_pass));
@@ -31,7 +32,7 @@ class Manager
         return $bdd;
     }
 
-    public function inscription($user)
+    public function inscription($user, $mdp)
     {
         session_start();
         $bdd = self::connexion_bdd();
@@ -59,7 +60,7 @@ class Manager
                 $requestid->execute(array($user->getMail()));
                 $info = $requestid->fetch();
                 //$decryptedmdp=$this->decrypt($info['mdp'],'1f4276388ad3214c873428dbef42243f');
-                $mdpuser = $info['mdp'];
+                $mdpuser = $mdp;
                 $iduser = $info['idUser'];
                 $preuser = $info['prenom'];
                 $nomuser = $info['nom'];
@@ -162,7 +163,6 @@ table[class=body] .article {
             <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; width: 100%;" width="100%">
               <tr>
                 <td class="align-center" style="font-family: sans-serif; font-size: 14px; vertical-align: top; text-align: center;" valign="top" align="center">
-                  <a href="https://snacklprs.fr" style="color: #ec0867; text-decoration: underline;"><img src="https://i.ibb.co/n6h0RDr/image-2.png" height="100" alt="snacklprs" style="border: none; -ms-interpolation-mode: bicubic; max-width: 100%;"></a>
                 </td>
               </tr>
             </table>
@@ -180,7 +180,7 @@ table[class=body] .article {
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Bienvenue sur le lycée et UFA Robert Schuman, ' . $preuser . ' ' . $nomuser . ' !</p>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Vous venez d etre inscrit au Snack par les incroyables administrateurs(trices) du site 😌</p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Vous venez d etre inscrit par les incroyables administrateurs(trices) du site 😌</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
 
 </p>
@@ -214,13 +214,13 @@ table[class=body] .article {
               <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; min-width: 100%; width: 100%;" width="100%">
                 <tr>
                   <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #9a9ea6; font-size: 12px; text-align: center;" valign="top" align="center">
-                    <span class="apple-link" style="color: #9a9ea6; font-size: 12px; text-align: center;">Snack LPRS, Lyc&#233;e et UFA Robert Schuman</span>
+                    <span class="apple-link" style="color: #9a9ea6; font-size: 12px; text-align: center;">Lyc&#233;e et UFA Robert Schuman</span>
                 
                   </td>
                 </tr>
                 <tr>
                   <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #9a9ea6; font-size: 12px; text-align: center;" valign="top" align="center">
-                    Powered by <a href="https://snacklprs.fr" style="color: #9a9ea6; font-size: 12px; text-align: center; text-decoration: none;">by Snack LPRS Admin</a>.
+                    Powered by <a style="color: #9a9ea6; font-size: 12px; text-align: center; text-decoration: none;">LPRS Admin</a>.
                   </td>
                 </tr>
               </table>
@@ -238,6 +238,7 @@ table[class=body] .article {
 ';
                 $toMail = $user->getMail();
                 $a = $this->mail($subject, $body, $toMail);
+                die($a);
                 $_SESSION['success'] = "Bravo !! Vous êtes un nouveau utilisateur";
                 return $_SESSION['success'];
             }
@@ -516,17 +517,17 @@ table[class=body] .article {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/Exception.php");
         require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/POP3.php");
         require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/PHPMailer/OAuth.php");
-        $mail = new PHPMailer(true);
+        $mail = new PHPMailer();
 
         try {
             //Server settings
-            $mail->SMTPDebug = 0;                      // Enable verbose debug output
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
             $mail->isSMTP();                                            // Send using SMTP
             $mail->Host = 'smtp.gmail.com';                    // Set the SMTP server to send through
             $mail->SMTPAuth = true;                                   // Enable SMTP authentication
-            $mail->Username = 'projet.lprs.dev@gmail.com';                     // SMTP username
-            $mail->Password = 'projetLPRS';
-            $mail->SMTPSecure = 'ssl';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+            $mail->Username = 'projet.php.lprs@gmail.com';                     // SMTP username
+            $mail->Password = 'ProjetLPRS';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
             $mail->CharSet = 'text/html; charset=UTF-8;';
             //Recipients
@@ -539,7 +540,6 @@ table[class=body] .article {
                 $mail->Body = $body;
                 $mail->AltBody = strip_tags($body);
                 $mail->send();
-
             }
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
