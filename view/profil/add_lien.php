@@ -6,21 +6,39 @@ $Manager = new Manager();
 //On déclare la variable $db de type toolsManager en appelant@ la méthode connexion_bd
 $db = $Manager->connexion_bdd();
 
+
+
+
+include('../header/headerinview.php');
+
 $mail = $_SESSION['mail'];
+
 
 $myid= $db->prepare('SELECT idUser FROM user WHERE mail = ?');
 $myid->execute(array($mail));
 $myid = $myid->fetch();
 $myid = $myid['idUser'];
 
-$user = $db->prepare("SELECT idUser, nom, prenom, libelle FROM classe INNER JOIN user ON classe.idClasse = user.classe INNER JOIN lien ON user.idUser = lien.parent WHERE profil= 'eleve' AND parent !=$myid");
+$user = $db->prepare("SELECT idUser, nom, prenom, libelle FROM user INNER JOIN classe ON classe.idClasse = user.classe WHERE profil= 'etudiant' AND idUser NOT IN (SELECT idUser FROM user INNER JOIN lien ON user.idUser = lien.eleve WHERE parent=$myid)");
 $user->execute(array());
 $user = $user->fetchall();
-
-
-include('../header/headerinview.php');
 ?>
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block text-center">
+                    <h1 class="text-capitalize mb-5 text-lg">Se lier à des étudiants</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- DATA TABLE -->
+<form method="POST" action="../../traitement/add_lien.php">
+
     <section class="section service-2">
         <div class="container">
             <h2 style="text-align: center">Liens</h2>
@@ -33,7 +51,6 @@ include('../header/headerinview.php');
                             <th>Nom</th>
                             <th>Prenom</th>
                             <th>Classe</th>
-                            <th>Supprimer</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,16 +58,11 @@ include('../header/headerinview.php');
                         foreach ($user as $value) {
                             ?>
                             <tr>
-                                <td><input type="checkbox" name="idUser" value=<?php echo $value['idUser']; ?>></td>
+                                <td><input type="checkbox" name="idUser" value="<?php echo $value['idUser'];?>">
+                                <input type="hidden" name="parentid" value="<?php echo $myid; ?>"> </td>
                                 <td><?php echo $value['nom']; ?></td>
                                 <td><?php echo $value['prenom']; ?></td>
                                 <td><?php echo $value['libelle']; ?></td>
-                                <td>
-                                    <a class="d-block mx-auto btn btn-danger text-white"
-                                       href="../../traitement/delete_lien.php?idLien=<?php echo $value['idLien']; ?>"><i
-                                                class="fas fa-times">
-                                            Supprimer</i></a>
-                                </td>
                             </tr>
                         <?php } ?>
                         </tbody>
@@ -62,6 +74,9 @@ include('../header/headerinview.php');
         </div>
     </section>
     </div>
+    <center>
+    <input class="btn btn-primary text-center" style="margin-top: 10px" type="submit">
+    </center>
     </form>
 
 <?php

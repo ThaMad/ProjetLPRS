@@ -15,7 +15,7 @@ $myid->execute(array($mail));
 $myid = $myid->fetch();
 $myid = $myid['idUser'];
 
-$user = $bdd->prepare("SELECT idLien, nom, prenom, profil, libelle FROM lien INNER JOIN user ON lien.parent = user.idUser INNER JOIN classe ON user.classe = classe.idClasse WHERE (eleve= $myid) OR (parent= $myid) AND (idUser != $myid)");
+$user = $bdd->prepare("SELECT idLien, nom, prenom, profil, libelle FROM lien INNER JOIN user ON lien.eleve = user.idUser INNER JOIN classe ON user.classe = classe.idClasse WHERE (parent= $myid) AND (idUser != $myid)");
 $user->execute(array());
 $user = $user->fetchall();
 
@@ -54,10 +54,8 @@ foreach ($a
                 if (isset($_SESSION["profil"]) && $_SESSION["profil"] == 'parent') {
                     ?>
                     <div class="col-md-3">
-                        <button class="btn btn-primary text-center" data-toggle="modal" data-target="#add_link"
-                                data-whatever="@getbootstrap" id="add_link" style="margin-top: 10px"><i
-                                    class="fa fa-plus"></i> Ajouter
-                            un lien
+                        <button class="btn btn-primary text-center" style="margin-top: 10px"><i
+                                    class="fa fa-plus"></i> <a style="color: white" href="add_lien.php"> Ajouter un lien </a>
                         </button>
                     </div>
                 <?php } ?>
