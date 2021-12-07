@@ -53,12 +53,10 @@ $("body").delegate("#save-modification", "click", function () {
                 'profil': profil,
                 'classe': $('#classeinfodata').val()
             },
-            success: function (response) {
-                app.displaySuccessNotification(response.success);
+            success: function () {
                 location.reload();
             },
-            error: function (response) {
-                app.displayErrorNotification(response);
+            error: function () {
                 location.reload();
             },
         });
