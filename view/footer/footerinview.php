@@ -11,6 +11,8 @@
                         5 avenue du Général de Gaulle - 93440 Dugny
                         01 48 37 74 26 01 48 35 48 14
                         administration@lyceerobertschuman.com</p>
+                    <?php  if(isset($_SESSION['mail'])){ ?>
+                        <a href="../../traitement/deconnexion.php"><i class="fas fa-power-off"> Deconnexion </i></a> <?php } ?>
                 </div>
             </div>
 

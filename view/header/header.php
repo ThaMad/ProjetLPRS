@@ -21,6 +21,8 @@ $bdd = $manager->connexion_bdd();
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <!-- Icon Font Css -->
     <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+    <!-- Font awesome css -->
+    <link href="plugins/fontawesome-free-5.15.4-web/css/all.css" rel="stylesheet">
     <!-- Slick Slider  CSS -->
     <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
     <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
@@ -102,6 +104,9 @@ $bdd = $manager->connexion_bdd();
                     </li>
                     <li class="nav-item"><a class="nav-link" href="view/event/event.php">Evenement</a></li>
                     <li class="nav-item"><a class="nav-link" href="view/contact/contact.php">Contact</a></li>
+                    <li class="nav-item">
+                    <?php  if(isset($_SESSION['mail'])){ ?>
+                        <a class="nav-link" href="traitement/deconnexion.php"><i class="fas fa-power-off" onmouseover="this.style.color='#FF0000';" onmouseout="this.style.background='';this.style.color='';"></i></a> <?php } ?> </li>
                 </ul>
             </div>
         </div>

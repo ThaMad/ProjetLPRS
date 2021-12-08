@@ -10,7 +10,7 @@ class Manager
     {
         //Informations database Hôte
         $env_host = "localhost";
-        putenv("$env_host=localhost");
+        putenv("$env_host=localhost:8889");
 
         //Informations database Name
         $env_name = "DB_NAME";
@@ -22,7 +22,7 @@ class Manager
 
         //Informations database Pass
         $env_pass = "DB_PASS";
-        putenv("$env_pass=");
+        putenv("$env_pass=root");
 
         try {
             $bdd = new PDO('mysql:host=' . getenv($env_host) . ';dbname=' . getenv($env_name) . ';charset=utf8', getenv($env_user), getenv($env_pass));
