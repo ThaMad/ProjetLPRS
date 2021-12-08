@@ -16,13 +16,14 @@ $myid->execute(array($mail));
 $myid = $myid->fetch();
 $myid = $myid['idUser'];
 
-$rdvparent= $db->prepare("SELECT idRdv, nom, prenom, libelle, horaire, compterendu FROM rdv INNER JOIN user ON rdv.professeur = user.idUser WHERE parent = $myid ");
+$rdvparent= $db->prepare("SELECT idRdv, nom, prenom, libelle, horaire, compterendu FROM rdv INNER JOIN user ON rdv.professeur = user.idUser WHERE parent = $myid");
 $rdvparent->execute(array());
 $rdvparent = $rdvparent->fetchall();
 
-$rdvprof= $db->prepare("SELECT idRdv, nom, prenom, libelle, horaire, compterendu FROM rdv INNER JOIN user ON rdv.parent = user.idUser WHERE prof = $myid ");
+$rdvprof= $db->prepare("SELECT idRdv, nom, prenom, libelle, horaire, compterendu FROM rdv INNER JOIN user ON rdv.parent = user.idUser WHERE professeur = $myid");
 $rdvprof->execute(array());
 $rdvprof = $rdvprof->fetchall();
+$datedujour = date_create(date("Y-m-d H:i:s"));
 ?>
 
     <!DOCTYPE html>
@@ -107,7 +108,79 @@ else {
                         <tbody>
                         <?php
                         foreach ($rdvparent as $value){
+                            $daterdv = date_create($value['horaire']);
+                            $interval = date_diff($datedujour, $daterdv);
+                            $interval = ($interval->format('%r%d'))+1;
 
+                            ?>
+
+
+                            <tr>
+                                <td><?php echo $value['idRdv'];?></td>
+                                <td id><?php echo $value['libelle'];?>
+                                </td>
+                                <td><?php echo $value['nom'];echo ' ';echo $value['prenom'] ?></td>
+                                <td><?php echo $value['horaire'];?></td>
+                                <td><?php echo $value['compterendu'];?></td>
+                                <?php
+                                if ($interval > 1){
+                                    ?>
+                                    <td>
+                                        <a class="d-block mx-auto btn btn-danger text-white" href="../../traitement/delete_rdv.php?idRdv=<?php echo $value['idRdv'];?>"><i class="fas fa-times"> Annuler</i></a>
+                                    </td>
+                                <?php } else {?>
+                                    <td>
+                                        <a class="d-block mx-auto btn btn-secondary text-white" href=""><i class="fas fa-times">Annulation impossible</i></a>
+                                    </td>
+                                <?php }?>
+
+                            </tr>
+
+                        <?php } ?>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div style="padding-left: 100px;" >
+                    <div class="btnEvent"><button class="btn btn-info add-new" data-toggle="modal" data-target="#add_rdv" data-whatever="@getbootstrap" id="plan_rdv"><i class="fa fa-plus"></i> Planifier un rendez-vous</button></div>
+                </div>
+
+            </center>
+        </div>
+
+        </div>
+    </section>
+<?php
+}
+    if($_SESSION['profil']=='prof'){
+
+    ?>
+
+    <!-- DATA TABLE -->
+    <section class="section service-2">
+        <div class="container">
+
+            <center>
+                <div class="table-responsive" style="width:100%;">
+                    <table id="table" class="display dt-responsive" style="width:100%;">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Libelle</th>
+                            <th>Parent</th>
+                            <th>Horaire</th>
+                            <th>Compte-rendu</th>
+                            <th>Annuler</th>
+                            <th>Ajout compte-rendu</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($rdvprof as $value){
+                            $daterdv = date_create($value['horaire']);
+                            $interval = date_diff($datedujour, $daterdv);
+                            $interval = ($interval->format('%r%d'))+1;
 
 
                             ?>
@@ -117,14 +190,29 @@ else {
                                 <td><?php echo $value['idRdv'];?></td>
                                 <td id><?php echo $value['libelle'];?>
                                 </td>
-                                <td><?php echo $value['nom'];?></td>
+                                <td><?php echo $value['nom'];echo ' ';echo $value['prenom'];?></td>
                                 <td><?php echo $value['horaire'];?></td>
-                                <td><?php echo $value['mail'];?></td>
                                 <td><?php echo $value['compterendu'];?></td>
+                                <?php
+                                if ($interval > 1){
+                                ?>
                                 <td>
-                                    <a class="d-block mx-auto btn btn-danger text-white" href="../../traitement/Admin/delete_rdv.php?idUser=<?php echo $value['idRdv'];?>"><i class="fas fa-times"> Supprimer</i></a>
+                                    <a class="d-block mx-auto btn btn-danger text-white" href="../../traitement/delete_rdv.php?idRdv=<?php echo $value['idRdv'];?>"><i class="fas fa-times"> Annuler</i></a>
                                 </td>
-
+                                <?php } else {?>
+                                    <td>
+                                        <a class="d-block mx-auto btn btn-secondary text-white" href=""><i class="fas fa-times"><small>Annulation impossible</small></i></a>
+                                    </td>
+                                <?php }
+                                if ($value['compterendu'] == null){ ?>
+                                <td>
+                                    <a class="d-block mx-auto btn btn-sm btn-primary text-white" href="./addcompterendu.php?idRdv=<?php echo $value['idRdv'];?>"><i class="fas fa-times">Ajouter un compte-rendu</i></a>
+                                </td>
+<?php } else {?>
+                                <td>
+                                    <a class="d-block mx-auto btn btn-sm btn-secondary text-white" href=""><i class="fas fa-times"><small>Compte-rendu ajouté</small></i></a>
+                                </td>
+<?php } ?>
                             </tr>
 
 
@@ -135,7 +223,7 @@ else {
 
                 </div>
                 <div style="padding-left: 100px;" >
-                    <div class="btnEvent"><button class="btn btn-info add-new" data-toggle="modal" data-target="#add_user" data-whatever="@getbootstrap" id="plan_rdv"><i class="fa fa-plus"></i> Planifier un rendez-vous</button></div>
+                    <div class="btnEvent"><button class="btn btn-info add-new" data-toggle="modal" data-target="#add_rdv" data-whatever="@getbootstrap" id="plan_rdv"><i class="fa fa-plus"></i> Planifier un rendez-vous</button></div>
                 </div>
 
             </center>
@@ -143,7 +231,10 @@ else {
 
         </div>
     </section>
-<?php
+
+
+
+    <?php
 }
     include('addrdv.php');
 include('../footer/footerinview.php');

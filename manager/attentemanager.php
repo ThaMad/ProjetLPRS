@@ -388,6 +388,59 @@ table[class=body] .article {
             echo 'error';
         }
     }
+    public function addRdv($rdv)
+    {
+
+
+        $db = parent::connexion_bdd();
+        $request = $db->prepare('INSERT INTO rdv (professeur,parent,libelle,horaire) VALUES (?,?,?,?)');
+        $res= $request->execute(array(
+            $rdv->getProfesseur(),
+            $rdv->getParent(),
+            $rdv->getLibelle(),
+            $rdv->getHoraire()
+        ));
+
+        if ($res== true) {
+            header("Location:/ProjetLPRS/view/profil/rendezvous.php?new_projet=Y7Z3i7aEm");
+        } else {
+            header("Location:/ProjetLPRS/view/profil/rendezvous.php?erreur_new_projet=K7YJ4pkp9");
+        }
+    }
+
+    public function addCompteRendu($rdv)
+    {
+        $db=parent::connexion_bdd();
+        $request = $db->prepare('UPDATE rdv SET compterendu= ? WHERE idRdv = ?');
+        $res = $request->execute(array($rdv->getCompterendu(),
+            $rdv->getIdrdv()));
+
+        if ($res==true){
+            header("Location:/ProjetLPRS/view/profil/rendezvous.php?new_compterendu=Y7Z3i7aEm");
+        }
+        else {
+            header("Location:/ProjetLPRS/view/profil/rendezvous.php?erreur_compterendu=K7YJ4pkp9");
+        }
+
+
+    }
+
+    public function suppressionCompteRendu($idRdv){
+        $db=parent::connexion_bdd();
+        $request = $db->prepare('DELETE FROM rdv WHERE idRdv = ?');
+        $res = $request->execute(array($idRdv));
+
+
+        if ($res==true){
+            header("Location:/ProjetLPRS/view/profil/rendezvous.php?delete_rdv=Y7Z3i7aEm");
+        }
+        else {
+            header("Location:/ProjetLPRS/view/profil/rendezvous.php?erreur_deleterdv=K7YJ4pkp9");
+        }
+
+
+    }
+
 
 
 }
