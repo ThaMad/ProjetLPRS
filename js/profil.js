@@ -2,8 +2,6 @@ $("body").delegate("#modifdata", "click", function () {
     $('#nominfodata').removeAttr('disabled');
     $('#prenominfodata').prop('disabled',false);
     $('#mailinfodata').prop('disabled',false);
-    $('#etudiantinfodata').prop('disabled',false);
-    $('#parentinfodata').prop('disabled',false);
     $('#classeinfodata').prop('disabled',false);
     $("#save-modification").prop('hidden', false);
     $("#retour").prop('hidden', false);

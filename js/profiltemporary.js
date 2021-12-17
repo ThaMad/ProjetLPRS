@@ -1,6 +1,7 @@
 $("body").delegate("#tableauEvent", "click", function () {
     $("#containerProfil").prop('hidden', true);
     $("#containerTableau").prop('hidden', false);
+    $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
     $("#sectionLien").prop('hidden', true);
 });
 
