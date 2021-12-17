@@ -69,22 +69,22 @@ include("../header/headerinview.php");
                 <center><a href="https://www.scoleo.fr/etablissement/ROBERT-SCHUMAN-0931573E-933053.html"> Cliquer ici pour les fournitures scolaires !</a></center>
                 <p style="color:black;">L’établissement ouvrira ses portes le Lundi 22 Août.</p>
                 <ul>
-                    <li>02/09/21 – 9h00 à 12h00: Rentrée des élèves de  Seconde Pro.</li>
-                    <li>02/09/21 – 9h30 à 12h30: Rentrée des élèves de  Troisième et  Première STI2D.</li>
-                    <li>02/09/21 – 10h00 à 12h00: Rentrée des élèves de Première Pro.</li>
-                    <li>02/09/21 – 10h30 à 12h30: Rentrée des élèves de  Terminale Pro et Terminale STI2D.</li>
+                    <li>01/09/21 – 9h00 à 12h00: Rentrée des élèves de  Seconde Pro.</li>
+                    <li>01/09/21 – 9h30 à 12h30: Rentrée des élèves de  Troisième et  Première STI2D.</li>
+                    <li>01/09/21 – 10h00 à 12h00: Rentrée des élèves de Première Pro.</li>
+                    <li>01/09/21 – 10h30 à 12h30: Rentrée des élèves de  Terminale Pro et Terminale STI2D.</li>
                 </ul>
                 <p style="color:black;">Début des cours pour ces élèves le vendredi 03 Septembre 2021 selon leur emploi du temps.
                     <br>
                     Le restaurant scolaire ouvrira  le vendredi 03 Septembre 2021</p>
                 <ul>
-                    <li>02/09/21 – 13h30 à 15h30: Rentrée des étudiants BTS CPRP 1ère année.</li>
-                    <li>02/09/21 – 15h30 à 17h30: Rentrée des étudiants BTS SIO option SISR 2ième année.</li>
+                    <li>01/09/21 – 13h30 à 15h30: Rentrée des étudiants BTS CPRP 1ère année.</li>
+                    <li>01/09/21 – 15h30 à 17h30: Rentrée des étudiants BTS SIO option SISR 2ième année.</li>
                 </ul>
                 <p style="color:black;">Début des cours pour ces étudiants (BTS CPRP 1ère année et BTS SISR 2ième année) le vendredi 03 Septembre 2021 selon leur emploi du temps.</p>
                 <ul>
-                    <li>03/09/21 – 08h30 à 10h30: Rentrée des étudiants BTS SIO option SISR 1ère année.</li>
-                    <li>03/09/21 – 10h30 à 12h30: Rentrée des étudiants BTS SIO option SLAM 1ère année.</li>
+                    <li>05/09/21 – 08h30 à 10h30: Rentrée des étudiants BTS SIO option SISR 1ère année.</li>
+                    <li>05/09/21 – 10h30 à 12h30: Rentrée des étudiants BTS SIO option SLAM 1ère année.</li>
                 </ul>
                 <p style="color:black;">Début des cours pour ces étudiants (BTS SLAM et SISR 1ère année)  le lundi 06 Septembre 2021 selon leur emploi du temps.</p>
                 <ul>
