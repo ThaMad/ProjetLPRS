@@ -97,10 +97,14 @@ include('view/header/header.php');
 	</div>
 </section>
 
-
 <?php
 include('view/footer/footer.php');
 ?>
+<?php if(isset($_SESSION['mailModif']) && $_SESSION['mailModif'] != '' ){ ?>
+    <script type="text/javascript">
+        $('#modifMdp').modal('show');
+    </script>
+    <?php } ?>
 <?php if(isset($_SESSION['erreur']) && $_SESSION['erreur'] !=''){ ?>
     <script type="text/javascript">
         app.displayErrorNotification('<?php echo $_SESSION['erreur']; ?>');
