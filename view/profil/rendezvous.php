@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 //On déclare la variables $toolsManager de type toolsManager
 $Manager = new Manager();

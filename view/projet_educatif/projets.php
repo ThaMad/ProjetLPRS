@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
 //On déclare la variables $toolsManager de type toolsManager
@@ -13,6 +14,15 @@ $projets = $projets->fetchall();
 $classes = $db->prepare('SELECT * FROM classe');
 $classes->execute(array());
 $classes = $classes-> fetchall();
+
+
+if (!isset($_SESSION['mail'])) {
+    header('Location: /ProjetLPRS/index.php');
+} else if ($_SESSION['profil'] !== 'prof') {
+    header('Location: /ProjetLPRS/index.php');
+}
+else{
+
 
 include('../header/headerinview.php');
 include('add_projet.php');
@@ -49,15 +59,6 @@ include('add_projet.php');
 
 <body id="top">
 
-<?php
-if (!isset($_SESSION['mail']) ){
-    header('Location: /ProjetLPRS/index.php');
-}
-
-else if ($_SESSION['profil']!== 'prof'){
-    header('Location: /ProjetLPRS/index.php');
-}
-    ?>
 
 
 
@@ -183,3 +184,4 @@ include('../footer/footerinview.php');
 
     </body>
     </html>
+<?php }?>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $_SESSION['page'] = 'pageInView';
 require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 $manager = new Manager();

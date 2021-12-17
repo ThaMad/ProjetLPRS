@@ -87,10 +87,10 @@ include('view/header/header.php');
 			</div>
 			<div class="col-lg-4">
 				<div class="about-content pl-4 mt-4 mt-lg-0">
-					<h2 class="title-color">Evenement</h2>
+					<h2 class="title-color">Evenements</h2>
 					<p class="mt-4 mb-5">L'établissement organise plusieurs évenements que vous pouvez découvrir en cliquant sur le lien ci-dessous.</p>
 
-					<a href="view/event/event.php" class="btn btn-main-2 btn-round-full btn-icon">Evenement<i class="icofont-simple-right ml-3"></i></a>
+					<a href="view/event/event.php" class="btn btn-main-2 btn-round-full btn-icon">Evenements<i class="icofont-simple-right ml-3"></i></a>
 				</div>
 			</div>
 		</div>

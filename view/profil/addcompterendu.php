@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT']."/ProjetLPRS/manager/manager.php");
 //On déclare la variables $toolsManager de type toolsManager
 $Manager = new Manager();
@@ -7,7 +7,14 @@ $Manager = new Manager();
 $db = $Manager->connexion_bdd();
 
 
-include('../header/headerinview.php');
+if (!isset($_SESSION['mail'])) {
+    header('Location: /ProjetLPRS/index.php');
+} else if ($_SESSION['profil'] !== 'prof') {
+    header('Location: /ProjetLPRS/index.php');
+} else {
+
+
+    include('../header/headerinview.php');
 
 $mail = $_SESSION['mail'];
 
@@ -56,16 +63,6 @@ $rdvprof = $rdvprof->fetch();
     </head>
 
 <body id="top">
-
-<?php
-if (!isset($_SESSION['mail']) ){
-    header('Location: /ProjetLPRS/index.php');
-}
-else if ($_SESSION['profil']!== 'prof'){
-    header('Location: /ProjetLPRS/index.php');
-}
-else {
-    ?>
 
 
 

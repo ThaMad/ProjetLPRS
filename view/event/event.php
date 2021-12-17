@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 $manager = new Manager();
 $bdd = $manager->connexion_bdd();
@@ -12,7 +13,7 @@ include('addevent.php');
         <div class="row">
             <div class="col-md-12">
                 <div class="block text-center">
-                    <h1 class="text-capitalize mb-5 text-lg">Evenement</h1>
+                    <h1 class="text-capitalize mb-5 text-lg">Evenements</h1>
                 </div>
             </div>
         </div>

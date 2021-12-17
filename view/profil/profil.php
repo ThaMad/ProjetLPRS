@@ -1,7 +1,13 @@
 <?php
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 $manager = new Manager();
 $bdd = $manager->connexion_bdd();
+
+if (!isset($_SESSION['mail'])) {
+    header('Location: /ProjetLPRS/index.php');
+}
+else {
 include('../header/headerinview.php');
 ?>
 <?php
@@ -338,3 +344,4 @@ if (isset($_SESSION['erreur']) && $_SESSION['erreur'] != '') { ?>
 
 </script>
 </html>
+<?php } ?>

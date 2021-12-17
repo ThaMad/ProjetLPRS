@@ -1,10 +1,18 @@
 <?php
-
+session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . "/ProjetLPRS/manager/manager.php");
 //On déclare la variables $toolsManager de type toolsManager
 $Manager = new Manager();
 //On déclare la variable $db de type toolsManager en appelant@ la méthode connexion_bd
 $db = $Manager->connexion_bdd();
+
+
+if (!isset($_SESSION['mail'])) {
+    header('Location: /ProjetLPRS/index.php');
+} else if ($_SESSION['profil'] != 'parent') {
+    header('Location: /ProjetLPRS/index.php');
+}
+else {
 
 
 
@@ -129,3 +137,4 @@ include('../footer/footerinview.php');
 </body>
 </html>
 
+<?php } ?>
