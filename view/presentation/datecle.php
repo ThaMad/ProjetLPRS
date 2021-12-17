@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -45,216 +48,67 @@ include("../header/headerinview.php");
     </div>
 </section>
 <br><br>
-
-<section class="fetaure-page ">
+<section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="about-block-item mb-5 mb-lg-0">
-                    <img src="../../images/about/about-1.jpg" alt="" class="img-fluid w-100">
-                    <h4 class="mt-3">Healthcare for Kids</h4>
-                    <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
+            <div class="col-md-12">
+                <div class="block text-center" >
+                    <p>********************************INFORMATION POUR LES PARENTS**********************************<br></p>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="about-block-item mb-5 mb-lg-0">
-                    <img src="../../images/about/about-2.jpg" alt="" class="img-fluid w-100">
-                    <h4 class="mt-3">Medical Counseling</h4>
-                    <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="about-block-item mb-5 mb-lg-0">
-                    <img src="../../images/about/about-3.jpg" alt="" class="img-fluid w-100">
-                    <h4 class="mt-3">Modern Equipments</h4>
-                    <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="about-block-item">
-                    <img src="../../images/about/about-4.jpg" alt="" class="img-fluid w-100">
-                    <h4 class="mt-3">Qualified Doctors</h4>
-                    <p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section awards">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-4">
-                <h2 class="title-color">Our Doctors achievements </h2>
-                <div class="divider mt-4 mb-5 mb-lg-0"></div>
-            </div>
-            <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="award-img">
-                            <img src="../../images/about/3.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="award-img">
-                            <img src="../../images/about/4.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="award-img">
-                            <img src="../../images/about/1.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="award-img">
-                            <img src="../../images/about/2.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="award-img">
-                            <img src="../../images/about/5.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="award-img">
-                            <img src="../../images/about/6.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
+                <p style="color:black;">Chers parents,<br>
+                    <br>
+                    Pour vous simplifier la prochaine rentrée et vous permettre de faire des économies, votre établissement a mis en place l’Opération Fournitures scolaires de Scoléo :</p>
+                    <ul>
+                        <br>
+                        <li>Vous recevez les fournitures scolaires demandées par les enseignants pour la prochain rentrée à la date de votre choix.</li>
+                        <li>Vous pouvez supprimer les articles que vous avez déjà.</li>
+                        <li>Vous choisissez l’adresse de livraison (votre domicile, votre bureau, point relais colissimo) ainsi que la période de livraison qui vous arrange,</li>
+                        <li>L’envoi est gratuit pour les commandes de 3 colis, n’hésitez pas à vous grouper avec les camarades de vos enfants !</li>
+                        <li>Vous pouvez choisir la liste «  écoresponsable »</li>
+                    </ul>
+                <center><a href="https://www.scoleo.fr/etablissement/ROBERT-SCHUMAN-0931573E-933053.html"> Cliquer ici pour les fournitures scolaires !</a></center>
+                <p style="color:black;">L’établissement ouvrira ses portes le Lundi 22 Août.</p>
+                <ul>
+                    <li>02/09/21 – 9h00 à 12h00: Rentrée des élèves de  Seconde Pro.</li>
+                    <li>02/09/21 – 9h30 à 12h30: Rentrée des élèves de  Troisième et  Première STI2D.</li>
+                    <li>02/09/21 – 10h00 à 12h00: Rentrée des élèves de Première Pro.</li>
+                    <li>02/09/21 – 10h30 à 12h30: Rentrée des élèves de  Terminale Pro et Terminale STI2D.</li>
+                </ul>
+                <p style="color:black;">Début des cours pour ces élèves le vendredi 03 Septembre 2021 selon leur emploi du temps.
+                    <br>
+                    Le restaurant scolaire ouvrira  le vendredi 03 Septembre 2021</p>
+                <ul>
+                    <li>02/09/21 – 13h30 à 15h30: Rentrée des étudiants BTS CPRP 1ère année.</li>
+                    <li>02/09/21 – 15h30 à 17h30: Rentrée des étudiants BTS SIO option SISR 2ième année.</li>
+                </ul>
+                <p style="color:black;">Début des cours pour ces étudiants (BTS CPRP 1ère année et BTS SISR 2ième année) le vendredi 03 Septembre 2021 selon leur emploi du temps.</p>
+                <ul>
+                    <li>03/09/21 – 08h30 à 10h30: Rentrée des étudiants BTS SIO option SISR 1ère année.</li>
+                    <li>03/09/21 – 10h30 à 12h30: Rentrée des étudiants BTS SIO option SLAM 1ère année.</li>
+                </ul>
+                <p style="color:black;">Début des cours pour ces étudiants (BTS SLAM et SISR 1ère année)  le lundi 06 Septembre 2021 selon leur emploi du temps.</p>
+                <ul>
+                    <li>06/09/21 – 08h30 à 10h30: Rentrée des étudiants BTS SIO option SLAM 2ième année. Début des cours à 10H30</li>
+                    <li>06/09/21 – 10h30 à 12h30: Rentrée des étudiants BTS CPRP 2ième année. Début des cours à 13H30</li>
+                </ul>
+                <p style="color:black;">Une réunion d’information pour les parents d’élèves de troisième, de BAC PRO et de BAC TECHNO, se tiendra le samedi 25 septembre 2021.  Un courrier concernant les horaires et le format mis en place (visio ou présentiel) sera distribué aux élèves lors de la rentrée des classes.<br>
+                    <br>
+                    Une réunion d’information pour les parents d’étudiants des CPRP et SIO, se tiendra le samedi 25 septembre 2021.  Un courrier concernant les horaires et le format mis en place (visio ou présentiel) sera distribué aux étudiants lors de la rentrée des classes.<br>
+                    <br>
+                    Documents à télécharger et à compléter en ligne en cas de perte:</p>
+                    <ul>
+                        <li><a href="http://www.lyceerobertschuman.com/wp-content/uploads/2021/03/convention-des-familles-bac-Pro-2021-2022.pdf"> Convention de scolarité Bac pro </a></li>
+                        <li><a href="http://www.lyceerobertschuman.com/wp-content/uploads/2021/03/convention-des-familles-bac-Techno-2021-2022.pdf">Convention de scolarité STI2D</a></li>
+                        <li><a href="http://www.lyceerobertschuman.com/wp-content/uploads/2021/03/convention-des-familles-BTS-SIO1-2021-2022-.pdf">Convention de scolarité BTS SIO</a></li>
+                        <li><a href="http://www.lyceerobertschuman.com/wp-content/uploads/2021/07/Attestation-de-reception-des-reglements-2021-2022.pdf"> Attestation de réception des documents</a></li>
+                        <li>Partenariat CER – Permis de conduite</li>
+                        <li>Demi-pension et Scolarité</li>
+                    </ul>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section team">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section-title text-center">
-                    <h2 class="mb-4">Meet Our Specialist</h2>
-                    <div class="divider mx-auto my-4"></div>
-                    <p>Today’s users expect effortless experiences. Don’t let essential people and processes stay stuck in the past. Speed it up, skip the hassles</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="team-block mb-5 mb-lg-0">
-                    <img src="../../images/team/1.jpg" alt="" class="img-fluid w-100">
-
-                    <div class="content">
-                        <h4 class="mt-4 mb-0"><a href="../../doctor-single.php">John Marshal</a></h4>
-                        <p>Internist, Emergency Physician</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="team-block mb-5 mb-lg-0">
-                    <img src="../../images/team/2.jpg" alt="" class="img-fluid w-100">
-
-                    <div class="content">
-                        <h4 class="mt-4 mb-0"><a href="../../doctor-single.php">Marshal Root</a></h4>
-                        <p>Surgeon, Сardiologist</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="team-block mb-5 mb-lg-0">
-                    <img src="../../images/team/3.jpg" alt="" class="img-fluid w-100">
-
-                    <div class="content">
-                        <h4 class="mt-4 mb-0"><a href="../../doctor-single.php">Siamon john</a></h4>
-                        <p>Internist, General Practitioner</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="team-block">
-                    <img src="../../images/team/4.jpg" alt="" class="img-fluid w-100">
-
-                    <div class="content">
-                        <h4 class="mt-4 mb-0"><a href="../../doctor-single.php">Rishat Ahmed</a></h4>
-                        <p>Orthopedic Surgeon</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section testimonial">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-6">
-                <div class="section-title">
-                    <h2 class="mb-4">What they say about us</h2>
-                    <div class="divider  my-4"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-lg-6 testimonial-wrap offset-lg-6">
-                <div class="testimonial-block">
-                    <div class="client-info ">
-                        <h4>Amazing service!</h4>
-                        <span>John Partho</span>
-                    </div>
-                    <p>
-                        They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-                    </p>
-                    <i class="icofont-quote-right"></i>
-
-                </div>
-
-                <div class="testimonial-block">
-                    <div class="client-info">
-                        <h4>Expert doctors!</h4>
-                        <span>Mullar Sarth</span>
-                    </div>
-                    <p>
-                        They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-                    </p>
-                    <i class="icofont-quote-right"></i>
-                </div>
-
-                <div class="testimonial-block">
-                    <div class="client-info">
-                        <h4>Good Support!</h4>
-                        <span>Kolis Mullar</span>
-                    </div>
-                    <p>
-                        They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-                    </p>
-                    <i class="icofont-quote-right"></i>
-                </div>
-
-                <div class="testimonial-block">
-                    <div class="client-info">
-                        <h4>Nice Environment!</h4>
-                        <span>Partho Sarothi</span>
-                    </div>
-                    <p>
-                        They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-                    </p>
-                    <i class="icofont-quote-right"></i>
-                </div>
-
-                <div class="testimonial-block">
-                    <div class="client-info">
-                        <h4>Modern Service!</h4>
-                        <span>Kolis Mullar</span>
-                    </div>
-                    <p>
-                        They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-                    </p>
-                    <i class="icofont-quote-right"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <?php
 include("../footer/footerinview.php");
 ?>
