@@ -1,25 +1,27 @@
+<?php session_start();
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
-  <meta name="author" content="themefisher.com">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+    <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+    <title>Lycée Robert Schuman - Parcours BTS</title>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
 
-  <!-- bootstrap.min css -->
-  <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
-  <!-- Icon Font Css -->
-  <link rel="stylesheet" href="../../plugins/icofont/icofont.min.css">
-  <!-- Slick Slider  CSS -->
-  <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick.css">
-  <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Icon Font Css -->
+    <link rel="stylesheet" href="../../plugins/icofont/icofont.min.css">
+    <!-- Slick Slider  CSS -->
+    <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="../../plugins/slick-carousel/slick/slick-theme.css">
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="../../css/style.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../../css/style.css">
 
 </head>
 
@@ -28,279 +30,395 @@
 <?php
 include('../header/headerinview.php');
 ?>
-<li class="nav-item"><a class="nav-link" href="../presentation/about.php">Information</a></li>
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="lycee.php" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formation <i class="icofont-thin-down"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="dropdown05">
-        <li><a class="dropdown-item" href="lycee.php">Parcours Lycée</a></li>
-        <li><a class="dropdown-item" href="bts.php">Parcours BTS</a></li>
-    </ul>
-</li>
-<li class="nav-item"><a class="nav-link" href="../event/event.php">Evenement</a></li>
-<li class="nav-item"><a class="nav-link" href="../contact/contact.php">Contact</a></li>
-</ul>
-</div>
-</div>
-</nav>
-</header>
-	
 
 
 <section class="page-title bg-1">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <span class="text-white">News details</span>
-          <h1 class="text-capitalize mb-5 text-lg">Blog Single</h1>
-
-          <!-- <ul class="list-inline breadcumb-nav">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">News details</a></li>
-          </ul> -->
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="section blog-wrap">
+    <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8">
-                <div class="row">
-	<div class="col-lg-12 mb-5">
-		<div class="single-blog-item">
-			<img src="../../images/blog/blog-1.jpg" alt="" class="img-fluid">
+            <div class="col-md-12">
+                <div class="block text-center">
+                    <span class="text-white">Differents parcours dans le supérieur</span>
+                    <h1 class="text-capitalize mb-5 text-lg">Parcours BTS</h1>
 
-			<div class="blog-item-content mt-5">
-				<div class="blog-item-meta mb-3">
-					<span class="text-color-2 text-capitalize mr-3"><i class="icofont-book-mark mr-2"></i> Equipment</span>
-					<span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5 Comments</span>
-					<span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i> 28th January 2019</span>
-				</div> 
-
-<<<<<<< HEAD:view/formation/bts.php
-				<h2 class="mb-4 text-md"><a href="bts.php">Healthy environment to care with modern equipment</a></h2>
-=======
-				<h2 class="mb-4 text-md"><a href="blog-single.php">Healthy environment to care with modern equipment</a></h2>
->>>>>>> 605900c8fbbfc55b8258d9e7ab19b43e09d41d69:blog-single.php
-
-				<p class="lead mb-4">Non illo quas blanditiis repellendus laboriosam minima animi. Consectetur accusantium pariatur repudiandae!</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus natus, consectetur? Illum libero vel nihil nisi quae, voluptatem, sapiente necessitatibus distinctio voluptates, iusto qui. Laboriosam autem, nam voluptate in beatae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iure officia nihil nemo, repudiandae itaque similique praesentium non aut nesciunt facere nulla, sequi sunt nam temporibus atque earum, ratione, labore.</p>
-
-				<blockquote class="quote">
-					A brand for a company is like a reputation for a person. You earn reputation by trying to do hard things well.
-				</blockquote>
-
-				
-				<p class="lead mb-4 font-weight-normal text-black">The same is true as we experience the emotional sensation of stress from our first instances of social rejection ridicule. We quickly learn to fear and thus automatically.</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, rerum beatae repellat tenetur incidunt quisquam libero dolores laudantium. Nesciunt quis itaque quidem, voluptatem autem eos animi laborum iusto expedita sapiente.</p>
-
-				<div class="mt-5 clearfix">
-				    <ul class="float-left list-inline tag-option"> 
-				    	<li class="list-inline-item"><a href="#">Advancher</a></li>
-				    	<li class="list-inline-item"><a href="#">Landscape</a></li>
-				    	<li class="list-inline-item"><a href="#">Travel</a></li>
-				   	</ul>        
-
-				    <ul class="float-right list-inline">
-				        <li class="list-inline-item"> Share: </li>
-				        <li class="list-inline-item"><a href="#" target="_blank"><i class="icofont-facebook" aria-hidden="true"></i></a></li>
-				        <li class="list-inline-item"><a href="#" target="_blank"><i class="icofont-twitter" aria-hidden="true"></i></a></li>
-				        <li class="list-inline-item"><a href="#" target="_blank"><i class="icofont-pinterest" aria-hidden="true"></i></a></li>
-				        <li class="list-inline-item"><a href="#" target="_blank"><i class="icofont-linkedin" aria-hidden="true"></i></a></li>
-				    </ul>
-			    </div>
-			</div>
-		</div>
-	</div>
-
-	<div class="col-lg-12">
-		<div class="comment-area mt-4 mb-5">
-			<h4 class="mb-4">2 Comments on Healthy environment... </h4>
-			<ul class="comment-tree list-unstyled">
-				<li class="mb-5">
-					<div class="comment-area-box">
-						<div class="comment-thumb float-left">
-							<img alt="" src="../../images/blog/testimonial1.jpg" class="img-fluid">
-						</div>
-
-						<div class="comment-info">
-							<h5 class="mb-1">John</h5>
-							<span>United Kingdom</span>
-							<span class="date-comm">| Posted April 7, 2019</span>
-						</div>
-						<div class="comment-meta mt-2">
-							<a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply</a>
-						</div>
-
-						<div class="comment-content mt-3">
-							<p>Some consultants are employed indirectly by the client via a consultancy staffing company, a company that provides consultants on an agency basis. </p>
-						</div>
-					</div>
-				</li>
-
-				<li>
-					<div class="comment-area-box">
-						<div class="comment-thumb float-left">
-							<img alt="" src="../../images/blog/testimonial2.jpg" class="img-fluid">
-						</div>
-
-						<div class="comment-info">
-							<h5 class="mb-1">Philip W</h5>
-							<span>United Kingdom</span>
-							<span class="date-comm">| Posted June 7, 2019</span>
-						</div>
-
-						<div class="comment-meta mt-2">
-							<a href="#"><i class="icofont-reply mr-2 text-muted"></i>Reply </a>
-						</div>
-
-						<div class="comment-content mt-3">
-							<p>Some consultants are employed indirectly by the client via a consultancy staffing company, a company that provides consultants on an agency basis. </p>
-						</div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-
-	<div class="col-lg-12">
-		<form class="comment-form my-5" id="comment-form">
-			<h4 class="mb-4">Write a comment</h4>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<input class="form-control" type="text" name="name" id="name" placeholder="Name:">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<input class="form-control" type="text" name="mail" id="mail" placeholder="Email:">
-					</div>
-				</div>
-			</div>
-
-
-			<textarea class="form-control mb-4" name="comment" id="comment" cols="30" rows="5" placeholder="Comment"></textarea>
-
-			<input class="btn btn-main-2 btn-round-full" type="submit" name="submit-contact" id="submit_contact" value="Submit Message">
-		</form>
-	</div>
-</div>
+                    <!-- <ul class="list-inline breadcumb-nav">
+                      <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+                      <li class="list-inline-item"><span class="text-white">/</span></li>
+                      <li class="list-inline-item"><a href="#" class="text-white-50">Our blog</a></li>
+                    </ul> -->
+                </div>
             </div>
-            <div class="col-lg-4">
-                <div class="sidebar-wrap pl-lg-4 mt-5 mt-lg-0">
-	<div class="sidebar-widget search  mb-3 ">
-		<h5>Search Here</h5>
-		<form action="#" class="search-form">
-			<input type="text" class="form-control" placeholder="search">
-			<i class="ti-search"></i>
-		</form>
-	</div>
-
-
-	<div class="sidebar-widget latest-post mb-3">
-		<h5>Popular Posts</h5>
-
-        <div class="py-2">
-        	<span class="text-sm text-muted">03 Mar 2018</span>
-            <h6 class="my-2"><a href="#">Thoughtful living in los Angeles</a></h6>
-        </div>
-
-        <div class="py-2">
-       		<span class="text-sm text-muted">03 Mar 2018</span>
-            <h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
-        </div>
-
-        <div class="py-2">
-        	<span class="text-sm text-muted">03 Mar 2018</span>
-            <h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a></h6>
-        </div>
-	</div>
-
-	<div class="sidebar-widget category mb-3">
-		<h5 class="mb-4">Categories</h5>
-
-		<ul class="list-unstyled">
-		  <li class="align-items-center">
-		    <a href="#">Medicine</a>
-		    <span>(14)</span>
-		  </li>
-		  <li class="align-items-center">
-		    <a href="#">Equipments</a>
-		    <span>(2)</span>
-		  </li>
-		  <li class="align-items-center">
-		    <a href="#">Heart</a>
-		    <span>(10)</span>
-		  </li>
-		  <li class="align-items-center">
-		    <a href="#">Free counselling</a>
-		    <span>(5)</span>
-		  </li>
-		  <li class="align-items-center">
-		    <a href="#">Lab test</a>
-		    <span>(5)</span>
-		  </li>
-		</ul>
-	</div>
-
-
-	<div class="sidebar-widget tags mb-3">
-		<h5 class="mb-4">Tags</h5>
-
-		<a href="#">Doctors</a>
-		<a href="#">agency</a>
-		<a href="#">company</a>
-		<a href="#">medicine</a>
-		<a href="#">surgery</a>
-		<a href="#">Marketing</a>
-		<a href="#">Social Media</a>
-		<a href="#">Branding</a>
-		<a href="#">Laboratory</a>
-	</div>
-
-
-	<div class="sidebar-widget schedule-widget mb-3">
-		<h5 class="mb-4">Time Schedule</h5>
-
-		<ul class="list-unstyled">
-		  <li class="d-flex justify-content-between align-items-center">
-		    <a href="#">Monday - Friday</a>
-		    <span>9:00 - 17:00</span>
-		  </li>
-		  <li class="d-flex justify-content-between align-items-center">
-		    <a href="#">Saturday</a>
-		    <span>9:00 - 16:00</span>
-		  </li>
-		  <li class="d-flex justify-content-between align-items-center">
-		    <a href="#">Sunday</a>
-		    <span>Closed</span>
-		  </li>
-		</ul>
-
-		<div class="sidebar-contatct-info mt-4">
-			<p class="mb-0">Need Urgent Help?</p>
-			<h3>+23-4565-65768</h3>
-		</div>
-	</div>
-
-</div>
-            </div>   
         </div>
     </div>
 </section>
+
+
+<section class="fetaure-page ">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="about-block-item mb-5 mb-lg-0">
+                    <img src="../../images/about/about-6.jpg" alt="" class="img-fluid w-100">
+                    <h4 class="mt-3">BTS CPRP</h4>
+                    <p> <a href="#cprp">2 années en alternance rythme 1semaine/1semaine <br> Brochure de la formation </a></p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="about-block-item mb-5 mb-lg-0">
+                    <img src="../../images/about/about-7.jpg" alt="" class="img-fluid w-100">
+                    <h4 class="mt-3">BTS SIO SISR </h4>
+                    <p> <a href="#sisr">1re année en formation continue, 2e année en alternance (2j ecole/3j entreprise).
+                            <br>Brochure de la formation </a></p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="about-block-item mb-5 mb-lg-0">
+                    <img src="../../images/about/about-8.jpg" alt="" class="img-fluid w-100">
+                    <h4 class="mt-3">Bac SIO SLAM</h4>
+                    <p> <a href="#slam">1re année en formation continue, 2e année en alternance (2j ecole/3j entreprise).
+                            <br>Brochure de la formation </a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<center>
+    <div class="divider  my-4"></div>
+</center>
+<section class="section awards">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <h2 class="title-color">Nos partenariats </h2>
+                <div class="divider mt-4 mb-5 mb-lg-0"></div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="award-img">
+                            <img src="../../images/about/7.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="award-img">
+                            <img src="../../images/about/8.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="award-img">
+                            <img src="../../images/about/9.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="award-img">
+                            <img src="../../images/about/10.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="award-img">
+                            <img src="../../images/about/11.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="award-img">
+                            <img src="../../images/about/12.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<center>
+    <div class="divider  my-4"></div>
+</center>
+
+<section class="section testimonial">
+    <div class="container" id="cprp">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6">
+                <div class="section-title">
+                    <h2 class="mb-4">BTS CPRP</h2>
+                    <div class="divider  my-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 testimonial-wrap offset-lg-6">
+                <div class="testimonial-block">
+                    <div class="client-info ">
+                        <h4>Atouts et objectifs de ce BTS
+                        </h4>
+                    </div>
+                    <p>
+                        Le technicien supérieur CPRP est un spécialiste des procédés de fabrication de pièces mécaniques, notamment par usinage. Ces pièces peuvent être destinées à des machines industrielles ou à des biens de consommation pour le grand public.
+                    </p>
+                    <i class="icofont-quote-right"></i>
+
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Débouchés</h4>
+                    </div>
+                    <p>
+                        Le titulaire du BTS CPRP peut occuper des emplois variés selon la poursuite ou non de ses études tels que :
+                        Technicien Méthodes / Qualité / Sécurité
+                        Dessinateur industriel
+                        Technicien support technique
+                        Chef d’équipe d’une unité de production
+                        Responsable projet
+
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Moyens de formation</h4>
+                    </div>
+                    <p>
+
+                        Un parc machines comprenant 6 tours CN
+                        5 centres d’usinages – 1 centre d’usinage 5 axes
+                        Deux salles équipées Solidworks, Catia, Esprit et EFICN
+                        Un laboratoire de sciences équipé
+                        9 formateurs, 1 CPE et un responsable de l’enseignement supérieur.
+
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Les enseignements</h4>
+                    </div>
+                    <p>
+
+                        Deux BTS blancs sont prévus par an.
+                        Le passage du BTS CPRP se fait courant du mois de mai.
+                        Le candidat passe : Anglais, Mathématiques, Sciences Physiques et Réponse à une Affaire – Gestion de Production sous forme de CCF.
+                        Les épreuves de Culture générale, Conception Préliminaire, Projet Industriel de Conception sont ponctuelles.
+                        Equivalence 120 ECTS
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>
+                            Poursuite d'étude
+                        </h4>
+                    </div>
+                    <p>
+                        Licence Professionnelle Production spécialité innovation par la conception informatisée
+                        Licence Professionnelle Production spécialité informatique industrielle et productique
+                        Licence Professionnelle CFAO
+                        Licence Professionnelle Lean Manufacturing
+                        Licence Professionnelle Commerce spécialité commerce et ventes appliqués aux industries
+                        Classe préparatoire ATS ingénierie industrielle
+                        Ecoles d’ingénieurs (en Génie Industriel ENSAM, Ingénieur 2000, MECAVENIR, CEFIPA, ICAM…).
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<center>
+    <div class="divider  my-4"></div>
+</center>
+
+<section class="section testimonial">
+    <div class="container" id="sisr">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6">
+                <div class="section-title">
+                    <h2 class="mb-4">BTS SIO SISR</h2>
+                    <div class="divider  my-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 testimonial-wrap offset-lg-6">
+                <div class="testimonial-block">
+                    <div class="client-info ">
+                        <h4>Atouts et objectifs de ce BTS
+                        </h4>
+                    </div>
+                    <p>
+                        Le titulaire du BTS SIO, Spécialité « Solutions d’infrastructure, systèmes et réseaux» est chargé d’installer, d’administrer et gérer la maintenance des équipements et des réseaux informatiques.
+                    </p>
+                    <i class="icofont-quote-right"></i>
+
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Débouchés</h4>
+                    </div>
+                    <p>Le titulaire du BTS SIO SISR peut occuper des emplois variés et liés à l’option choisie, tels que :
+
+                        Administrateur systèmes et réseaux
+                        Informaticien support et déploiement
+                        Pilote d’exploitation
+                        Support systèmes et réseaux
+
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Moyens pédagogiques</h4>
+                    </div>
+                    <p>
+                        Parc informatique et salles de TP neuves équipées avec des ordinateurs et des licences office 365 (Pack Office, Teams, Drive), boîte mail professionnelle et Cloud pour chaque étudiant
+                        Switch et téléphones
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Les enseignements</h4>
+                    </div>
+                    <p>
+                        Deux BTS blancs sont prévus par an.
+                        Le passage du BTS SIO SISR se fait courant du mois de mai.
+                        Le candidat passe les épreuves suivantes : algorithme appliqué, Conception et maintenance de solution informatique et Production et fourniture de services informatiquessous forme de CCF.
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>
+                            La poursuite d'étude
+                        </h4>
+                    </div>
+                    <p>
+                        Le titulaire du BTS SIO SISR aura acquis des compétences qui lui permettront d’accéder à des formations de l’enseignement supérieur telles que :
+
+                        Licence informatique en réseau
+                        Ecole d’informatique (ESGI / SUP DE VINCI, INSA)
+                        Ecole d’ingénieur en informatique
+                        Ecole de commerce
+                        Licence technico-commercial
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<center>
+    <div class="divider  my-4"></div>
+</center>
+
+<section class="section testimonial">
+    <div class="container" id="slam">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-6">
+                <div class="section-title">
+                    <h2 class="mb-4">BTS SIO SLAM</h2>
+                    <div class="divider  my-4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 testimonial-wrap offset-lg-6">
+                <div class="testimonial-block">
+                    <div class="client-info ">
+                        <h4>Atouts et objectifs de ce BTS
+                        </h4>
+                    </div>
+                    <p>
+
+                        objectifs Le titulaire du BTS SIO, Spécialité « Solutions logicielles et applications métiers » est chargé de définir des spécifications techniques à partir des besoins des utilisateurs et des contraintes de l’organisation. Il intervient dans la réalisation ou l’adaptation puis la validation de solutions applicatives à l’aide des environnements de développement.                     </p>
+                    <i class="icofont-quote-right"></i>
+
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Débouchés</h4>
+                    </div>
+                    <p>Le titulaire du BTS SIO SLAM peut occuper des emplois variés selon la poursuite ou non de ses études tels que :
+
+                        Analyste d’applications
+                        Programmeur analyste
+                        Programmeur d’applications
+                        Analyste programmeur
+
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Moyens pédagogiques</h4>
+                    </div>
+                    <p>
+                        Parc informatique et salles de TP neuves équipées avec des ordinateurs et des licences office 365 (Pack Office, Teams, Drive), boîte mail professionnelle et Cloud pour chaque étudiant.
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>Les enseignements</h4>
+                    </div>
+                    <p>
+
+                        Deux BTS blancs sont prévus par an.
+                        Le passage du BTS SIO SLAM se fait courant du mois de mai.
+                        Le candidat passe les épreuves suivantes : algorithme appliqué, Conception et maintenance de solution informatique, et Conception et adaptation de solutions applicativessous forme de CCF.
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+
+                <div class="testimonial-block">
+                    <div class="client-info">
+                        <h4>
+                            La poursuite d'étude
+                        </h4>
+                    </div>
+                    <p>
+                        Le titulaire du BTS SIO SLAM aura acquis des compétences qui lui permettront d’accéder à des formations de l’enseignement supérieur telles que :
+
+                        Licence informatique en développement
+                        Ecole d’informatique (ESGI / SUP DE VINCI, INSA)
+                        Ecole d’ingénieur en informatique
+                        Ecole de commerce
+                        Licence technico-commercial
+
+
+                    </p>
+                    <i class="icofont-quote-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <?php
 include('../footer/footerinview.php');
 ?>
-  </body>
-  </html>
+
+</body>
+</html>
