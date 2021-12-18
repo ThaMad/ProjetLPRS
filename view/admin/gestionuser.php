@@ -94,6 +94,7 @@ include('../header/headerinview.php');
 
                     <th>Supprimer</th>
                     <th>Restrictions</th>
+                    <th>Administration</th>
 
                 </tr>
                 </thead>
@@ -133,7 +134,19 @@ include('../header/headerinview.php');
                             if ($value['valide']=="1"){?>
                                 <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/admin/desactiver.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-ban"></i> Desactiver </a>
                             <?php }?>
-                            </a>
+
+                        </td>
+
+                        <td>
+                            <?php
+                            if($value['profil']=="admin"){?>
+                                <a class="d-block mx-auto btn btn-secondary text-white" href=""><i
+                                            class="fas fa-times">Administrateur</i></a>
+                            <?php }
+                            if ($value['profil']!="admin"){?>
+                                <a style="background:#000;" class="d-block mx-auto btn btn-answer text-white" href="../../traitement/admin/addadmin.php?idUser=<?php echo $value['idUser']; ?>"><i class="fas fa-unlock"></i>Ajouter un admin</a>
+                            <?php }?>
+
                         </td>
 
                     </tr>

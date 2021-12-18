@@ -442,5 +442,23 @@ table[class=body] .article {
     }
 
 
+    public function addAdmin($idUser)
+    {
+        //on appelle la méthode connexion_bd depuis le parent de la classe boite_ideeManager
+        $bdd = parent::connexion_bdd();
+        //on prépare la requête SQL
+        $addAdmin = $bdd->prepare("UPDATE user SET profil='admin' WHERE idUser = ?");
+        //on déclare la variable pour supprie l'idees
+        $addAdmin = $addAdmin->execute(array($idUser));
+        if ($addAdmin != null) {
+            header('Location:/ProjetLPRS/view/Admin/gestionuser.php?user_valide=Y7Z3i7aEm');
+        } else {
+            header('Location:/ProjetLPRS/view/Admin/gestionuser.php?erreur_valide=K7YJ4pkp9');
+        }
+
+
+    }
+
+
 
 }
