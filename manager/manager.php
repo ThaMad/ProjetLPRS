@@ -334,7 +334,7 @@ table[class=body] .article {
         $res = $req->fetch();
         if ($res) {
             $_SESSION['erreur'] = "Error evenement deja existant";
-//            header("Location: ../view/event/event.php");
+            header("Location: ../view/event/event.php");
         } elseif ($event->getLibelle() != '' and $event->getDateDebut() != '' and $event->getDateFin() != '' and $event->getDescription() != '' and $event->getLieu() != '') {
             $req = $bdd->prepare('INSERT INTO evenement(libelle,dateDebut,dateFin,description,image,valide,lieu) values (:libelle,:dateDebut,:dateFin,:description,:image,:valide,:lieu)');
             $a= $req->execute(array(
@@ -379,11 +379,11 @@ table[class=body] .article {
             } else {
                 $_SESSION['success'] = "L'event est bien ajouté en attente de validation";
             }
-//            header("Location: ../view/event/event.php");
+            header("Location: ../view/event/event.php");
 
         } else {
             $_SESSION['erreur'] = "Error il manque un élément";
-//            header("Location: ../view/event/event.php");
+            header("Location: ../view/event/event.php");
         }
     }
 
