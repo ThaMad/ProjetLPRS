@@ -119,7 +119,7 @@ foreach ($a
             </div>
         </div>
         </br>
-        <!-- DATA TABLE -->
+    <!-- DATA TABLE -->
         <?php
         if (isset($_SESSION["profil"]) && $_SESSION["profil"] == 'parent') {
         ?>
@@ -163,8 +163,10 @@ foreach ($a
         </div>
         </div>
     </form>
-    <?php } ?>
+    <?php } else { ?>
+    </form>
     <?php
+    }
     $mail = $_SESSION['mail'];
     $req = $bdd->prepare('SELECT * FROM creation INNER JOIN evenement ON evenement.idEvent = creation.event INNER JOIN user ON creation.user= user.idUser WHERE mail = :mail');
     $req->execute(array('mail' => $mail));

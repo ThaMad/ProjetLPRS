@@ -1,7 +1,7 @@
 <div class="modal fade" id="modal-add-event" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form action="../../traitement/addevent.php" method="post" enctype="multipart/form-data">
+        <form action="../../traitement/addEvent.php" method="post" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ajout d'un évenement</h5>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-primary" id="ajouterEvent">Ajouter</button>
+                    <button type="submit" class="btn btn-primary" id="addEvent" name="event">Ajouter</button>
                 </div>
             </div>
         </form>

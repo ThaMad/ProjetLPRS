@@ -238,7 +238,6 @@ table[class=body] .article {
 ';
                 $toMail = $user->getMail();
                 $a = $this->mail($subject, $body, $toMail);
-                die($a);
                 $_SESSION['success'] = "Bravo !! Vous êtes un nouveau utilisateur";
                 return $_SESSION['success'];
             }
@@ -321,7 +320,8 @@ table[class=body] .article {
     public function addevent($event)
     {
         session_start();
-        if ($_SESSION['profil'] == 'prof') {
+        var_dump($_SESSION);
+        if ($_SESSION['profil'] == 'prof' || $_SESSION['profil'] == 'admin') {
             $valide = 1;
         } else {
             $valide = 0;
@@ -334,10 +334,10 @@ table[class=body] .article {
         $res = $req->fetch();
         if ($res) {
             $_SESSION['erreur'] = "Error evenement deja existant";
-            header("Location: ../view/event/event.php");
+//            header("Location: ../view/event/event.php");
         } elseif ($event->getLibelle() != '' and $event->getDateDebut() != '' and $event->getDateFin() != '' and $event->getDescription() != '' and $event->getLieu() != '') {
             $req = $bdd->prepare('INSERT INTO evenement(libelle,dateDebut,dateFin,description,image,valide,lieu) values (:libelle,:dateDebut,:dateFin,:description,:image,:valide,:lieu)');
-            $req->execute(array(
+            $a= $req->execute(array(
                 'libelle' => $event->getLibelle(),
                 'dateDebut' => $event->getDateDebut(),
                 'dateFin' => $event->getDateFin(),
@@ -346,6 +346,8 @@ table[class=body] .article {
                 'valide' => $valide,
                 'lieu' => $event->getLieu(),
             ));
+            var_dump($a);
+            $req->debugDumpParams();
             if (isset($_SESSION['mail'])) {
                 $mail = $_SESSION['mail'];
             }
@@ -354,11 +356,15 @@ table[class=body] .article {
                 'mail' => $mail,
             ));
             $result = $request->fetchall();
+            var_dump($event);
             $req2 = $bdd->prepare('SELECT * from evenement where libelle= :libelle ');
             $req2->execute(array(
                 'libelle' => $event->getLibelle(),
             ));
             $res2 = $req2->fetchall();
+            var_dump($result);
+            var_dump($res2);
+
             $idUser = intval($result[0]['idUser']);
             $idEvent = intval($res2[0]['idEvent']);
             $request2 = $bdd->prepare('INSERT INTO creation(user,event,creation,organisateur) values (:user,:event,:creation,:organisateur)');
@@ -373,11 +379,11 @@ table[class=body] .article {
             } else {
                 $_SESSION['success'] = "L'event est bien ajouté en attente de validation";
             }
-            header("Location: ../view/event/event.php");
+//            header("Location: ../view/event/event.php");
 
         } else {
             $_SESSION['erreur'] = "Error il manque un élément";
-            header("Location: ../view/event/event.php");
+//            header("Location: ../view/event/event.php");
         }
     }
 

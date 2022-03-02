@@ -16,6 +16,7 @@ $("body").delegate("#addOrga", "click", function () {
     $("#modal-add-orga").modal('show');
     $('#ajouterEvent').val(event);
 });
+
 $("body").delegate("#choixProfil", "change", function () {
     if ($('#eleveradio').is(':checked')) {
         $('#listeEtudiant').prop('hidden', false);
